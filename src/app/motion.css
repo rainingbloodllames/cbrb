@@ -1,33 +1,27 @@
-/* SIGCE Motion vocabulary — CSS-native, prefer these over framer-motion.
-   Springs config lives in src/lib/motion.ts (legacy only, overdamped zeta > 1.0).
-   Never use transition-all; declare explicit properties below. */
-
+/* SIGCE Motion — CSS-native (Emil curves). No transition-all. */
 @keyframes enter-fade-up {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes enter-fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-@keyframes exit-fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
 
 .animate-enter-up {
-  animation: enter-fade-up 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: enter-fade-up 260ms cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 .animate-enter-in {
-  animation: enter-fade-in 200ms ease-out both;
-}
-.animate-exit-out {
-  animation: exit-fade-out 160ms ease-in both;
+  animation: enter-fade-in 200ms cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
-/* MOTION_PRESENCE equivalent: explicit transitions, no transition-all */
+/* Stagger 40ms per child */
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 40ms; }
+.stagger > *:nth-child(3) { animation-delay: 80ms; }
+
 .motion-presence {
   transition-property: opacity, transform;
   transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }

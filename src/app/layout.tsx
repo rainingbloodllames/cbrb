@@ -28,14 +28,25 @@ export const metadata: Metadata = {
     description: site.tagline,
     siteName: site.name,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description: site.tagline,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={`${jakarta.variable} ${lexend.variable} h-full antialiased`}>
+      <head>
+        <meta name="theme-color" content="#0f2a5c" />
+      </head>
       <body className="flex min-h-full flex-col">
+        <a href="#contenido" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-[#0f2a5c] focus:px-5 focus:py-3 focus:text-sm focus:font-bold focus:text-white">
+          Saltar al contenido
+        </a>
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main id="contenido" className="flex-1">{children}</main>
         <SiteFooter />
       </body>
     </html>
