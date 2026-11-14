@@ -1,39 +1,38 @@
 import type { Metadata } from "next";
 import { NewsCard } from "@/components/NewsCard";
 import { news } from "@/lib/content";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Comunidad" };
 
 export default function ComunidadPage() {
   return (
-    <div className="mx-auto max-w-6xl space-y-10 px-4 py-12">
-      <header>
-        <h1 className="text-4xl font-bold">Comunidad</h1>
-        <p className="mt-2 text-slate-600 dark:text-slate-400">
-          Noticias, actividades y vida escolar. Editable en Fase 2 con Sanity (sin código).
+    <div className="mx-auto max-w-6xl px-4 pb-10 pt-6 sm:px-5">
+      <header className="hero-mesh rounded-[36px] p-8 text-white sm:p-10">
+        <p className="text-xs font-bold text-white/75">Vida escolar</p>
+        <h1 className="mt-2 font-heading text-4xl font-bold text-pretty sm:text-5xl">Comunidad</h1>
+        <p className="mt-3 max-w-prose leading-relaxed text-white/85">
+          Noticias, actos y actividades oficiales de estudiantes, apoderados y funcionarios.
         </p>
+        <div className="mt-6 flex flex-wrap gap-2">
+          <a href={site.instagram} target="_blank" rel="noreferrer" className="pressable flex min-h-[44px] items-center rounded-full bg-white px-5 text-sm font-bold text-[#0b1e44]">Instagram @colegio_brasil</a>
+          <a href={site.facebook} target="_blank" rel="noreferrer" className="pressable flex min-h-[44px] items-center rounded-full bg-white/15 px-5 text-sm font-bold text-white">Facebook</a>
+        </div>
       </header>
 
-      <div className="grid gap-4 md:grid-cols-3">
-        {news.map((n) => (
-          <NewsCard key={n.slug} item={n} />
+      <div className="stagger grid gap-3 pt-8 md:grid-cols-3">
+        {news.map((n, i) => (
+          <div key={n.slug} className="animate-enter-up">
+            <NewsCard item={n} featured={i === 0} />
+          </div>
         ))}
       </div>
 
-      <section className="solid-panel rounded-2xl p-6">
-        <h2 className="font-heading text-xl font-bold">Calendario</h2>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-          Cuando el colegio cree el Google Calendar público (@cbrb.cl), pega aquí el embed (Compartir → Incorporar calendario).
-        </p>
-        <div className="mt-4 rounded-xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-500 dark:border-slate-700/50">
-          [ Espacio para iframe Google Calendar ]
-        </div>
-      </section>
-
-      <section className="solid-panel rounded-2xl p-6">
-        <h2 className="font-heading text-xl font-bold">Galería</h2>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-          Embed de Instagram @colegio_brasil (sin API paga). Sube fotos a <code>public/fotos/</code> en Fase 1.
+      <section className="ios-card mt-8 p-6" aria-labelledby="calendario-titulo">
+        <h2 id="calendario-titulo" className="font-heading text-xl font-bold">Calendario escolar</h2>
+        <p className="mt-1.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+          Actos, reuniones y fechas oficiales. En época SAE y matrícula, revisa también{" "}
+          <a href={site.saeUrl} target="_blank" rel="noreferrer" className="font-bold text-[#0a84ff] underline underline-offset-4">admisión SAE</a>.
         </p>
       </section>
     </div>

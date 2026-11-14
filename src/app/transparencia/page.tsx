@@ -5,41 +5,38 @@ export const metadata: Metadata = { title: "Transparencia" };
 
 export default function TransparenciaPage() {
   return (
-    <div className="mx-auto max-w-4xl space-y-8 px-4 py-12">
-      <header>
-        <h1 className="text-4xl font-bold">Transparencia</h1>
-        <p className="mt-2 text-slate-600 dark:text-slate-400">
-          Documentos oficiales del establecimiento público. Sube los PDF a <code>public/docs/</code> o enlaza Drive público.
+    <div className="mx-auto max-w-4xl px-4 pb-10 pt-6 sm:px-5">
+      <header className="hero-mesh rounded-[36px] p-8 text-white sm:p-10">
+        <p className="text-xs font-bold text-white/75">Documentos oficiales</p>
+        <h1 className="mt-2 font-heading text-4xl font-bold text-pretty sm:text-5xl">Transparencia</h1>
+        <p className="mt-3 max-w-prose leading-relaxed text-white/85">
+          Documentos del establecimiento público según Ley de Transparencia y MINEDUC. Descarga directa en PDF.
         </p>
       </header>
 
-      <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700/50">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-slate-50 dark:bg-slate-800">
-            <tr>
-              <th className="px-4 py-3 font-heading">Documento</th>
-              <th className="px-4 py-3 font-heading">Categoría</th>
-              <th className="px-4 py-3 font-heading">Año</th>
-              <th className="px-4 py-3 font-heading">Descargar</th>
-            </tr>
-          </thead>
-          <tbody>
-            {documents.map((d) => (
-              <tr key={d.title} className="border-t border-slate-100 dark:border-slate-700/50">
-                <td className="px-4 py-3">{d.title}</td>
-                <td className="px-4 py-3">{d.category}</td>
-                <td className="px-4 py-3">{d.year}</td>
-                <td className="px-4 py-3">
-                  <a href={d.href} className="font-bold text-blue-700 underline dark:text-blue-300">PDF ↓</a>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p className="text-xs text-slate-500">
-        PEI, reglamento y protocolos exigidos por Ley de Transparencia y MINEDUC. RBD 4564 · SLEP Andalién Sur.
-      </p>
+      <ul className="stagger mt-6 space-y-2">
+        {documents.map((d) => (
+          <li key={d.title} className="animate-enter-up">
+            <a
+              href={d.href}
+              className="pressable group ios-card flex min-h-[64px] items-center gap-4 p-4"
+              download
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0a84ff]/10 text-[#0a84ff]" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M7 3h7l4 4v14H7V3Z" strokeLinejoin="round"/><path d="M14 3v4h4" strokeLinejoin="round"/></svg>
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate font-heading font-bold">{d.title}</span>
+                <span className="mt-0.5 block text-xs text-slate-500">{d.category} · <span className="tabular-nums">{d.year}</span></span>
+              </span>
+              <span className="shrink-0 rounded-full bg-[#0f2a5c] px-4 py-2 text-xs font-bold text-white transition-colors duration-150 group-hover:bg-[#1a3f7a]">
+                PDF
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-5 text-xs text-slate-500">PEI, reglamento y planes RBD 4564 · SLEP Andalién Sur. Si un archivo no abre, escribe a <a href="mailto:contacto@cbrb.cl" className="underline">contacto@cbrb.cl</a>.</p>
     </div>
   );
 }
