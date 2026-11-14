@@ -1,6 +1,6 @@
 {
-  "name": "cbrb-temp",
-  "version": "0.1.0",
+  "name": "cbrb",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -20,6 +20,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+    "fast-glob": "^3.3.3",
     "tailwindcss": "4.3.3",
     "typescript": "^5"
   }
