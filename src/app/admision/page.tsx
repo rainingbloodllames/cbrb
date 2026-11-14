@@ -4,10 +4,10 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = { title: "Admisión SAE" };
 
 const steps = [
-  { t: "1. Infórmate", d: "Revisa vacantes y requisitos en admision.mineduc.cl" },
-  { t: "2. Postula", d: "Completa el formulario SAE con RUN del estudiante y apoderado" },
-  { t: "3. Resultados", d: "Revisa listas de selección en las fechas publicadas por MINEDUC" },
-  { t: "4. Matrícula", d: "Confirma matrícula en el colegio asignado (San Martín 1580)" },
+  { n: "1", t: "Infórmate", d: "Revisa vacantes y requisitos en admision.mineduc.cl" },
+  { n: "2", t: "Postula", d: "Completa el formulario SAE con RUN del estudiante y apoderado" },
+  { n: "3", t: "Resultados", d: "Revisa listas de selección en las fechas de MINEDUC" },
+  { n: "4", t: "Matrícula", d: "Confirma matrícula en San Martín 1580" },
 ];
 
 const faqs = [
@@ -18,47 +18,46 @@ const faqs = [
 
 export default function AdmisionPage() {
   return (
-    <div className="mx-auto max-w-4xl space-y-10 px-4 py-12">
-      <header className="glass-panel rounded-3xl p-8">
-        <p className="text-sm font-bold uppercase tracking-widest text-yellow-700">Admisión 2027 · SAE</p>
-        <h1 className="mt-2 text-4xl font-bold">Postula al CBRB por SAE</h1>
-        <p className="mt-3 text-slate-600 dark:text-slate-400">
-          Somos colegio público bicentenario en el centro de Concepción. Postula solo por el sistema oficial.
-        </p>
-        <a href={site.saeUrl} target="_blank" rel="noreferrer" className="mt-5 inline-block rounded-full bg-yellow-400 px-6 py-3 font-bold text-slate-900 transition-colors duration-150 hover:bg-yellow-300">
-          Ir a admision.mineduc.cl ↗
+    <div className="mx-auto max-w-4xl px-4 pb-10 pt-6 sm:px-5">
+      <header className="hero-mesh rounded-[36px] p-8 text-white sm:p-10">
+        <p className="inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold">Matrícula 2027 · SAE</p>
+        <h1 className="mt-4 font-heading text-4xl font-bold text-pretty sm:text-5xl">Postula al CBRB por SAE</h1>
+        <p className="mt-3 max-w-prose text-white/85">Colegio público bicentenario en el centro de Concepción. Postula solo por el sistema oficial, en 4 pasos.</p>
+        <a href={site.saeUrl} target="_blank" rel="noreferrer" className="pressable mt-6 flex min-h-[52px] w-full items-center justify-center rounded-full bg-[#ffd60a] px-6 font-heading text-base font-bold text-slate-900 transition-colors duration-150 hover:bg-[#f7d100] sm:w-auto sm:px-8">
+          Ir a admision.mineduc.cl
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true" className="ml-1"><path d="M7 17 17 7M8 7h9v9" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </a>
+        <p className="mt-4 text-xs text-white/70">RBD 4564 · Busca: <strong className="text-white">Colegio Bicentenario República del Brasil</strong></p>
       </header>
 
-      <section aria-labelledby="pasos">
-        <h2 id="pasos" className="font-heading text-2xl font-bold">Pasos</h2>
-        <ol className="mt-4 grid gap-3 sm:grid-cols-2">
+      <section className="pt-10" aria-labelledby="pasos">
+        <h2 id="pasos" className="font-heading text-3xl font-bold text-pretty">4 pasos, sin salir de casa</h2>
+        <ol className="stagger mt-5 grid gap-3 sm:grid-cols-2">
           {steps.map((s) => (
-            <li key={s.t} className="solid-panel rounded-2xl p-5">
-              <p className="font-heading font-bold">{s.t}</p>
-              <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{s.d}</p>
+            <li key={s.n} className="animate-enter-up ios-card flex gap-4 p-5">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0a84ff] font-heading text-lg font-bold text-white" aria-hidden="true">{s.n}</span>
+              <span className="min-w-0">
+                <span className="block font-heading text-lg font-bold">{s.t}</span>
+                <span className="mt-1 block text-sm leading-relaxed text-slate-600 dark:text-slate-400">{s.d}</span>
+              </span>
             </li>
           ))}
         </ol>
       </section>
 
-      <section aria-labelledby="faq">
-        <h2 id="faq" className="font-heading text-2xl font-bold">Preguntas frecuentes</h2>
-        <div className="mt-4 space-y-3">
+      <section className="pt-10" aria-labelledby="faq">
+        <h2 id="faq" className="font-heading text-3xl font-bold text-pretty">Preguntas frecuentes</h2>
+        <div className="mt-5 space-y-2">
           {faqs.map((f) => (
-            <details key={f.q} className="solid-panel rounded-2xl p-5">
-              <summary className="cursor-pointer font-heading font-bold">{f.q}</summary>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{f.a}</p>
+            <details key={f.q} className="ios-card group p-5">
+              <summary className="flex min-h-[44px] cursor-pointer items-center justify-between gap-4 font-heading font-bold marker:hidden">
+                {f.q}
+                <span className="text-xl text-[#0a84ff] transition-transform duration-200 group-open:rotate-45" aria-hidden="true">+</span>
+              </summary>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{f.a}</p>
             </details>
           ))}
         </div>
-      </section>
-
-      <section className="glass-bento rounded-2xl p-6">
-        <h2 className="font-heading font-bold">School ID / SAE</h2>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-          En el buscador SAE busca: <strong>Colegio Bicentenario República del Brasil</strong> (RBD 4564) · San Martín 1580, Concepción.
-        </p>
       </section>
     </div>
   );
