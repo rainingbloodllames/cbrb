@@ -59,11 +59,11 @@ const ContactForm = memo(function ContactForm() {
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 pb-10 pt-6 sm:px-5">
-      <header className="hero-mesh rounded-[36px] p-8 text-white sm:p-10">
-        <h1 className="font-heading text-4xl font-bold text-pretty sm:text-5xl">Contacto</h1>
-        <p className="mt-3 leading-relaxed text-white/95">
-          {site.address} · <a className="underline underline-offset-4" href={site.phoneHref}>{site.phone}</a> · {site.email}
+    <div className="mx-auto max-w-4xl px-4 pb-16 pt-8 sm:px-6">
+      <header className="hero-mesh relative overflow-hidden rounded-[32px] p-8 text-white sm:rounded-[40px] sm:p-10">
+        <h1 className="font-heading text-[42px] font-extrabold leading-[0.95] tracking-tight text-white sm:text-[56px]">Contacto</h1>
+        <p className="mt-4 text-[17px] font-medium leading-relaxed text-slate-100">
+          {site.address} · <a className="font-extrabold underline decoration-[#ffd60a] decoration-2 underline-offset-4" href={site.phoneHref}>{site.phone}</a> · {site.email}
         </p>
       </header>
 
@@ -72,7 +72,7 @@ export default function ContactPage() {
         <div className="space-y-3">
           <div className="ios-card overflow-hidden">
             <div className="flex items-center justify-between gap-4 p-5">
-              <h2 className="font-heading text-lg font-bold">Ubicación</h2>
+              <h2 className="font-heading text-lg font-bold text-slate-900 dark:text-white">Ubicación</h2>
               <a href={site.mapUrl} target="_blank" rel="noreferrer" className="pressable flex min-h-[44px] items-center rounded-full bg-[#0066cc] px-4 text-sm font-bold text-white">
                 Cómo llegar
               </a>
@@ -86,8 +86,8 @@ export default function ContactPage() {
             <p className="sr-only">Mapa de San Martín 1580, Concepción</p>
           </div>
           <div className="ios-card p-5">
-            <h2 className="font-heading text-lg font-bold">Horario secretaría</h2>
-            <p className="mt-1 text-sm text-slate-700 dark:text-slate-400">Lunes a viernes 8:30–17:30.</p>
+            <h2 className="font-heading text-lg font-bold text-slate-900 dark:text-white">Horario secretaría</h2>
+            <p className="mt-1 text-sm font-semibold text-slate-700 dark:text-slate-200">Lunes a viernes 8:30–17:30.</p>
           </div>
         </div>
       </div>

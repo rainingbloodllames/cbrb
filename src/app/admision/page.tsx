@@ -19,16 +19,16 @@ const faqs = [
 
 export default function AdmisionPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 pb-10 pt-6 sm:px-5">
-      <header className="hero-mesh rounded-[36px] p-8 text-white sm:p-10">
-        <p className="inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold">Matrícula 2027 · SAE</p>
-        <h1 className="mt-4 font-heading text-4xl font-bold text-pretty sm:text-5xl">Postula al CBRB por SAE</h1>
-        <p className="mt-3 max-w-prose text-white/95">Colegio público bicentenario en el centro de Concepción. Postula solo por el sistema oficial, en 4 pasos.</p>
-        <a href={site.saeUrl} target="_blank" rel="noreferrer" className="group pressable mt-6 flex min-h-[52px] w-full items-center justify-center rounded-full bg-[#ffd60a] px-6 font-heading text-base font-bold text-slate-900 transition-colors duration-150 hover:bg-[#f7d100] sm:w-auto sm:px-8">
+    <div className="mx-auto max-w-4xl px-4 pb-16 pt-8 sm:px-6">
+      <header className="hero-mesh relative overflow-hidden rounded-[32px] p-8 text-white sm:rounded-[40px] sm:p-10">
+        <p className="inline-flex rounded-full bg-white px-4 py-2 text-[13px] font-extrabold uppercase tracking-wide text-slate-900 shadow-sm">Matrícula 2027 · SAE</p>
+        <h1 className="mt-5 font-heading text-[42px] font-extrabold leading-[0.95] tracking-tight text-white sm:text-[56px]">Postula al CBRB por SAE</h1>
+        <p className="mt-4 max-w-prose text-[17px] font-medium leading-relaxed text-slate-100">Colegio público bicentenario en el centro de Concepción. Postula solo por el sistema oficial, en 4 pasos.</p>
+        <a href={site.saeUrl} target="_blank" rel="noreferrer" className="group mt-7 inline-flex min-h-[56px] items-center justify-center gap-2 rounded-full bg-[#ffd60a] px-8 font-heading text-[16px] font-extrabold text-slate-900 shadow-lg transition-colors hover:bg-[#ffdd2e] sm:px-9">
           Ir a admision.mineduc.cl
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true" className="arrow-nudge ml-1"><path d="M7 17 17 7M8 7h9v9" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true" className="arrow-nudge"><path d="M7 17 17 7M8 7h9v9" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </a>
-        <p className="mt-4 text-xs text-white/70">RBD 4564 · Busca: <strong className="text-white">Colegio Bicentenario República del Brasil</strong></p>
+        <p className="mt-5 text-[13px] font-semibold text-slate-200">RBD 4564 · Busca: <strong className="font-extrabold text-white">Colegio Bicentenario República del Brasil</strong></p>
       </header>
 
       <section className="pt-10" aria-labelledby="pasos">
@@ -39,8 +39,8 @@ export default function AdmisionPage() {
               <div className="card-lift ios-card flex h-full gap-4 p-5">
                 <span className="icon-pop flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0066cc] font-heading text-lg font-bold text-white" aria-hidden="true">{s.n}</span>
                 <span className="min-w-0">
-                  <span className="block font-heading text-lg font-bold">{s.t}</span>
-                  <span className="mt-1 block text-sm leading-relaxed text-slate-700 dark:text-slate-400">{s.d}</span>
+                  <span className="block font-heading text-lg font-bold text-slate-900 dark:text-white">{s.t}</span>
+                  <span className="mt-1 block text-sm font-medium leading-relaxed text-slate-700 dark:text-slate-200">{s.d}</span>
                 </span>
               </div>
             </Reveal>
@@ -57,7 +57,7 @@ export default function AdmisionPage() {
                 {f.q}
                 <span className="chevron-spin text-xl text-[#0066cc]" aria-hidden="true">+</span>
               </summary>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-400">{f.a}</p>
+              <p className="mt-2 text-sm font-medium leading-relaxed text-slate-700 dark:text-slate-200">{f.a}</p>
             </details>
           ))}
         </div>

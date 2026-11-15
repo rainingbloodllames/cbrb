@@ -9,16 +9,16 @@ export const metadata: Metadata = { title: "Comunidad" };
 
 export default function ComunidadPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 pb-10 pt-6 sm:px-5">
-      <header className="hero-mesh rounded-[36px] p-8 text-white sm:p-10">
-        <p className="text-xs font-bold text-white/85">Vida escolar</p>
-        <h1 className="mt-2 font-heading text-4xl font-bold text-pretty sm:text-5xl">Comunidad</h1>
-        <p className="mt-3 max-w-prose leading-relaxed text-white/95">
+    <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6">
+      <header className="hero-mesh relative overflow-hidden rounded-[32px] p-8 text-white sm:rounded-[40px] sm:p-10">
+        <p className="text-[13px] font-extrabold uppercase tracking-[0.14em] text-white/90">Vida escolar</p>
+        <h1 className="mt-3 font-heading text-[42px] font-extrabold leading-[0.95] tracking-tight text-white sm:text-[56px]">Comunidad</h1>
+        <p className="mt-4 max-w-prose text-[17px] font-medium leading-relaxed text-slate-100">
           Noticias con fuente, vida escolar y galería. Todo con crédito y enlace a la cobertura original.
         </p>
-        <div className="mt-6 flex flex-wrap gap-2">
-          <a href={site.instagram} target="_blank" rel="noreferrer" className="pressable flex min-h-[44px] items-center rounded-full bg-white px-5 text-sm font-bold text-[#0b1e44]">Instagram @colegio_brasil</a>
-          <a href={site.facebook} target="_blank" rel="noreferrer" className="pressable flex min-h-[44px] items-center rounded-full bg-white/15 px-5 text-sm font-bold text-white">Facebook</a>
+        <div className="mt-7 flex flex-wrap gap-3">
+          <a href={site.instagram} target="_blank" rel="noreferrer" className="inline-flex min-h-[48px] items-center rounded-full bg-white px-6 text-sm font-extrabold text-[#0b1e44]">Instagram @colegio_brasil</a>
+          <a href={site.facebook} target="_blank" rel="noreferrer" className="inline-flex min-h-[48px] items-center rounded-full bg-white/10 px-6 text-sm font-extrabold text-white ring-1 ring-white/20">Facebook</a>
         </div>
       </header>
 
@@ -34,7 +34,7 @@ export default function ComunidadPage() {
 
       <section className="ios-card mt-8 p-6" aria-labelledby="calendario-titulo">
         <h2 id="calendario-titulo" className="font-heading text-xl font-bold">Calendario escolar</h2>
-        <p className="mt-1.5 text-sm leading-relaxed text-slate-700 dark:text-slate-400">
+        <p className="mt-1.5 text-sm font-medium leading-relaxed text-slate-700 dark:text-slate-200">
           Actos, reuniones y fechas oficiales. En época SAE y matrícula, revisa también{" "}
           <a href={site.saeUrl} target="_blank" rel="noreferrer" className="font-bold text-[#0066cc] underline underline-offset-4">admisión SAE</a>.
         </p>

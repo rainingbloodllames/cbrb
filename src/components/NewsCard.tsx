@@ -6,33 +6,33 @@ export const NewsCard = memo(function NewsCard({ item, featured = false }: { ite
   const inner = (
     <>
       {item.image ? (
-        <figure className="overflow-hidden rounded-[20px]">
+        <figure className="overflow-hidden rounded-[18px] bg-slate-100">
           <Image
             src={item.image}
             alt={item.imageAlt ?? item.title}
             width={1200}
             height={400}
             sizes="(min-width: 768px) 33vw, 90vw"
-            className="media-zoom aspect-[16/7] w-full object-cover"
+            className="media-zoom aspect-[16/8] w-full object-cover"
           />
           {item.imageCredit ? (
-            <figcaption className="mt-1.5 text-xs text-slate-600 dark:text-slate-300">{item.imageCredit}</figcaption>
+            <figcaption className="px-1 pt-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{item.imageCredit}</figcaption>
           ) : null}
         </figure>
       ) : null}
-      <p className="mt-3 flex flex-wrap items-center gap-2 text-xs font-bold">
-        <span className="rounded-full bg-[#0066cc]/10 px-2.5 py-1 text-[#0066cc]">{item.category}</span>
-        <span className="tabular-nums text-slate-700">{item.date}</span>
+      <p className="mt-4 flex flex-wrap items-center gap-2">
+        <span className="rounded-full bg-slate-900 px-3 py-1.5 text-[12px] font-extrabold text-white">{item.category}</span>
+        <span className="text-[12px] font-bold text-slate-500 tabular-nums">{item.date}</span>
       </p>
-      <h3 className={`mt-2 font-heading font-bold leading-snug text-pretty transition-colors duration-150 group-hover:text-[#0066cc] ${featured ? "text-2xl" : "text-lg"}`}>
+      <h3 className={`mt-3 font-heading font-extrabold leading-tight tracking-tight text-pretty text-slate-900 transition-colors group-hover:text-[#0066cc] ${featured ? "text-[24px]" : "text-[19px]"}`}>
         {item.title}
       </h3>
-      <p className={`mt-2 leading-relaxed text-slate-700 dark:text-slate-400 ${featured ? "text-base" : "line-clamp-3 text-sm"}`}>{item.excerpt}</p>
+      <p className={`mt-2.5 leading-relaxed text-slate-600 ${featured ? "text-[15px]" : "line-clamp-3 text-[14px]"}`}>{item.excerpt}</p>
       {item.source ? (
-        <p className="mt-3 text-xs font-semibold text-slate-700">
+        <p className="mt-4 pt-4 border-t border-slate-100 text-[12px] font-bold uppercase tracking-wide text-slate-500">
           {item.sourceUrl ? (
-            <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-[#0066cc]">
-              {item.source}
+            <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="underline decoration-slate-300 underline-offset-4 hover:text-[#0066cc] hover:decoration-[#0066cc]">
+              {item.source} ↗
             </a>
           ) : (
             item.source
@@ -42,7 +42,7 @@ export const NewsCard = memo(function NewsCard({ item, featured = false }: { ite
     </>
   );
   return (
-    <article className={`group card-lift pressable min-w-0 rounded-[28px] bg-white p-4 dark:bg-[#1c1c1e] ${featured ? "shadow-glass-light" : "ios-card"}`}>
+    <article className="group h-full min-w-0 rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
       {inner}
     </article>
   );

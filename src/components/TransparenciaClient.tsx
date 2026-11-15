@@ -31,26 +31,26 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
                 className="pressable flex min-w-0 flex-1 items-center gap-4 text-left"
                 aria-haspopup="dialog"
               >
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[18px] bg-[#0066cc]/10 text-[#0066cc]" aria-hidden="true">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[18px] bg-[#0066cc] text-white" aria-hidden="true">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 3h7l4 4v14H7V3Z" strokeLinejoin="round"/><path d="M14 3v4h4" strokeLinejoin="round"/></svg>
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate font-heading font-bold">{d.title}</span>
-                  <span className="mt-0.5 block text-xs text-slate-700">{d.category} · <span className="tabular-nums">{d.year}</span> · PDF</span>
+                  <span className="block truncate font-heading font-extrabold text-slate-900 dark:text-white">{d.title}</span>
+                  <span className="mt-1 block text-[13px] font-semibold text-slate-600 dark:text-slate-300">{d.category} · <span className="tabular-nums">{d.year}</span> · PDF</span>
                 </span>
               </button>
               <div className="flex shrink-0 items-center gap-2">
                 <button
                   type="button"
                   onClick={() => setSelected(d)}
-                  className="pressable flex min-h-[44px] items-center rounded-full bg-[#0066cc] px-5 text-sm font-bold text-white transition-colors duration-150 hover:bg-[#0066cc]"
+                  className="pressable flex min-h-[44px] items-center rounded-full bg-[#0066cc] px-5 text-sm font-bold text-white transition-colors duration-150 hover:bg-[#0058af]"
                 >
                   Leer
                 </button>
                 <a
                   href={d.href}
                   download
-                  className="pressable hidden min-h-[44px] items-center rounded-full bg-slate-900/5 px-4 text-sm font-bold sm:flex dark:bg-white/10"
+                  className="pressable hidden min-h-[44px] items-center rounded-full bg-slate-100 px-4 text-sm font-bold text-slate-900 ring-1 ring-slate-200 sm:flex hover:bg-slate-200"
                 >
                   Descargar
                 </a>
