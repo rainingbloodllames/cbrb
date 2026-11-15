@@ -60,10 +60,10 @@ const ContactForm = memo(function ContactForm() {
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 pb-16 pt-8 sm:px-6">
-      <header className="hero-mesh relative overflow-hidden rounded-[32px] p-8 text-white sm:rounded-[40px] sm:p-10">
-        <h1 className="font-heading text-[42px] font-extrabold leading-[0.95] tracking-tight text-white sm:text-[56px]">Contacto</h1>
+      <header className="hero-mesh relative overflow-hidden rounded-2xl p-8 text-white sm:rounded-3xl sm:p-10">
+        <h1 className="font-heading text-[42px] font-bold leading-[0.95] tracking-tight text-white sm:text-[56px]">Contacto</h1>
         <p className="mt-4 text-[17px] font-medium leading-relaxed text-slate-100">
-          {site.address} · <a className="font-extrabold underline decoration-[#ffd60a] decoration-2 underline-offset-4" href={site.phoneHref}>{site.phone}</a> · {site.email}
+          {site.address} · <a className="font-bold underline decoration-[#ffd60a] decoration-2 underline-offset-4" href={site.phoneHref}>{site.phone}</a> · {site.email}
         </p>
       </header>
 

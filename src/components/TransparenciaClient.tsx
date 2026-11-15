@@ -35,7 +35,7 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 3h7l4 4v14H7V3Z" strokeLinejoin="round"/><path d="M14 3v4h4" strokeLinejoin="round"/></svg>
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate font-heading font-extrabold text-slate-900">{d.title}</span>
+                  <span className="block truncate font-heading font-bold text-slate-900">{d.title}</span>
                   <span className="mt-1 block text-[13px] font-semibold text-slate-600">{d.category} · <span className="tabular-nums">{d.year}</span> · PDF</span>
                 </span>
               </button>

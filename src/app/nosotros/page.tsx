@@ -16,11 +16,11 @@ const HISTORIA = [
 export default function NosotrosPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 pb-16 pt-8 sm:px-6">
-      <header className="hero-mesh relative overflow-hidden rounded-[32px] text-white sm:rounded-[40px]">
+      <header className="hero-mesh relative overflow-hidden rounded-2xl text-white sm:rounded-3xl">
         <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-2">
           <div className="min-w-0">
-            <p className="text-[13px] font-extrabold uppercase tracking-[0.14em] text-white/90">Desde 1843 · Concepción, Biobío</p>
-            <h1 className="mt-3 font-heading text-[42px] font-extrabold leading-[0.95] tracking-tight text-white sm:text-[56px]">Nosotros</h1>
+            <p className="text-[13px] font-bold  text-white/90">Desde 1843 · Concepción, Biobío</p>
+            <h1 className="mt-3 font-heading text-[42px] font-bold leading-[0.95] tracking-tight text-white sm:text-[56px]">Nosotros</h1>
             <p className="mt-4 max-w-prose text-[17px] font-medium leading-relaxed text-slate-100">
               En 1843 nacimos como Escuela N°2. Hoy somos colegio público, laico y bicentenario del SLEP Andalién Sur.
             </p>

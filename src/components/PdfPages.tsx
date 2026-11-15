@@ -56,7 +56,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden="true"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
         <div className="min-w-[78px] text-center" aria-live="polite">
-          <p className="text-sm font-extrabold tabular-nums leading-none text-white">{spread ? `${page}–${Math.min(page + 1, numPages)}` : page}<span className="text-white/70"> / {numPages || "…"}</span></p>
+          <p className="text-sm font-bold tabular-nums leading-none text-white">{spread ? `${page}–${Math.min(page + 1, numPages)}` : page}<span className="text-white/70"> / {numPages || "…"}</span></p>
         </div>
         <button type="button" onClick={() => go(step)} disabled={page >= numPages} aria-label="Página siguiente" className="pressable grid h-11 w-11 place-items-center rounded-full bg-white/15 text-white ring-1 ring-white/20 transition-colors hover:bg-white/25 disabled:opacity-35">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden="true"><path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -66,7 +66,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
 
         <div className="flex items-center rounded-full bg-black/40 p-0.5 ring-1 ring-white/20" role="group" aria-label="Zoom">
           <button type="button" onClick={() => setZoomIdx((i) => Math.max(0, i - 1))} aria-label="Alejar" className="pressable grid h-9 w-9 place-items-center rounded-full text-white hover:bg-white/20">−</button>
-          <span className="min-w-[48px] text-center text-xs font-extrabold tabular-nums text-white">{Math.round(scale * 100)}%</span>
+          <span className="min-w-[48px] text-center text-xs font-bold tabular-nums text-white">{Math.round(scale * 100)}%</span>
           <button type="button" onClick={() => setZoomIdx((i) => Math.min(ZOOMS.length - 1, i + 1))} aria-label="Acercar" className="pressable grid h-9 w-9 place-items-center rounded-full text-white hover:bg-white/20">+</button>
         </div>
 

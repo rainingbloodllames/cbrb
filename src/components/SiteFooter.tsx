@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export const SiteFooter = memo(function SiteFooter() {
   return (
-    <footer className="mx-3 mb-3 mt-16 overflow-hidden rounded-[32px] bg-[#0b1e44] text-white sm:mx-5 sm:rounded-[40px]">
+    <footer className="mx-3 mb-3 mt-16 overflow-hidden rounded-2xl bg-[#0b1e44] text-white sm:mx-5 sm:rounded-3xl">
       <div className="mx-auto max-w-7xl px-6 py-12 sm:px-10 sm:py-16">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
@@ -14,12 +14,12 @@ export const SiteFooter = memo(function SiteFooter() {
               <span className="h-10 w-px bg-slate-200" aria-hidden="true" />
               <Image src="/logos/slep-andalien-sur.png" alt="SLEP Andalién Sur" width={110} height={60} className="h-12 w-auto" />
             </div>
-            <p className="mt-6 font-heading text-[22px] font-extrabold leading-tight tracking-tight">{site.name}</p>
+            <p className="mt-6 font-heading text-[22px] font-bold leading-tight tracking-tight">{site.name}</p>
             <p className="mt-2 text-[15px] font-medium text-slate-200">{site.tagline}</p>
             <p className="mt-3 text-[14px] font-medium text-slate-200">{site.address} · <a href={site.phoneHref} className="font-bold text-white hover:text-[#ffd60a]">{site.phone}</a></p>
           </div>
           <nav aria-label="Enlaces del pie">
-            <p className="text-[13px] font-extrabold uppercase tracking-[0.14em] text-slate-300">Explora</p>
+            <p className="text-[13px] font-bold  text-slate-300">Explora</p>
             <ul className="mt-4 grid gap-2.5 text-[15px] font-semibold">
               {[["Admisión SAE","/admision"],["Transparencia","/transparencia"],["Nosotros","/nosotros"],["Comunidad","/comunidad"],["Contacto","/contacto"]].map(([l,h]) => (
                 <li key={h}><Link className="text-white underline decoration-white/20 underline-offset-4 hover:text-[#ffd60a] hover:decoration-[#ffd60a]" href={h}>{l}</Link></li>
@@ -31,7 +31,7 @@ export const SiteFooter = memo(function SiteFooter() {
             </p>
           </nav>
           <div>
-            <p className="text-[13px] font-extrabold uppercase tracking-[0.14em] text-slate-300">Contacto</p>
+            <p className="text-[13px] font-bold  text-slate-300">Contacto</p>
             <div className="mt-4 space-y-2.5 text-[15px] font-medium">
               <a className="block text-white hover:text-[#ffd60a]" href={site.phoneHref}>{site.phone}</a>
               <a className="block text-white hover:text-[#ffd60a]" href={`mailto:${site.email}`}>{site.email}</a>

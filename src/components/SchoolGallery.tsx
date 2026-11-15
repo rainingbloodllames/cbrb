@@ -10,8 +10,8 @@ export const SchoolGallery = memo(function SchoolGallery({ headingId = "galeria-
     <section aria-labelledby={headingId} className="mx-auto max-w-7xl px-4 pt-16 sm:px-6 sm:pt-20">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div className="min-w-0 max-w-2xl">
-          <p className="text-[13px] font-extrabold uppercase tracking-[0.14em] text-slate-500">Galería</p>
-          <h2 id={headingId} className="mt-2 font-heading text-[32px] font-extrabold leading-[1.05] tracking-tight text-pretty sm:text-[40px]">
+          <p className="text-[13px] font-bold  text-slate-500">Galería</p>
+          <h2 id={headingId} className="mt-2 font-heading text-[32px] font-bold leading-[1.05] tracking-tight text-pretty sm:text-[40px]">
             Vida escolar <span className="text-[#0066cc]">en imágenes</span>
           </h2>
           <p className="mt-3 text-[16px] font-medium leading-relaxed text-slate-600">
@@ -51,7 +51,7 @@ export const SchoolGallery = memo(function SchoolGallery({ headingId = "galeria-
                 className={`media-zoom w-full object-cover ${idx === 0 ? "aspect-[16/10]" : "aspect-[4/3]"}`}
               />
               <figcaption className="absolute inset-x-4 bottom-4 rounded-[18px] border border-white/60 bg-white/95 p-4 shadow-lg backdrop-blur">
-                <p className="font-heading text-[14px] font-extrabold leading-tight text-slate-900">{g.title}</p>
+                <p className="font-heading text-[14px] font-bold leading-tight text-slate-900">{g.title}</p>
                 <p className="mt-1 text-[13px] font-medium leading-snug text-slate-600">{g.caption}</p>
                 <p className="mt-1.5 text-[11px] font-bold uppercase tracking-wide text-slate-500">{g.credit}</p>
               </figcaption>

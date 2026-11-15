@@ -32,7 +32,7 @@ export const SiteHeader = memo(function SiteHeader() {
               <Image src="/logos/cbrb.png" alt="" width={42} height={57} priority className="h-11 w-auto" />
             </span>
             <span className="min-w-0 leading-none">
-              <span className="block truncate font-heading text-[17px] font-extrabold tracking-tight text-slate-900 sm:text-[18px]">Colegio Bicentenario</span>
+              <span className="block truncate font-heading text-[17px] font-bold tracking-tight text-slate-900 sm:text-[18px]">Colegio Bicentenario</span>
               <span className="mt-1 block truncate text-[11px] font-semibold tracking-[0.08em] text-slate-500 sm:text-[12px]">REPÚBLICA DEL BRASIL<span className="hidden sm:inline"> · CONCEPCIÓN</span></span>
             </span>
           </Link>
@@ -58,7 +58,7 @@ export const SiteHeader = memo(function SiteHeader() {
               href={site.saeUrl}
               target="_blank"
               rel="noreferrer"
-              className="hidden min-h-[48px] items-center gap-2 rounded-full bg-[#ffd60a] px-6 text-[15px] font-extrabold text-slate-900 shadow-sm ring-1 ring-slate-900/10 transition-all hover:bg-[#ffdd2e] hover:shadow-md sm:inline-flex"
+              className="hidden min-h-[48px] items-center gap-2 rounded-full bg-[#ffd60a] px-6 text-[15px] font-bold text-slate-900 shadow-sm ring-1 ring-slate-900/10 transition-all hover:bg-[#ffdd2e] hover:shadow-md sm:inline-flex"
             >
               Postula SAE
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -104,7 +104,7 @@ export const SiteHeader = memo(function SiteHeader() {
                 );
               })}
               <li className="pt-2">
-                <a href={site.saeUrl} target="_blank" rel="noreferrer" className="flex min-h-[56px] items-center justify-center gap-2 rounded-full bg-[#ffd60a] px-5 text-[16px] font-extrabold text-slate-900 shadow-sm">
+                <a href={site.saeUrl} target="_blank" rel="noreferrer" className="flex min-h-[56px] items-center justify-center gap-2 rounded-full bg-[#ffd60a] px-5 text-[16px] font-bold text-slate-900 shadow-sm">
                   Postula por SAE — Admisión 2027
                 </a>
               </li>

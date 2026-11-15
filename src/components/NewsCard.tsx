@@ -21,10 +21,10 @@ export const NewsCard = memo(function NewsCard({ item, featured = false }: { ite
         </figure>
       ) : null}
       <p className="mt-4 flex flex-wrap items-center gap-2">
-        <span className="rounded-full bg-slate-900 px-3 py-1.5 text-[12px] font-extrabold text-white">{item.category}</span>
+        <span className="rounded-full bg-slate-900 px-3 py-1.5 text-[12px] font-bold text-white">{item.category}</span>
         <span className="text-[12px] font-bold text-slate-500 tabular-nums">{item.date}</span>
       </p>
-      <h3 className={`mt-3 font-heading font-extrabold leading-tight tracking-tight text-pretty text-slate-900 transition-colors group-hover:text-[#0066cc] ${featured ? "text-[24px]" : "text-[19px]"}`}>
+      <h3 className={`mt-3 font-heading font-bold leading-tight tracking-tight text-pretty text-slate-900 transition-colors group-hover:text-[#0066cc] ${featured ? "text-[24px]" : "text-[19px]"}`}>
         {item.title}
       </h3>
       <p className={`mt-2.5 leading-relaxed text-slate-600 ${featured ? "text-[15px]" : "line-clamp-3 text-[14px]"}`}>{item.excerpt}</p>

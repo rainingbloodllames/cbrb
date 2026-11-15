@@ -10,15 +10,15 @@ export const metadata: Metadata = { title: "Comunidad" };
 export default function ComunidadPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6">
-      <header className="hero-mesh relative overflow-hidden rounded-[32px] p-8 text-white sm:rounded-[40px] sm:p-10">
-        <p className="text-[13px] font-extrabold uppercase tracking-[0.14em] text-white/90">Vida escolar</p>
-        <h1 className="mt-3 font-heading text-[42px] font-extrabold leading-[0.95] tracking-tight text-white sm:text-[56px]">Comunidad</h1>
+      <header className="hero-mesh relative overflow-hidden rounded-2xl p-8 text-white sm:rounded-3xl sm:p-10">
+        <p className="text-[13px] font-bold  text-white/90">Vida escolar</p>
+        <h1 className="mt-3 font-heading text-[42px] font-bold leading-[0.95] tracking-tight text-white sm:text-[56px]">Comunidad</h1>
         <p className="mt-4 max-w-prose text-[17px] font-medium leading-relaxed text-slate-100">
           Noticias con fuente, vida escolar y galería. Todo con crédito y enlace a la cobertura original.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
-          <a href={site.instagram} target="_blank" rel="noreferrer" className="inline-flex min-h-[48px] items-center rounded-full bg-white px-6 text-sm font-extrabold text-[#0b1e44]">Instagram @colegio_brasil</a>
-          <a href={site.facebook} target="_blank" rel="noreferrer" className="inline-flex min-h-[48px] items-center rounded-full bg-white/10 px-6 text-sm font-extrabold text-white ring-1 ring-white/20">Facebook</a>
+          <a href={site.instagram} target="_blank" rel="noreferrer" className="inline-flex min-h-[48px] items-center rounded-full bg-white px-6 text-sm font-bold text-[#0b1e44]">Instagram @colegio_brasil</a>
+          <a href={site.facebook} target="_blank" rel="noreferrer" className="inline-flex min-h-[48px] items-center rounded-full bg-white/10 px-6 text-sm font-bold text-white ring-1 ring-white/20">Facebook</a>
         </div>
       </header>
 
