@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { gallery, team } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -30,13 +31,13 @@ export default function NosotrosPage() {
             </div>
           </div>
           <figure className="min-w-0 overflow-hidden rounded-[24px]">
-            <img
+            <Image
               src="/fotos/bandera-brasil.jpg"
               alt="Niña con polera del colegio sosteniendo la bandera de Brasil en el aula"
               width={1200}
               height={800}
-              loading="lazy"
-              decoding="async"
+              sizes="(min-width: 1024px) 45vw, 90vw"
+              priority
               className="aspect-[4/3] w-full object-cover"
             />
             <figcaption className="bg-white/10 px-4 py-2 text-[11px] text-white/95">
@@ -68,13 +69,12 @@ export default function NosotrosPage() {
           {gallery.slice(0, 4).map((g, i) => (
             <Reveal key={g.title} delay={i * 40}>
               <figure className="group card-lift overflow-hidden rounded-[24px] bg-white dark:bg-[#1c1c1e]">
-                <img
+                <Image
                   src={g.src}
                   alt={g.alt}
                   width={1200}
                   height={800}
-                  loading="lazy"
-                  decoding="async"
+                  sizes="(min-width: 640px) 50vw, 90vw"
                   className="media-zoom aspect-[4/3] w-full object-cover"
                 />
                 <figcaption className="px-4 py-3">

@@ -35,7 +35,11 @@ export const Reveal = memo(function Reveal({
       { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
     );
     io.observe(el);
-    return () => io.disconnect();
+    const fallback = setTimeout(() => setComplete(true), 1200);
+    return () => {
+      io.disconnect();
+      clearTimeout(fallback);
+    };
   }, []);
 
   return (

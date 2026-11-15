@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { memo } from "react";
 import { site } from "@/lib/site";
 
@@ -8,8 +9,8 @@ export const SiteFooter = memo(function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-[1.3fr_1fr_1fr]">
         <div className="min-w-0">
           <div className="inline-flex items-center gap-3 rounded-[22px] bg-white p-3">
-            <img src="/logos/cbrb.png" alt="Escudo CBRB" width={40} height={54} className="h-12 w-auto" />
-            <img src="/logos/slep-andalien-sur.png" alt="SLEP Andalién Sur" width={110} height={60} className="h-12 w-auto" />
+            <Image src="/logos/cbrb.png" alt="Escudo CBRB" width={40} height={54} className="h-12 w-auto" />
+            <Image src="/logos/slep-andalien-sur.png" alt="SLEP Andalién Sur" width={110} height={60} className="h-12 w-auto" />
           </div>
           <p className="mt-4 font-heading text-xl font-bold leading-snug">{site.name}</p>
           <p className="mt-1 text-sm text-white/85">{site.tagline}</p>

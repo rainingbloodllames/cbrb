@@ -232,8 +232,9 @@ export const documents: DocItem[] = [
 ];
 
 export const team = [
-  { role: "Director", name: "Dino Olivieri Díaz" },
-  { role: "Inspector General", name: "Por definir — subir en /nosotros" },
-  { role: "Orientación", name: "Por definir — subir en /nosotros" },
-  { role: "Encargada Convivencia Escolar", name: "Por definir — subir en /nosotros" },
+  { role: "Director", name: "Dino Fauricio Olivieri Díaz" },
+  { role: "Inspectora General Enseñanza Media", name: "Rebeca Pinto Espinoza" },
+  { role: "Inspector General Enseñanza Básica", name: "Alejandro Olave Parra" },
+  { role: "Encargada de Convivencia Educativa", name: "María Lourdes Alid Lagos" },
+  { role: "Jefe de UTP", name: "César Pizarro Hidalgo" },
 ] as const;

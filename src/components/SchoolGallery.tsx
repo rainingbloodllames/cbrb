@@ -1,4 +1,5 @@
 import { memo } from "react";
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { gallery } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -40,19 +41,18 @@ export const SchoolGallery = memo(function SchoolGallery({ headingId = "galeria-
         {items.map((g, idx) => (
           <Reveal key={g.title} delay={idx * 40} className={idx === 0 ? "sm:col-span-2 lg:col-span-2" : ""}>
             <figure className="group card-lift relative h-full min-w-0 overflow-hidden rounded-[28px] bg-white dark:bg-[#1c1c1e]">
-              <img
+              <Image
                 src={g.src}
                 alt={g.alt}
                 width={1200}
                 height={800}
-                loading="lazy"
-                decoding="async"
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 90vw"
                 className={`media-zoom w-full object-cover ${idx === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}
               />
-              <figcaption className="glass-panel caption-slide absolute inset-x-3 bottom-3 rounded-[20px] px-4 py-3">
+              <figcaption className="glass-panel caption-slide absolute inset-x-3 bottom-3 rounded-[20px] bg-white/95 px-4 py-3 dark:bg-[#1c1c1e]/95">
                 <p className="font-heading text-sm font-bold leading-snug">{g.title}</p>
-                <p className="mt-0.5 text-xs leading-snug text-slate-700 dark:text-slate-300">{g.caption}</p>
-                <p className="mt-1 text-[10px] leading-snug text-slate-700 dark:text-slate-400">{g.credit}</p>
+                <p className="mt-0.5 text-xs leading-snug text-slate-600 dark:text-slate-200">{g.caption}</p>
+                <p className="mt-1 text-xs leading-snug text-slate-600 dark:text-slate-300">{g.credit}</p>
               </figcaption>
             </figure>
           </Reveal>

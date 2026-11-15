@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { NewsCard } from "@/components/NewsCard";
 import { Reveal } from "@/components/Reveal";
@@ -15,8 +16,8 @@ const NIVELES = [
 const PILARES = [
   { tag: "1843", title: "183 años de historia", text: "Escuela N°2 de Concepción. Un colegio bicentenario que sigue formando generaciones.", tone: "bg-[#0066cc]" },
   { tag: "Público", title: "Laico y gratuito", text: "Educación pública de calidad, sin pago, abierta a todas las familias.", tone: "bg-[#30d158] text-[#052e16]" },
-  { tag: "SLEP", title: "Andalién Sur", text: "Parte del Servicio Local de Educación Pública de Concepción, Chiguayante, Florida y Hualqui.", tone: "bg-[#ffd60a]" },
-  { tag: "RBD 4564", title: "Comunidad activa", text: "1.342 estudiantes, 132 docentes. Convivencia, deportes, artes y talleres en San Martín 1580.", tone: "bg-[#ff453a]" },
+  { tag: "SLEP", title: "Andalién Sur", text: "Parte del Servicio Local de Educación Pública de Concepción, Chiguayante, Florida y Hualqui.", tone: "bg-[#ffd60a] text-[#052e16]" },
+  { tag: "RBD 4564", title: "Comunidad activa", text: "1.342 estudiantes, 132 docentes. Convivencia, deportes, artes y talleres en San Martín 1580.", tone: "bg-[#c81e1e]" },
 ];
 
 const TIMELINE = [
@@ -28,7 +29,7 @@ const TIMELINE = [
 
 export default function Home() {
   return (
-    <div className="pb-10">
+    <div className="pb-24 sm:pb-10">
       {/* HERO — iOS dark mesh, funnel SAE */}
       <section className="hero-mesh hero-sheen mx-3 mt-3 overflow-hidden rounded-[36px] text-white sm:mx-5">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 pb-12 pt-12 sm:pt-16 lg:grid-cols-[1.35fr_1fr] lg:gap-14">
@@ -55,23 +56,23 @@ export default function Home() {
             <div className="stagger mt-8 grid grid-cols-3 gap-3" aria-label="Datos del colegio">
               <div className="animate-enter-up rounded-[22px] bg-white/10 p-4">
                 <p className="font-heading text-2xl font-bold tabular-nums"><AnimatedNumber value={183} /></p>
-                <p className="mt-0.5 text-xs text-white/85">años</p>
+                <p className="mt-0.5 text-xs text-white">años</p>
               </div>
               <div className="animate-enter-up rounded-[22px] bg-white/10 p-4">
                 <p className="font-heading text-2xl font-bold tabular-nums"><AnimatedNumber value={1342} /></p>
-                <p className="mt-0.5 text-xs text-white/85">estudiantes</p>
+                <p className="mt-0.5 text-xs text-white">estudiantes</p>
               </div>
               <div className="animate-enter-up rounded-[22px] bg-white/10 p-4">
                 <p className="font-heading text-2xl font-bold tabular-nums">RBD 4564</p>
-                <p className="mt-0.5 text-xs text-white/85">oficial</p>
+                <p className="mt-0.5 text-xs text-white">oficial</p>
               </div>
             </div>
           </div>
 
           <aside className="min-w-0 self-start" aria-label="Identidad del colegio">
             <div className="glass-panel rounded-[32px] p-6 text-slate-900 dark:text-white">
-              <img src="/logos/cbrb.png" alt="Escudo del Colegio República del Brasil" width={200} height={272} className="mx-auto h-48 w-auto" />
-              <img src="/logos/slep-andalien-sur.png" alt="Servicio Local de Educación Pública Andalién Sur" width={240} height={130} className="mx-auto mt-4 h-16 w-auto" />
+              <Image src="/logos/cbrb.png" alt="Escudo del Colegio República del Brasil" width={200} height={272} priority className="mx-auto h-48 w-auto" />
+              <Image src="/logos/slep-andalien-sur.png" alt="Servicio Local de Educación Pública Andalién Sur" width={240} height={130} className="mx-auto mt-4 h-16 w-auto" />
               <p className="mt-4 text-center text-sm font-semibold">Escuela N°2 de 1843 · Concepción, Biobío</p>
               <div className="mt-4 flex justify-center gap-2">
                 <span className="rounded-full bg-[#0066cc] px-3 py-1 text-xs font-bold text-white">Chile</span>
@@ -128,7 +129,7 @@ export default function Home() {
                   <span className="mt-0.5 block font-heading text-lg font-bold leading-snug">{n.t}</span>
                   <span className="mt-1 block text-sm leading-relaxed text-slate-700 dark:text-slate-400">{n.d}</span>
                 </span>
-                <span className="arrow-nudge shrink-0 font-heading text-lg text-slate-300 transition-colors duration-150 group-hover:text-[#0066cc]" aria-hidden="true">0{i + 1}</span>
+                <span className="arrow-nudge shrink-0 font-heading text-lg text-slate-500 dark:text-slate-400 transition-colors duration-150 group-hover:text-[#0066cc]" aria-hidden="true">0{i + 1}</span>
               </Link>
             </Reveal>
           ))}

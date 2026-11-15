@@ -1,4 +1,5 @@
 import { memo } from "react";
+import Image from "next/image";
 import type { NewsItem } from "@/lib/content";
 
 export const NewsCard = memo(function NewsCard({ item, featured = false }: { item: NewsItem; featured?: boolean }) {
@@ -6,17 +7,16 @@ export const NewsCard = memo(function NewsCard({ item, featured = false }: { ite
     <>
       {item.image ? (
         <figure className="overflow-hidden rounded-[20px]">
-          <img
+          <Image
             src={item.image}
             alt={item.imageAlt ?? item.title}
             width={1200}
             height={400}
-            loading="lazy"
-            decoding="async"
+            sizes="(min-width: 768px) 33vw, 90vw"
             className="media-zoom aspect-[16/7] w-full object-cover"
           />
           {item.imageCredit ? (
-            <figcaption className="mt-1.5 text-[11px] text-slate-700">{item.imageCredit}</figcaption>
+            <figcaption className="mt-1.5 text-xs text-slate-600 dark:text-slate-300">{item.imageCredit}</figcaption>
           ) : null}
         </figure>
       ) : null}

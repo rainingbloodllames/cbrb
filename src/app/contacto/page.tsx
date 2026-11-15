@@ -30,7 +30,7 @@ const ContactForm = memo(function ContactForm() {
   }
 
   const inputCls =
-    "mt-1.5 min-h-[52px] w-full rounded-[18px] border border-slate-200 bg-slate-50 px-4 text-base dark:border-slate-700/50 dark:bg-slate-900";
+    "mt-1.5 min-h-[52px] w-full rounded-[18px] border border-slate-300 bg-white px-4 text-base text-slate-900 placeholder:text-slate-500 dark:border-slate-500 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-400";
   return (
     <form onSubmit={onSubmit} className="form-section ios-card space-y-4 p-6">
       <div>

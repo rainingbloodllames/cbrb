@@ -58,7 +58,7 @@ section[id], main [id] { scroll-margin-top: 96px; }
 /* iOS grouped card */
 .ios-card {
   background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.22);
+  border: 1px solid rgba(15, 23, 42, 0.28);
   border-radius: 28px;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.09), 0 16px 36px rgba(15, 23, 42, 0.11);
 }
@@ -123,8 +123,8 @@ section[id], main [id] { scroll-margin-top: 96px; }
 .pressable:active { transform: scale(0.96); }
 
 :focus-visible {
-  outline: 3px solid #0066cc;
-  outline-offset: 3px;
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 5px #0066cc;
   border-radius: 10px;
 }
 

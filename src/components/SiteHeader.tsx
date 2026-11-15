@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { memo, useState } from "react";
 import { nav, site } from "@/lib/site";
 
@@ -14,7 +15,7 @@ export const SiteHeader = memo(function SiteHeader() {
       <div className="glass-panel mx-3 mt-3 rounded-[28px] px-3 py-2 sm:mx-5 sm:px-4">
         <div className="mx-auto flex max-w-6xl items-center gap-2">
           <Link href="/" className="pressable flex min-h-[52px] min-w-0 flex-1 items-center gap-3 rounded-2xl px-1" aria-label="Ir al inicio">
-            <img src="/logos/cbrb.png" alt="Escudo Colegio República del Brasil" width={42} height={57} className="h-11 w-auto shrink-0" />
+            <Image src="/logos/cbrb.png" alt="Escudo Colegio República del Brasil" width={42} height={57} priority className="h-11 w-auto shrink-0" />
             <span className="min-w-0 leading-tight">
               <span className="block truncate font-heading text-[15px] font-bold">Colegio Bicentenario</span>
               <span className="block truncate text-[11px] text-slate-700 dark:text-slate-400">República del Brasil · Concepción</span>
