@@ -43,8 +43,8 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
         </button>
       </div>
 
-      <Document file={href} onLoadSuccess={onLoad} loading={<p className="py-10 text-center text-white/80">Cargando PDF…</p>} error={<p className="py-10 text-center">No pudimos cargar el PDF. <a className="underline" href={href} download>Descargar</a></p>}>
-        <div className={spread ? "flex flex-wrap justify-center gap-3" : "flex justify-center"}>
+      <Document file={href} onLoadSuccess={onLoad} loading={<p className="py-10 text-center text-white/95">Cargando PDF…</p>} error={<p className="py-10 text-center">No pudimos cargar el PDF. <a className="underline" href={href} download>Descargar</a></p>}>
+        <div key={`${page}-${scale}-${spread}`} className={`page-fade ${spread ? "flex flex-wrap justify-center gap-3" : "flex justify-center"}`}>
           {pages.map((p) => (
             <div key={p} className="overflow-hidden rounded-[16px] bg-white p-1.5 shadow-2xl">
               <Page pageNumber={p} scale={scale} renderTextLayer renderAnnotationLayer />
@@ -52,7 +52,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
           ))}
         </div>
       </Document>
-      <p className="mt-4 text-center text-xs text-white/60">Usa Anterior/Siguiente, zoom y vista libro de 2 páginas. Esc para cerrar.</p>
+      <p className="mt-4 text-center text-xs text-white/80">Usa Anterior/Siguiente, zoom y vista libro de 2 páginas. Esc para cerrar.</p>
     </div>
   );
 });

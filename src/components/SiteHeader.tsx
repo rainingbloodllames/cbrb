@@ -17,7 +17,7 @@ export const SiteHeader = memo(function SiteHeader() {
             <img src="/logos/cbrb.png" alt="Escudo Colegio República del Brasil" width={42} height={57} className="h-11 w-auto shrink-0" />
             <span className="min-w-0 leading-tight">
               <span className="block truncate font-heading text-[15px] font-bold">Colegio Bicentenario</span>
-              <span className="block truncate text-[11px] text-slate-600 dark:text-slate-400">República del Brasil · Concepción</span>
+              <span className="block truncate text-[11px] text-slate-700 dark:text-slate-400">República del Brasil · Concepción</span>
             </span>
           </Link>
 
@@ -57,7 +57,11 @@ export const SiteHeader = memo(function SiteHeader() {
           </div>
         </div>
 
-        <div className={`overflow-hidden transition-[max-height,opacity] duration-200 ease-out lg:hidden ${open ? "max-h-80 opacity-100" : "max-h-0 opacity-0"}`}>
+        <div
+          data-open={open}
+          className={`motion-sheet overflow-hidden transition-[max-height,opacity] lg:hidden ${open ? "max-h-80 opacity-100" : "max-h-0 opacity-0"}`}
+          style={{ transitionDuration: "220ms", transitionTimingFunction: "var(--ease-out)" }}
+        >
           <nav className="pt-2" aria-label="Menú móvil">
             <ul className="grid grid-cols-2 gap-1">
               {nav.map((item) => (

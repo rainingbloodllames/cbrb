@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { NewsCard } from "@/components/NewsCard";
+import { Reveal } from "@/components/Reveal";
 import { SchoolGallery } from "@/components/SchoolGallery";
 import { news } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -28,35 +30,41 @@ export default function Home() {
   return (
     <div className="pb-10">
       {/* HERO — iOS dark mesh, funnel SAE */}
-      <section className="hero-mesh mx-3 mt-3 overflow-hidden rounded-[36px] text-white sm:mx-5">
+      <section className="hero-mesh hero-sheen mx-3 mt-3 overflow-hidden rounded-[36px] text-white sm:mx-5">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 pb-12 pt-12 sm:pt-16 lg:grid-cols-[1.35fr_1fr] lg:gap-14">
           <div className="min-w-0">
-            <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-bold">
-              <span className="h-2 w-2 rounded-full bg-[#30d158]" aria-hidden="true" />
+            <p className="animate-enter-up inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-bold">
+              <span className="pulse-dot h-2 w-2 rounded-full bg-[#30d158]" aria-hidden="true" />
               Matrícula 2027 abierta — SAE
             </p>
-            <h1 className="mt-5 font-heading text-[clamp(2.7rem,7vw,4.8rem)] font-bold text-pretty">
+            <h1 className="animate-enter-pop mt-5 font-heading text-[clamp(2.7rem,7vw,4.8rem)] font-bold text-pretty">
               Tu futuro se escribe en Concepción
             </h1>
-            <p className="mt-5 max-w-prose text-lg leading-relaxed text-white/80">
+            <p className="animate-enter-up mt-5 max-w-prose text-lg leading-relaxed text-white/95">
               Colegio Bicentenario República del Brasil. De Parvularia a IV Medio, en San Martín 1580. Escuela pública, laica y bicentenaria desde 1843.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a href={site.saeUrl} target="_blank" rel="noreferrer" className="pressable flex min-h-[52px] flex-1 items-center justify-center rounded-full bg-[#ffd60a] px-6 font-heading text-base font-bold text-slate-900 shadow-lg shadow-black/20 transition-colors duration-150 hover:bg-[#f7d100] sm:flex-none">
+            <div className="animate-enter-up mt-7 flex flex-wrap gap-3">
+              <a href={site.saeUrl} target="_blank" rel="noreferrer" className="group pressable flex min-h-[52px] flex-1 items-center justify-center rounded-full bg-[#ffd60a] px-6 font-heading text-base font-bold text-slate-900 shadow-lg shadow-black/20 transition-colors duration-150 hover:bg-[#f7d100] sm:flex-none">
                 Postula por SAE
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true" className="ml-1"><path d="M7 17 17 7M8 7h9v9" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true" className="arrow-nudge ml-1"><path d="M7 17 17 7M8 7h9v9" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </a>
               <Link href="/admision" className="pressable flex min-h-[52px] items-center justify-center rounded-full bg-white px-6 font-heading text-base font-bold text-[#0b1e44] transition-colors duration-150 hover:bg-slate-100">
                 Ver 3 pasos
               </Link>
             </div>
-            <div className="mt-8 grid grid-cols-3 gap-3" aria-label="Datos del colegio">
-              {[{ v: "183", l: "años" }, { v: "1.342", l: "estudiantes" }, { v: "RBD 4564", l: "oficial" }].map((s) => (
-                <div key={s.l} className="rounded-[22px] bg-white/10 p-4">
-                  <p className="font-heading text-2xl font-bold tabular-nums">{s.v}</p>
-                  <p className="mt-0.5 text-xs text-white/75">{s.l}</p>
-                </div>
-              ))}
+            <div className="stagger mt-8 grid grid-cols-3 gap-3" aria-label="Datos del colegio">
+              <div className="animate-enter-up rounded-[22px] bg-white/10 p-4">
+                <p className="font-heading text-2xl font-bold tabular-nums"><AnimatedNumber value={183} /></p>
+                <p className="mt-0.5 text-xs text-white/85">años</p>
+              </div>
+              <div className="animate-enter-up rounded-[22px] bg-white/10 p-4">
+                <p className="font-heading text-2xl font-bold tabular-nums"><AnimatedNumber value={1342} /></p>
+                <p className="mt-0.5 text-xs text-white/85">estudiantes</p>
+              </div>
+              <div className="animate-enter-up rounded-[22px] bg-white/10 p-4">
+                <p className="font-heading text-2xl font-bold tabular-nums">RBD 4564</p>
+                <p className="mt-0.5 text-xs text-white/85">oficial</p>
+              </div>
             </div>
           </div>
 
@@ -83,14 +91,18 @@ export default function Home() {
 
       {/* POR QUÉ — bento iOS */}
       <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-5" aria-labelledby="porque-titulo">
-        <h2 id="porque-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Por qué CBRB</h2>
-        <div className="stagger mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {PILARES.map((p) => (
-            <article key={p.title} className="animate-enter-up ios-card min-w-0 p-6">
-              <span className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ${p.tone} ${p.tone.includes("text-[#052e16]") || p.tone.includes("text-slate-900") ? "" : "text-white"}`}>{p.tag}</span>
-              <h3 className="mt-3 font-heading text-lg font-bold leading-snug">{p.title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{p.text}</p>
-            </article>
+        <Reveal>
+          <h2 id="porque-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Por qué CBRB</h2>
+        </Reveal>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {PILARES.map((p, i) => (
+            <Reveal key={p.title} delay={i * 40}>
+              <article className="card-lift ios-card min-w-0 p-6">
+                <span className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ${p.tone} ${p.tone.includes("text-[#052e16]") || p.tone.includes("text-slate-900") ? "" : "text-white"}`}>{p.tag}</span>
+                <h3 className="mt-3 font-heading text-lg font-bold leading-snug">{p.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-slate-700 dark:text-slate-400">{p.text}</p>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -100,70 +112,90 @@ export default function Home() {
 
       {/* NIVELES — lista agrupada iOS */}
       <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-5" aria-labelledby="niveles-titulo">
-        <h2 id="niveles-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Niveles</h2>
-        <p className="mt-1.5 text-slate-600 dark:text-slate-400">De los 3 a los 18 años, sin cambiar de colegio.</p>
-        <div className="stagger mt-5 grid gap-3 lg:grid-cols-3">
+        <Reveal>
+          <h2 id="niveles-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Niveles</h2>
+          <p className="mt-1.5 text-slate-700 dark:text-slate-400">De los 3 a los 18 años, sin cambiar de colegio.</p>
+        </Reveal>
+        <div className="mt-5 grid gap-3 lg:grid-cols-3">
           {NIVELES.map((n, i) => (
-            <Link key={n.n} href="/admision" className="animate-enter-up group ios-card flex min-h-[120px] items-center gap-4 p-5">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#0066cc] font-heading text-lg font-bold text-white" aria-hidden="true">
-                {n.n === "Parvularia" ? "PK" : n.n === "Básica" ? "B" : "M"}
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="block text-xs font-bold text-slate-600">{n.edad}</span>
-                <span className="mt-0.5 block font-heading text-lg font-bold leading-snug">{n.t}</span>
-                <span className="mt-1 block text-sm leading-relaxed text-slate-600 dark:text-slate-400">{n.d}</span>
-              </span>
-              <span className="shrink-0 font-heading text-lg text-slate-300 transition-colors duration-150 group-hover:text-[#0066cc]" aria-hidden="true">0{i + 1}</span>
-            </Link>
+            <Reveal key={n.n} delay={i * 40}>
+              <Link href="/admision" className="card-lift group ios-card flex min-h-[120px] items-center gap-4 p-5">
+                <span className="icon-pop flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#0066cc] font-heading text-lg font-bold text-white" aria-hidden="true">
+                  {n.n === "Parvularia" ? "PK" : n.n === "Básica" ? "B" : "M"}
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xs font-bold text-slate-700">{n.edad}</span>
+                  <span className="mt-0.5 block font-heading text-lg font-bold leading-snug">{n.t}</span>
+                  <span className="mt-1 block text-sm leading-relaxed text-slate-700 dark:text-slate-400">{n.d}</span>
+                </span>
+                <span className="arrow-nudge shrink-0 font-heading text-lg text-slate-300 transition-colors duration-150 group-hover:text-[#0066cc]" aria-hidden="true">0{i + 1}</span>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* HISTORIA — timeline */}
       <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-5" aria-labelledby="historia-titulo">
-        <h2 id="historia-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">1843 hasta hoy</h2>
+        <Reveal>
+          <h2 id="historia-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">1843 hasta hoy</h2>
+        </Reveal>
         <div className="mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2">
-          {TIMELINE.map((t) => (
-            <article key={t.year} className="ios-card min-w-[250px] max-w-[250px] snap-start p-6">
-              <p className="font-heading text-3xl font-bold tabular-nums text-[#0f2a5c] dark:text-white">{t.year}</p>
-              <h3 className="mt-1 font-heading text-base font-bold">{t.title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{t.text}</p>
-            </article>
+          {TIMELINE.map((t, i) => (
+            <Reveal key={t.year} delay={i * 40} className="min-w-[250px] max-w-[250px] shrink-0 snap-start">
+              <article className="card-lift ios-card h-full min-w-0 p-6">
+                <p className="font-heading text-3xl font-bold tabular-nums text-[#0f2a5c] dark:text-white">{t.year}</p>
+                <h3 className="mt-1 font-heading text-base font-bold">{t.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-slate-700 dark:text-slate-400">{t.text}</p>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* NOTICIAS + PLATAFORMAS */}
       <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-5" aria-labelledby="noticias-titulo">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div className="min-w-0">
-            <h2 id="noticias-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Noticias</h2>
-            <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-400">Cobertura real con fuentes: Resumen.cl, Diario Concepción, SLEP Andalién Sur y MINEDUC.</p>
-          </div>
-          <Link href="/comunidad" className="pressable flex min-h-[44px] shrink-0 items-center rounded-full bg-slate-900/5 px-4 text-sm font-bold dark:bg-white/10">Ver todas</Link>
-        </div>
-        <div className="stagger mt-5 grid gap-3 md:grid-cols-3">
-          {news.slice(0, 3).map((n, i) => (
-            <div key={n.slug} className="animate-enter-up">
-              <NewsCard item={n} featured={i === 0} />
+        <Reveal>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="min-w-0">
+              <h2 id="noticias-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Noticias</h2>
+              <p className="mt-1.5 text-sm text-slate-700 dark:text-slate-400">Cobertura real con fuentes: Resumen.cl, Diario Concepción, SLEP Andalién Sur y MINEDUC.</p>
             </div>
+            <Link href="/comunidad" className="pressable flex min-h-[44px] shrink-0 items-center rounded-full bg-slate-900/5 px-4 text-sm font-bold dark:bg-white/10">Ver todas</Link>
+          </div>
+        </Reveal>
+        <div className="mt-5 grid gap-3 md:grid-cols-3">
+          {news.slice(0, 3).map((n, i) => (
+            <Reveal key={n.slug} delay={i * 40}>
+              <NewsCard item={n} featured={i === 0} />
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-5" aria-labelledby="plataformas-titulo">
-        <h2 id="plataformas-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Acceso rápido</h2>
-        <div className="stagger mt-5 grid gap-3 sm:grid-cols-2">
-          <a href={site.workspaceUrl} target="_blank" rel="noreferrer" className="animate-enter-up group rounded-[28px] bg-gradient-to-br from-[#0066cc] to-[#0066cc] p-6 text-white">
-            <p className="font-heading text-xl font-bold">Google Workspace</p>
-            <p className="mt-1 text-sm text-white/85">Gmail, Classroom y Drive @cbrb.cl vía MINEDUC.</p>
-            <p className="mt-4 flex min-h-[44px] items-center text-sm font-bold">Acceder</p>
-          </a>
-          <a href={site.sigceUrl} target="_blank" rel="noreferrer" className="animate-enter-up group rounded-[28px] bg-gradient-to-br from-[#0f2a5c] to-[#081430] p-6 text-white">
-            <p className="font-heading text-xl font-bold">SIGCE</p>
-            <p className="mt-1 text-sm text-white/85">Gestión de convivencia para funcionarios.</p>
-            <p className="mt-4 flex min-h-[44px] items-center text-sm font-bold">Acceder</p>
-          </a>
+        <Reveal>
+          <h2 id="plataformas-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Acceso rápido</h2>
+        </Reveal>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          <Reveal delay={0}>
+            <a href={site.workspaceUrl} target="_blank" rel="noreferrer" className="card-lift group flex h-full flex-col justify-between rounded-[28px] bg-gradient-to-br from-[#0066cc] to-[#0066cc] p-6 text-white">
+              <span>
+                <p className="font-heading text-xl font-bold">Google Workspace</p>
+                <p className="mt-1 text-sm text-white/95">Gmail, Classroom y Drive @cbrb.cl vía MINEDUC.</p>
+              </span>
+              <p className="mt-4 flex min-h-[44px] items-center gap-2 text-sm font-bold">Acceder <span aria-hidden="true" className="arrow-nudge">→</span></p>
+            </a>
+          </Reveal>
+          <Reveal delay={40}>
+            <a href={site.sigceUrl} target="_blank" rel="noreferrer" className="card-lift group flex h-full flex-col justify-between rounded-[28px] bg-gradient-to-br from-[#0f2a5c] to-[#081430] p-6 text-white">
+              <span>
+                <p className="font-heading text-xl font-bold">SIGCE</p>
+                <p className="mt-1 text-sm text-white/95">Gestión de convivencia para funcionarios.</p>
+              </span>
+              <p className="mt-4 flex min-h-[44px] items-center gap-2 text-sm font-bold">Acceder <span aria-hidden="true" className="arrow-nudge">→</span></p>
+            </a>
+          </Reveal>
         </div>
       </section>
 

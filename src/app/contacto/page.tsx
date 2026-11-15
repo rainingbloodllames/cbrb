@@ -52,7 +52,7 @@ const ContactForm = memo(function ContactForm() {
       >
         {sending ? "Enviando…" : "Enviar mensaje"}
       </button>
-      <p className="text-xs text-slate-600">Respuesta en días hábiles. Para matrícula usa SAE, no este formulario.</p>
+      <p className="text-xs text-slate-700">Respuesta en días hábiles. Para matrícula usa SAE, no este formulario.</p>
     </form>
   );
 });
@@ -62,7 +62,7 @@ export default function ContactPage() {
     <div className="mx-auto max-w-4xl px-4 pb-10 pt-6 sm:px-5">
       <header className="hero-mesh rounded-[36px] p-8 text-white sm:p-10">
         <h1 className="font-heading text-4xl font-bold text-pretty sm:text-5xl">Contacto</h1>
-        <p className="mt-3 leading-relaxed text-white/85">
+        <p className="mt-3 leading-relaxed text-white/95">
           {site.address} · <a className="underline underline-offset-4" href={site.phoneHref}>{site.phone}</a> · {site.email}
         </p>
       </header>
@@ -87,7 +87,7 @@ export default function ContactPage() {
           </div>
           <div className="ios-card p-5">
             <h2 className="font-heading text-lg font-bold">Horario secretaría</h2>
-            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">Lunes a viernes 8:30–17:30.</p>
+            <p className="mt-1 text-sm text-slate-700 dark:text-slate-400">Lunes a viernes 8:30–17:30.</p>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
 @import "./motion.css";
 
 :root {
-  --background: #f2f2f7;
+  --background: #e5e5ea;
   --foreground: #1c1c1e;
   --cbrb-navy: #0f2a5c;
   --cbrb-chile: #0066cc;
@@ -58,12 +58,13 @@ section[id], main [id] { scroll-margin-top: 96px; }
 /* iOS grouped card */
 .ios-card {
   background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.16);
+  border: 1px solid rgba(15, 23, 42, 0.22);
   border-radius: 28px;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.07), 0 12px 32px rgba(15, 23, 42, 0.09);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.09), 0 16px 36px rgba(15, 23, 42, 0.11);
 }
 .dark .ios-card {
   background: #1c1c1e;
+  border: 1px solid rgba(100, 116, 139, 0.55);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.3);
 }
 
@@ -114,9 +115,10 @@ section[id], main [id] { scroll-margin-top: 96px; }
 
 .pressable {
   transition-property: transform, background-color, color, border-color, box-shadow;
-  transition-duration: 180ms;
-  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  transition-duration: var(--dur-press, 160ms);
+  transition-timing-function: var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 .pressable:active { transform: scale(0.96); }
 
@@ -131,10 +133,9 @@ section[id], main [id] { scroll-margin-top: 96px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  /* Keep opacity/color comprehension fades; drop movement via motion.css */
   *, *::before, *::after {
-    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

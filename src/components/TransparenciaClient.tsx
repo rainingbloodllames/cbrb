@@ -3,6 +3,7 @@
 import { memo, useEffect, useState } from "react";
 import type { DocItem } from "@/lib/content";
 import { PdfPages } from "./PdfPages";
+import { Reveal } from "./Reveal";
 
 export const TransparenciaClient = memo(function TransparenciaClient({ docs }: { docs: DocItem[] }) {
   const [selected, setSelected] = useState<DocItem | null>(null);
@@ -20,10 +21,10 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
 
   return (
     <>
-      <ul className="stagger mt-6 space-y-2">
+      <ul className="mt-6 space-y-2">
         {docs.map((d, i) => (
-          <li key={d.href} className="animate-enter-up">
-            <div className="ios-card flex min-h-[72px] items-center gap-4 p-4">
+          <Reveal key={d.href} delay={Math.min(i, 8) * 40}>
+            <div className="card-lift ios-card flex min-h-[72px] items-center gap-4 p-4">
               <button
                 type="button"
                 onClick={() => setSelected(d)}
@@ -35,7 +36,7 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate font-heading font-bold">{d.title}</span>
-                  <span className="mt-0.5 block text-xs text-slate-600">{d.category} · <span className="tabular-nums">{d.year}</span> · PDF</span>
+                  <span className="mt-0.5 block text-xs text-slate-700">{d.category} · <span className="tabular-nums">{d.year}</span> · PDF</span>
                 </span>
               </button>
               <div className="flex shrink-0 items-center gap-2">
@@ -55,7 +56,7 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
                 </a>
               </div>
             </div>
-          </li>
+          </Reveal>
         ))}
       </ul>
 
@@ -64,7 +65,7 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
           role="dialog"
           aria-modal="true"
           aria-label={`Visor: ${selected.title}`}
-          className="fixed inset-0 z-[70] flex flex-col bg-[#0b1e44] text-white"
+          className="dialog-enter fixed inset-0 z-[70] flex flex-col bg-[#0b1e44] text-white"
         >
           <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center gap-3 px-4 py-4">
             <button

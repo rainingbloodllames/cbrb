@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { PageTransition } from "@/components/PageTransition";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { site } from "@/lib/site";
@@ -46,7 +47,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Saltar al contenido
         </a>
         <SiteHeader />
-        <main id="contenido" className="flex-1">{children}</main>
+        <main id="contenido" className="flex-1">
+          <PageTransition>{children}</PageTransition>
+        </main>
         <SiteFooter />
       </body>
     </html>

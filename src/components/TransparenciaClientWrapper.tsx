@@ -5,7 +5,7 @@ import type { DocItem } from "@/lib/content";
 
 const TransparenciaClient = dynamic(
   () => import("./TransparenciaClient").then((m) => m.TransparenciaClient),
-  { ssr: false, loading: () => <p className="mt-6 text-center text-sm text-slate-600">Cargando documentos…</p> },
+  { ssr: false, loading: () => <p className="mt-6 text-center text-sm text-slate-700">Cargando documentos…</p> },
 );
 
 export function TransparenciaClientWrapper({ docs }: { docs: DocItem[] }) {

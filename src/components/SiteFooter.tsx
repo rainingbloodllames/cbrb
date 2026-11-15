@@ -12,14 +12,14 @@ export const SiteFooter = memo(function SiteFooter() {
             <img src="/logos/slep-andalien-sur.png" alt="SLEP Andalién Sur" width={110} height={60} className="h-12 w-auto" />
           </div>
           <p className="mt-4 font-heading text-xl font-bold leading-snug">{site.name}</p>
-          <p className="mt-1 text-sm text-white/75">{site.tagline}</p>
-          <p className="mt-2 text-sm text-white/75">{site.address} · {site.phone}</p>
+          <p className="mt-1 text-sm text-white/85">{site.tagline}</p>
+          <p className="mt-2 text-sm text-white/85">{site.address} · {site.phone}</p>
         </div>
         <nav aria-label="Enlaces del pie">
           <p className="font-heading font-bold">Explora</p>
           <ul className="mt-3 grid grid-cols-2 gap-2 text-sm">
             {[["Admisión SAE","/admision"],["Transparencia","/transparencia"],["Nosotros","/nosotros"],["Comunidad","/comunidad"],["Contacto","/contacto"]].map(([l,h]) => (
-              <li key={h}><Link className="text-white/85 underline decoration-white/30 underline-offset-4 transition-colors duration-150 hover:text-white" href={h}>{l}</Link></li>
+              <li key={h}><Link className="link-slide text-white/95 underline decoration-white/30 underline-offset-4 transition-colors duration-150 hover:text-white" href={h}>{l}</Link></li>
             ))}
           </ul>
           <div className="mt-5 flex flex-wrap gap-2">
@@ -29,12 +29,12 @@ export const SiteFooter = memo(function SiteFooter() {
         </nav>
         <div>
           <p className="font-heading font-bold">Contacto</p>
-          <p className="mt-3 text-sm leading-loose text-white/85">
+          <p className="mt-3 text-sm leading-loose text-white/95">
             <a className="underline decoration-white/30 underline-offset-4 hover:text-white" href={site.phoneHref}>{site.phone}</a><br />
             <a className="underline decoration-white/30 underline-offset-4 hover:text-white" href={`mailto:${site.email}`}>{site.email}</a><br />
             <a className="underline decoration-white/30 underline-offset-4 hover:text-white" href={site.facebook} target="_blank" rel="noreferrer">Facebook</a> · <a className="underline decoration-white/30 underline-offset-4 hover:text-white" href={site.instagram} target="_blank" rel="noreferrer">Instagram</a>
           </p>
-          <p className="mt-4 text-xs text-white/55">RBD 4564 · SLEP Andalién Sur · Copyright 2026</p>
+          <p className="mt-4 text-xs text-white/75">RBD 4564 · SLEP Andalién Sur · Copyright 2026</p>
         </div>
       </div>
     </footer>

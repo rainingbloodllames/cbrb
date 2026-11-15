@@ -1,4 +1,14 @@
 /* SIGCE Motion — CSS-native (Emil curves). No transition-all. */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-press: 160ms;
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-media: 250ms;
+}
+
 @keyframes enter-fade-up {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -7,21 +17,221 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+@keyframes enter-pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes pulse-soft {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.82); }
+  100% { opacity: 1; transform: scale(1); }
+}
 
 .animate-enter-up {
-  animation: enter-fade-up 260ms cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation: enter-fade-up 260ms var(--ease-out) both;
 }
 .animate-enter-in {
-  animation: enter-fade-in 200ms cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation: enter-fade-in 200ms var(--ease-out) both;
+}
+.animate-enter-pop {
+  animation: enter-pop 280ms var(--ease-out) both;
 }
 
-/* Stagger 40ms per child */
+/* Stagger 40ms per child (covers bento 4, gallery 7, news 8-9, docs 10-12) */
 .stagger > *:nth-child(1) { animation-delay: 0ms; }
 .stagger > *:nth-child(2) { animation-delay: 40ms; }
 .stagger > *:nth-child(3) { animation-delay: 80ms; }
+.stagger > *:nth-child(4) { animation-delay: 120ms; }
+.stagger > *:nth-child(5) { animation-delay: 160ms; }
+.stagger > *:nth-child(6) { animation-delay: 200ms; }
+.stagger > *:nth-child(7) { animation-delay: 240ms; }
+.stagger > *:nth-child(8) { animation-delay: 280ms; }
+.stagger > *:nth-child(9) { animation-delay: 320ms; }
+.stagger > *:nth-child(10) { animation-delay: 360ms; }
+.stagger > *:nth-child(11) { animation-delay: 400ms; }
+.stagger > *:nth-child(12) { animation-delay: 440ms; }
 
 .motion-presence {
   transition-property: opacity, transform;
   transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  transition-timing-function: var(--ease-out);
+}
+
+/* --- Scroll reveal (below-fold; JS IntersectionObserver, CSS transition) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition-property: opacity, transform;
+  transition-duration: 280ms;
+  transition-timing-function: var(--ease-out);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (scripting: none) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* --- Dialog / sheet enter (scale from 0.97, never 0) --- */
+.dialog-enter {
+  animation: enter-pop 260ms var(--ease-out) both;
+  transform-origin: center;
+}
+
+/* --- Mobile menu sheet (origin top) --- */
+.motion-sheet {
+  transform-origin: top;
+}
+.motion-sheet[data-open="true"] {
+  animation: enter-fade-up 220ms var(--ease-out) both;
+}
+
+/* --- Cards: lift on hover (fine pointers only) --- */
+.card-lift {
+  transition-property: transform, box-shadow;
+  transition-duration: var(--dur-base);
+  transition-timing-function: var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08), 0 20px 40px rgba(15, 23, 42, 0.12);
+  }
+  .media-zoom {
+    transition-property: transform;
+    transition-duration: var(--dur-media);
+    transition-timing-function: var(--ease-out);
+  }
+  .group:hover .media-zoom,
+  .media-zoom:hover {
+    transform: scale(1.04);
+  }
+  .group:hover .caption-slide {
+    transform: translateY(-2px);
+  }
+}
+@media (hover: none) {
+  .media-zoom { transition-property: transform; transition-duration: var(--dur-fast); transition-timing-function: var(--ease-out); }
+}
+.caption-slide {
+  transition-property: transform;
+  transition-duration: var(--dur-base);
+  transition-timing-function: var(--ease-out);
+}
+
+/* --- CTA arrow nudge (spatial hint) --- */
+.arrow-nudge {
+  transition-property: transform;
+  transition-duration: var(--dur-base);
+  transition-timing-function: var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .arrow-nudge,
+  a:hover .arrow-nudge {
+    transform: translate(2px, -2px);
+  }
+}
+
+/* --- Accordion chevron --- */
+.chevron-spin {
+  transition-property: transform;
+  transition-duration: var(--dur-base);
+  transition-timing-function: var(--ease-out);
+}
+.group-open .chevron-spin,
+details[open] .chevron-spin {
+  transform: rotate(45deg);
+}
+
+/* --- SAE live dot (rare delight, subtle) --- */
+.pulse-dot {
+  animation: pulse-soft 2.4s ease-in-out infinite;
+}
+
+/* --- Link underline slide --- */
+.link-slide {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition-property: background-size;
+  transition-duration: var(--dur-base);
+  transition-timing-function: var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .link-slide:hover { background-size: 100% 2px; }
+}
+
+/* --- PDF page crossfade with blur mask (Emil: blur bridges double-exposure) --- */
+@keyframes page-fade-blur {
+  from { opacity: 0; transform: translateY(4px); filter: blur(2px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.page-fade {
+  animation: page-fade-blur 220ms var(--ease-out) both;
+}
+
+/* --- Hero sheen sweep (one-shot, transform only) --- */
+@keyframes sheen-sweep {
+  from { transform: translateX(-120%) skewX(-12deg); }
+  to { transform: translateX(120%) skewX(-12deg); }
+}
+.hero-sheen { position: relative; }
+.hero-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.09) 50%, transparent 65%);
+  transform: translateX(-120%) skewX(-12deg);
+  animation: sheen-sweep 900ms var(--ease-out) 350ms both;
+  pointer-events: none;
+}
+
+/* --- Icon pop on card hover --- */
+.icon-pop {
+  transition-property: transform;
+  transition-duration: var(--dur-base);
+  transition-timing-function: var(--ease-out);
+  transform-origin: center;
+}
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .icon-pop { transform: scale(1.08); }
+}
+
+/* --- FAQ content enter (native details, content fades up on open) --- */
+details[open] > p {
+  animation: enter-fade-up 220ms var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-enter-up,
+  .animate-enter-in,
+  .animate-enter-pop,
+  .dialog-enter,
+  .motion-sheet[data-open="true"],
+  .page-fade,
+  details[open] > p {
+    animation: enter-fade-in 150ms ease-out both !important;
+  }
+  .pulse-dot,
+  .hero-sheen::after {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .card-lift,
+  .media-zoom,
+  .caption-slide,
+  .arrow-nudge,
+  .icon-pop,
+  .chevron-spin {
+    transition-property: opacity, background-color, color, border-color !important;
+    transform: none !important;
+  }
 }
