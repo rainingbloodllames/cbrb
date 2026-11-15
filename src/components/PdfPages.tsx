@@ -146,6 +146,63 @@ const LazyPage = memo(function LazyPage({
   );
 });
 
+const LazyThumb = memo(function LazyThumb({
+  pageNumber,
+  current,
+  onGo,
+  onRegister,
+}: {
+  pageNumber: number;
+  current: boolean;
+  onGo: () => void;
+  onRegister: (el: HTMLButtonElement | null) => void;
+}) {
+  const hostRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = hostRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+          }
+        }
+      },
+      { rootMargin: "480px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <div ref={hostRef} className="shrink-0">
+      <button
+        ref={onRegister}
+        type="button"
+        onClick={onGo}
+        aria-label={`Ir a página ${pageNumber}`}
+        aria-current={current}
+        className={`pressable shrink-0 overflow-hidden rounded-[14px] p-1 ${
+          current ? "bg-white ring-2 ring-[#ffd60a]" : "bg-white/85 ring-1 ring-white/20 hover:bg-white"
+        }`}
+      >
+        {visible ? (
+          <Thumbnail pageNumber={pageNumber} height={96} />
+        ) : (
+          <span className="block h-24 w-16 animate-pulse rounded-md bg-slate-200" aria-hidden="true" />
+        )}
+        <span className="mt-1 block text-center text-[10px] font-bold tabular-nums text-slate-900">
+          {pageNumber}
+        </span>
+      </button>
+    </div>
+  );
+});
+
 export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
   const [numPages, setNumPages] = useState(0);
   const [page, setPage] = useState(1);
@@ -177,8 +234,11 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
   const pendingRef = useRef<number | null>(null);
   const turnRef = useRef<Turn | null>(null);
   const turnReqRef = useRef<TurnReq | null>(null);
+  const pageRef = useRef(page);
   /** Páginas ya rasterizadas a la escala/rotación actual (clave: nº de página). */
   const armedRef = useRef<Set<string>>(new Set());
+  /** L0: snapshots (0.6×) de la página visible, LRU de 6 — el giro no espera un encode. */
+  const snapRef = useRef<Map<string, string>>(new Map());
   const searchSeqRef = useRef(0);
   const textCacheRef = useRef<Map<number, string>>(new Map());
   const thumbRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
@@ -190,6 +250,9 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
   useEffect(() => {
     turnReqRef.current = turnReq;
   }, [turnReq]);
+  useEffect(() => {
+    pageRef.current = page;
+  }, [page]);
 
   const spreadOn = spread && mode === "libro";
   const step = mode === "continuo" ? 1 : spreadOn ? 2 : 1;
@@ -235,11 +298,14 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
       const wantLeaf = Math.abs(to - from) === 1 && !spreadOn;
       let snapshot: string | null = null;
       if (wantLeaf) {
-        try {
-          const canvas = stageRef.current?.querySelector("canvas") as HTMLCanvasElement | null;
-          snapshot = canvas ? canvas.toDataURL("image/jpeg", 0.92) : null;
-        } catch {
-          snapshot = null;
+        snapshot = snapRef.current.get(String(from)) ?? null;
+        if (!snapshot) {
+          try {
+            const canvas = stageRef.current?.querySelector("canvas") as HTMLCanvasElement | null;
+            snapshot = canvas ? canvas.toDataURL("image/jpeg", 0.92) : null;
+          } catch {
+            snapshot = null;
+          }
         }
       }
       scrollToReaderTop();
@@ -248,11 +314,46 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
     [scrollToReaderTop, spreadOn],
   );
 
+  // L0: pre-captura el snapshot de la página visible cuando el hilo está libre
+  const captureIdle = useCallback((p: number) => {
+    const doCapture = () => {
+      try {
+        const canvas = stageRef.current?.querySelector("canvas") as HTMLCanvasElement | null;
+        if (!canvas || canvas.width < 2) return;
+        const k = 0.6;
+        const c = document.createElement("canvas");
+        c.width = Math.max(1, Math.round(canvas.width * k));
+        c.height = Math.max(1, Math.round(canvas.height * k));
+        const ctx = c.getContext("2d");
+        if (!ctx) return;
+        ctx.drawImage(canvas, 0, 0, c.width, c.height);
+        const url = c.toDataURL("image/jpeg", 0.85);
+        const key = String(p);
+        snapRef.current.delete(key);
+        snapRef.current.set(key, url);
+        while (snapRef.current.size > 6) {
+          const oldest = snapRef.current.keys().next().value;
+          if (oldest) snapRef.current.delete(oldest);
+          else break;
+        }
+      } catch {
+        /* sin snapshot: startTurn lo captura sincrónico */
+      }
+    };
+    if (typeof requestIdleCallback !== "undefined") {
+      requestIdleCallback(doCapture, { timeout: 800 });
+    } else {
+      window.setTimeout(doCapture, 60);
+    }
+  }, []);
+
   // Una página quedó rasterizada: arma + si era el destino esperado, gira ya
+  // L1: el armed-set espeja la caché de páginas del worker pdf.js
   const onPageRendered = useCallback(
     (p: number, viewport: { width: number; height: number }) => {
       handleRenderSuccess(viewport);
       armedRef.current.add(String(p));
+      if (p === pageRef.current) captureIdle(p);
       const req = turnReqRef.current;
       if (req && req.to === p) {
         turnReqRef.current = null;
@@ -260,7 +361,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
         startTurn(req.from, req.to);
       }
     },
-    [handleRenderSuccess, startTurn],
+    [captureIdle, handleRenderSuccess, startTurn],
   );
 
   const finishTurn = useCallback(() => {
@@ -344,6 +445,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
   // Escala/rotación cambian: los armados dejan de valer y el turno se asienta
   useEffect(() => {
     armedRef.current.clear();
+    snapRef.current.clear();
     if (turnRef.current) finishTurn();
     setTurnReq(null);
   }, [scale, rotate, finishTurn]);
@@ -564,11 +666,12 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
     if (e.target === e.currentTarget) finishTurn();
   }
 
-  function pageCard(p: number, opts?: { spine?: boolean; preload?: boolean }) {
+  function pageCard(p: number, opts?: { spine?: boolean; preload?: boolean; warm?: boolean }) {
     return (
       <div className="overflow-hidden rounded-[18px] bg-white p-1.5 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
         <div className={opts?.spine ? "bg-white shadow-[inset_-16px_0_24px_-16px_rgba(0,0,0,0.45)]" : "bg-white"}>
-          {opts?.preload ? (
+          {/* preload/tiburón: solo el canvas (L0 tibio); el text layer lo construye la instancia aterrizada */}
+          {opts?.preload || opts?.warm ? (
             <Page
               pageNumber={p}
               scale={scale}
@@ -594,13 +697,18 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
     );
   }
 
-  function spreadPages(p: number) {
-    if (!spreadOn || numPages <= 1) return <div className="flex justify-center">{pageCard(p)}</div>;
+  function spreadPages(p: number, warm = false) {
+    if (!spreadOn || numPages <= 1)
+      return (
+        <div className="flex justify-center">
+          {pageCard(p, { warm })}
+        </div>
+      );
     const list = [p, p + 1 <= numPages ? p + 1 : null].filter((x): x is number => x !== null);
     return (
       <div className="flex flex-wrap justify-center gap-3">
         {list.map((x, i) => (
-          <div key={x}>{pageCard(x, { spine: i === 0 })}</div>
+          <div key={x}>{pageCard(x, { spine: i === 0, warm })}</div>
         ))}
       </div>
     );
@@ -792,6 +900,8 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
           setScanning(false);
           setScanProgress(0);
           setBaseSize(null);
+          armedRef.current.clear();
+          snapRef.current.clear();
           textCacheRef.current.clear();
           searchSeqRef.current += 1;
         }}
@@ -877,7 +987,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
               <div ref={stageRef} className="pdf-stack">
                 <div className="pdf-layer">{spreadPages(turnReq.from)}</div>
                 <div className="pdf-layer pdf-warm" aria-hidden="true">
-                  {spreadPages(turnReq.to)}
+                  {spreadPages(turnReq.to, true)}
                 </div>
               </div>
             ) : (
@@ -917,23 +1027,16 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
         {showThumbs && numPages > 0 ? (
           <div className="no-scrollbar mt-4 flex gap-2 overflow-x-auto rounded-[24px] border border-white/20 bg-[#081430] p-3 shadow-xl" aria-label="Miniaturas de páginas">
             {Array.from({ length: numPages }, (_, i) => i + 1).map((p) => (
-              <button
+              <LazyThumb
                 key={p}
-                ref={(el) => {
+                pageNumber={p}
+                current={p === page}
+                onGo={() => goTo(p)}
+                onRegister={(el) => {
                   if (el) thumbRefs.current.set(p, el);
                   else thumbRefs.current.delete(p);
                 }}
-                type="button"
-                onClick={() => goTo(p)}
-                aria-label={`Ir a página ${p}`}
-                aria-current={p === page}
-                className={`pressable shrink-0 overflow-hidden rounded-[14px] p-1 ${
-                  p === page ? "bg-white ring-2 ring-[#ffd60a]" : "bg-white/85 ring-1 ring-white/20 hover:bg-white"
-                }`}
-              >
-                <Thumbnail pageNumber={p} height={96} />
-                <span className="mt-1 block text-center text-[10px] font-bold tabular-nums text-slate-900">{p}</span>
-              </button>
+              />
             ))}
           </div>
         ) : null}

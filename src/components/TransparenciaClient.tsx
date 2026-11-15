@@ -1,12 +1,28 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { memo, useEffect, useState } from "react";
 import type { DocItem } from "@/lib/content";
-import { PdfPages } from "./PdfPages";
 import { Reveal } from "./Reveal";
+
+// El visor (react-pdf + pdf.js ≈ 1 MB) vive en su propio chunk: la lista abre
+// al instante y el chunk pesado solo se baja al leer. Preload en intent.
+const PdfPages = dynamic(() => import("./PdfPages").then((m) => m.PdfPages), {
+  ssr: false,
+  loading: () => (
+    <div className="space-y-3 py-8" aria-label="Cargando visor">
+      <div className="mx-auto aspect-[4/5] max-w-md animate-pulse rounded-[20px] bg-white/15" />
+      <p className="text-center text-sm font-semibold text-white/80">Abriendo visor…</p>
+    </div>
+  ),
+});
 
 export const TransparenciaClient = memo(function TransparenciaClient({ docs }: { docs: DocItem[] }) {
   const [selected, setSelected] = useState<DocItem | null>(null);
+
+  const preloadViewer = () => {
+    void import("./PdfPages");
+  };
 
   useEffect(() => {
     if (!selected) return;
@@ -28,6 +44,8 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
               <button
                 type="button"
                 onClick={() => setSelected(d)}
+                onMouseEnter={preloadViewer}
+                onFocus={preloadViewer}
                 className="pressable flex min-w-0 flex-1 items-center gap-4 text-left"
                 aria-haspopup="dialog"
               >
@@ -43,6 +61,8 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
                 <button
                   type="button"
                   onClick={() => setSelected(d)}
+                  onMouseEnter={preloadViewer}
+                  onFocus={preloadViewer}
                   className="pressable flex min-h-[44px] items-center rounded-full bg-[#0066cc] px-5 text-sm font-bold text-white transition-colors duration-150 hover:bg-[#0058af]"
                 >
                   Leer
