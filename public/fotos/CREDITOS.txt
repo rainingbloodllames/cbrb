@@ -1,0 +1,36 @@
+FOTOS OFICIALES — Colegio Bicentenario República del Brasil (RBD 4564)
+======================================================================
+Origen: Vitrina SAE · MINEDUC
+  https://admision.mineduc.cl/vitrina-vue/establecimiento/4564
+  CDNs originales:
+    https://cdnsae.mineduc.cl/imagenes/4564/mime_01.JPG
+    https://cdnsae.mineduc.cl/imagenes/4564/mime_02.JPG
+    https://cdnsae.mineduc.cl/imagenes/4564/mime_03.JPG
+    https://cdnsae.mineduc.cl/imagenes/4564/mime_31.JPG
+    https://cdnsae.mineduc.cl/imagenes/4564/mime_32.JPG
+    https://cdnsae.mineduc.cl/imagenes/4564/mime_33.JPG
+Descarga verificada: 200 OK, nov 2026. Copias locales en esta carpeta.
+
+Archivos:
+  estandarte-media.jpg        (mime_01) Desfile enseñanza media
+  parvularia-acto.jpg         (mime_02) Párvulos en acto
+  acto-civico.jpg             (mime_03) Acto cívico
+  bandera-brasil.jpg          (mime_31) Niña con bandera de Brasil
+  docentes-historicos.jpg     (mime_32) Foto histórica docentes
+  estudiantes-historicos.jpg  (mime_33) Foto histórica B/N estudiantes
+
+Uso: sitio web oficial del establecimiento. Crédito visible requerido:
+  "Foto oficial: vitrina SAE · MINEDUC (RBD 4564)"
+
+Google Photos / Google Maps:
+  Lo que aparece en Google Imágenes para este RBD son [a] estas fotos SAE,
+  [b] prensa (Resumen.cl, Diario Concepción, DEP/MINEDUC) y [c] redes oficiales
+  (Instagram @colegio_brasil, Facebook ColegioBicentenarioRepublicadelBrasil).
+  Álbumes privados de Google Photos no son indexables ni embebibles por hotlink.
+  Si el colegio comparte un link público de álbum, enlázalo externamente.
+
+Fotos de prensa en Noticias (no están en esta carpeta):
+  - Resumen.cl (sep 2026): media.resumen.cl/...
+  - Diario Concepción (ago 2025): assets.diarioconcepcion.cl/...
+  - DEP/MINEDUC (nov 2025): dep.gob.cl/wp-content/uploads/2025/11/biobio-portada.jpg
+  Ver src/lib/content.ts para créditos y links originales.

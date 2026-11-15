@@ -12,7 +12,7 @@ export const SchoolGallery = memo(function SchoolGallery({ headingId = "galeria-
             Vida escolar en imágenes
           </h2>
           <p className="mt-1.5 max-w-prose text-slate-600 dark:text-slate-400">
-            Sala, ciencia, biblioteca, deporte y arte. Imágenes ilustrativas; la fotografía oficial está en nuestras redes.
+            Fotos oficiales de la vitrina SAE (MINEDUC). Las mismas que ves en Google Imágenes. Día a día en nuestras redes.
           </p>
         </div>
         <div className="flex shrink-0 flex-wrap gap-2">
@@ -59,8 +59,9 @@ export const SchoolGallery = memo(function SchoolGallery({ headingId = "galeria-
       </ul>
 
       <p className="mt-4 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-        Las fotos de prensa citadas en Noticias son de Resumen.cl, Diario Concepción y DEP/MINEDUC, con enlace a la cobertura original.
-        ¿Tienes fotos oficiales del colegio? Súbelas a <code className="rounded bg-slate-900/5 px-1.5 py-0.5 dark:bg-white/10">public/fotos/</code> y actualiza <code className="rounded bg-slate-900/5 px-1.5 py-0.5 dark:bg-white/10">src/lib/content.ts</code>.
+        Fotos: vitrina SAE · MINEDUC (RBD 4564, originales en cdnsae.mineduc.cl) y prensa (Resumen.cl, Diario Concepción, DEP).
+        Google Photos privado no se puede embeber: si el colegio comparte un álbum público, enlázalo aquí.
+        Para sumar fotos nuevas: súbelas a <code className="rounded bg-slate-900/5 px-1.5 py-0.5 dark:bg-white/10">public/fotos/</code> y actualiza <code className="rounded bg-slate-900/5 px-1.5 py-0.5 dark:bg-white/10">src/lib/content.ts</code>.
       </p>
     </section>
   );

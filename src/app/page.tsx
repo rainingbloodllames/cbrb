@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NewsCard } from "@/components/NewsCard";
+import { SchoolGallery } from "@/components/SchoolGallery";
 import { news } from "@/lib/content";
 import { site } from "@/lib/site";
 
@@ -10,21 +11,20 @@ const NIVELES = [
 ];
 
 const PILARES = [
-  { tag: "1843", title: "182 años de historia", text: "Escuela N°2 de Concepción. Un colegio bicentenario que sigue formando generaciones.", tone: "bg-[#0a84ff]" },
+  { tag: "1843", title: "183 años de historia", text: "Escuela N°2 de Concepción. Un colegio bicentenario que sigue formando generaciones.", tone: "bg-[#0a84ff]" },
   { tag: "Público", title: "Laico y gratuito", text: "Educación pública de calidad, sin pago, abierta a todas las familias.", tone: "bg-[#30d158]" },
   { tag: "SLEP", title: "Andalién Sur", text: "Parte del Servicio Local de Educación Pública de Concepción, Chiguayante, Florida y Hualqui.", tone: "bg-[#ffd60a]" },
-  { tag: "RBD 4564", title: "Comunidad activa", text: "Convivencia, deportes, artes y talleres en San Martín 1580, a pasos del centro.", tone: "bg-[#ff453a]" },
+  { tag: "RBD 4564", title: "Comunidad activa", text: "1.342 estudiantes, 132 docentes. Convivencia, deportes, artes y talleres en San Martín 1580.", tone: "bg-[#ff453a]" },
 ];
 
 const TIMELINE = [
   { year: "1843", title: "Escuela N°2", text: "Nace en Concepción, en el corazón del Biobío." },
   { year: "1900s", title: "República del Brasil", text: "Crece como escuela pública central de la ciudad." },
   { year: "2010", title: "Bicentenario", text: "Sello de excelencia y renovación del proyecto educativo." },
-  { year: "Hoy", title: "SLEP Andalién Sur", text: "Parvularia a IV Medio, tecnología y convivencia moderna." },
+  { year: "Hoy", title: "SLEP Andalién Sur", text: "Parvularia a IV Medio. Obras de conservación al 62,88%, entrega proyectada mayo 2027." },
 ];
 
 export default function Home() {
-  const [first, ...rest] = news.slice(0, 3);
   return (
     <div className="pb-10">
       {/* HERO — iOS dark mesh, funnel SAE */}
@@ -51,7 +51,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="mt-8 grid grid-cols-3 gap-3" aria-label="Datos del colegio">
-              {[{ v: "182", l: "años" }, { v: "1843", l: "fundación" }, { v: "RBD 4564", l: "oficial" }].map((s) => (
+              {[{ v: "183", l: "años" }, { v: "1.342", l: "estudiantes" }, { v: "RBD 4564", l: "oficial" }].map((s) => (
                 <div key={s.l} className="rounded-[22px] bg-white/10 p-4">
                   <p className="font-heading text-2xl font-bold tabular-nums">{s.v}</p>
                   <p className="mt-0.5 text-xs text-white/75">{s.l}</p>
@@ -95,6 +95,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* GALERÍA — decorativa y estética */}
+      <SchoolGallery headingId="galeria-titulo" />
+
       {/* NIVELES — lista agrupada iOS */}
       <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-5" aria-labelledby="niveles-titulo">
         <h2 id="niveles-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Niveles</h2>
@@ -132,8 +135,11 @@ export default function Home() {
 
       {/* NOTICIAS + PLATAFORMAS */}
       <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-5" aria-labelledby="noticias-titulo">
-        <div className="flex items-end justify-between gap-4">
-          <h2 id="noticias-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Noticias</h2>
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="min-w-0">
+            <h2 id="noticias-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Noticias</h2>
+            <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-400">Cobertura real con fuentes: Resumen.cl, Diario Concepción, SLEP Andalién Sur y MINEDUC.</p>
+          </div>
           <Link href="/comunidad" className="pressable flex min-h-[44px] shrink-0 items-center rounded-full bg-slate-900/5 px-4 text-sm font-bold dark:bg-white/10">Ver todas</Link>
         </div>
         <div className="stagger mt-5 grid gap-3 md:grid-cols-3">

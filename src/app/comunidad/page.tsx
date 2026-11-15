@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { NewsCard } from "@/components/NewsCard";
+import { SchoolGallery } from "@/components/SchoolGallery";
 import { news } from "@/lib/content";
 import { site } from "@/lib/site";
 
@@ -12,7 +13,7 @@ export default function ComunidadPage() {
         <p className="text-xs font-bold text-white/75">Vida escolar</p>
         <h1 className="mt-2 font-heading text-4xl font-bold text-pretty sm:text-5xl">Comunidad</h1>
         <p className="mt-3 max-w-prose leading-relaxed text-white/85">
-          Noticias, actos y actividades oficiales de estudiantes, apoderados y funcionarios.
+          Noticias con fuente, vida escolar y galería. Todo con crédito y enlace a la cobertura original.
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
           <a href={site.instagram} target="_blank" rel="noreferrer" className="pressable flex min-h-[44px] items-center rounded-full bg-white px-5 text-sm font-bold text-[#0b1e44]">Instagram @colegio_brasil</a>
@@ -20,13 +21,15 @@ export default function ComunidadPage() {
         </div>
       </header>
 
-      <div className="stagger grid gap-3 pt-8 md:grid-cols-3">
+      <div className="stagger grid gap-3 pt-8 sm:grid-cols-2 lg:grid-cols-3">
         {news.map((n, i) => (
           <div key={n.slug} className="animate-enter-up">
             <NewsCard item={n} featured={i === 0} />
           </div>
         ))}
       </div>
+
+      <SchoolGallery headingId="galeria-titulo" />
 
       <section className="ios-card mt-8 p-6" aria-labelledby="calendario-titulo">
         <h2 id="calendario-titulo" className="font-heading text-xl font-bold">Calendario escolar</h2>

@@ -2,7 +2,10 @@
 // Fase 2: migrar a Sanity free (mismo shape). Fase 1: este archivo = CMS.
 // Para publicar una noticia: copia un objeto, cambia título/fecha/texto, commit.
 // Fuentes reales verificadas nov 2026: Resumen.cl, Diario Concepción, Andalién Sur,
-// DEP/MINEDUC, Educación en Datos (MINEDUC/Agencia Calidad/DEMRE).
+// DEP/MINEDUC, SAE (cdnsae.mineduc.cl, RBD 4564), Educación en Datos.
+// Fotos oficiales en public/fotos/ provienen de la vitrina SAE del colegio (MINEDUC).
+// Google Photos (álbumes privados) no es indexable ni scrapeable: si el colegio
+// comparte un link público, se agrega como enlace externo, no como hotlink de imágenes.
 
 export type NewsItem = {
   slug: string;
@@ -37,9 +40,9 @@ export const news: NewsItem[] = [
     excerpt:
       "Periodo complementario del Sistema de Admisión Escolar. Postula a Educación Parvularia y 1° Básico en admision.mineduc.cl.",
     body: "El Colegio Bicentenario República del Brasil invita a las familias de Concepción a postular vía SAE. Somos un colegio público, laico y bicentenario con historia desde 1843, ubicado en San Martín 1580.",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop",
-    imageAlt: "Sala de clases con estudiantes y docente en una escuela pública",
-    imageCredit: "Foto ilustrativa: Unsplash",
+    image: "/fotos/parvularia-acto.jpg",
+    imageAlt: "Estudiantes de parvularia con polera verde del colegio levantando paletas de colores en un acto escolar",
+    imageCredit: "Foto oficial: vitrina SAE · MINEDUC (RBD 4564)",
     source: "MINEDUC · SAE",
     sourceUrl: "https://admision.mineduc.cl",
   },
@@ -93,9 +96,9 @@ export const news: NewsItem[] = [
     excerpt:
       "Más de 1.400 estudiantes. Fundado en 1843 como Escuela N°2 de Primeras Letras, hoy colegio bicentenario del SLEP Andalién Sur.",
     body: "Comenzó sus actividades en 1843 como Escuela de Primeras Letras con clases de lectura, aritmética y catecismo. Con más de 1.400 estudiantes es el establecimiento educacional más grande de Concepción. La comunidad educativa celebró 182 años junto a apoderados, estudiantes y SLEP Andalién Sur, con acto oficial y reconocimiento a funcionarios con trayectoria.",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop",
-    imageAlt: "Estudiantes graduates celebrando con birretes en un acto escolar",
-    imageCredit: "Foto ilustrativa: Unsplash · Saludo oficial: Municipalidad de Concepción / Instagram del colegio",
+    image: "/fotos/estandarte-media.jpg",
+    imageAlt: "Estudiantes de enseñanza media con estandarte del colegio en un desfile en Concepción",
+    imageCredit: "Foto oficial: vitrina SAE · MINEDUC (RBD 4564) · Saludo: Municipalidad de Concepción",
     source: "Municipalidad de Concepción · Instagram @colegio_brasil",
     sourceUrl: "https://www.instagram.com/colegio_brasil/",
   },
@@ -138,66 +141,68 @@ export type GalleryItem = {
 };
 
 /**
- * Galería decorativa — imágenes ilustrativas (Unsplash, uso libre).
- * Las fotos reales del colegio están en Instagram @colegio_brasil y Facebook oficial.
- * Para reemplazar por fotos propias: cambia src por /fotos/tu-foto.jpg en public/fotos.
+ * Galería — fotos oficiales del colegio desde la vitrina SAE (MINEDUC, RBD 4564).
+ * Archivos locales en public/fotos/ (copias de cdnsae.mineduc.cl/imagenes/4564/).
+ * Lo que aparece en Google Imágenes / Google Maps para este RBD son estas fotos
+ * SAE + prensa + redes oficiales. Google Photos privado no se puede embeber por
+ * hotlink: si tienes un álbum compartido público, enlázalo en Comunidad.
  */
 export const gallery: GalleryItem[] = [
   {
-    src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop",
-    alt: "Estudiantes con la mano levantada en una sala de clases luminosa",
-    title: "Aprender en comunidad",
-    caption: "Parvularia a IV Medio, de los 3 a los 18 años sin cambiar de colegio.",
-    credit: "Foto ilustrativa · Unsplash",
+    src: "/fotos/estandarte-media.jpg",
+    alt: "Estudiantes de enseñanza media con estandarte del colegio en un desfile en Concepción",
+    title: "Desfile de enseñanza media",
+    caption: "Estandarte y desfila en Concepción. Comunidad de parvularia a IV medio.",
+    credit: "Foto oficial: SAE · MINEDUC",
   },
   {
-    src: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop",
-    alt: "Grupo de estudiantes sonriendo y conversando en grupo",
-    title: "Convivencia y amistad",
-    caption: "Más de 1.300 estudiantes, 132 docentes y 89 asistentes en San Martín 1580.",
-    credit: "Foto ilustrativa · Unsplash",
+    src: "/fotos/parvularia-acto.jpg",
+    alt: "Estudiantes de parvularia con polera verde levantando paletas de colores en un acto",
+    title: "Parvularia en acto escolar",
+    caption: "Párvulos con paletas de colores. Juego, lenguaje y socialización.",
+    credit: "Foto oficial: SAE · MINEDUC",
   },
   {
-    src: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=1200&auto=format&fit=crop",
-    alt: "Laboratorio escolar con tubos de ensayo de colores",
-    title: "Ciencia y descubrimiento",
-    caption: "Talleres de ciencias, SIMCE 4° básico por sobre el promedio nacional.",
-    credit: "Foto ilustrativa · Unsplash",
+    src: "/fotos/acto-civico.jpg",
+    alt: "Estudiantes de básica en un acto cívico con la mano al pecho junto a sillas del patio",
+    title: "Acto cívico",
+    caption: "Himno y respeto en el patio. Formación ciudadana del colegio.",
+    credit: "Foto oficial: SAE · MINEDUC",
   },
   {
-    src: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1200&auto=format&fit=crop",
-    alt: "Mesa de biblioteca con libros abiertos y luz natural",
-    title: "Lectura y biblioteca",
-    caption: "Comprensión lectora SIMCE 287 y PAES Competencia Lectora 601.",
-    credit: "Foto ilustrativa · Unsplash",
+    src: "/fotos/bandera-brasil.jpg",
+    alt: "Niña con polera del colegio sosteniendo la bandera de Brasil en el aula",
+    title: "Bandera de Brasil",
+    caption: "El colegio es guardador del Pabellón de la República del Brasil desde el siglo XX.",
+    credit: "Foto oficial: SAE · MINEDUC",
   },
   {
-    src: "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200&auto=format&fit=crop",
-    alt: "Cancha de básquetbol escolar con aro y balón",
-    title: "Deporte y vida saludable",
-    caption: "Deportes, convivencia y hábitos saludables en el patio del colegio.",
-    credit: "Foto ilustrativa · Unsplash",
+    src: "/fotos/docentes-historicos.jpg",
+    alt: "Fotografía histórica en color de un grupo de docentes del colegio",
+    title: "Docentes de ayer",
+    caption: "Generaciones de profesoras y profesores desde la Escuela N°2 de 1843.",
+    credit: "Foto histórica: SAE · MINEDUC",
   },
   {
-    src: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200&auto=format&fit=crop",
-    alt: "Pinceles y pinturas de colores sobre una mesa de arte",
-    title: "Artes y creatividad",
-    caption: "Artes, música y cultura en un colegio público laico y bicentenario.",
-    credit: "Foto ilustrativa · Unsplash",
+    src: "/fotos/estudiantes-historicos.jpg",
+    alt: "Fotografía histórica en blanco y negro de estudiantes del colegio en el siglo XX",
+    title: "Estudiantes de ayer",
+    caption: "Patrimonio fotográfico del colegio bicentenario. Escuela N°2 de 1843.",
+    credit: "Foto histórica: SAE · MINEDUC",
   },
 ];
 
 export const documents: DocItem[] = [
-  { title: "Proyecto Educativo Institucional (PEI) 4564", year: 2026, category: "PEI", href: "/docs/PEI-2025-2027.pdf" },
-  { title: "Reglamento Interno Escolar (RIE) 2026", year: 2026, category: "Reglamento", href: "/docs/RIE-2026.pdf" },
-  { title: "REX N°781 — Circular Reglamentos Internos", year: 2026, category: "Reglamento", href: "/docs/REX-781-Reglamentos-Internos.pdf" },
-  { title: "Reglamento de Evaluación 4564", year: 2026, category: "Reglamento", href: "/docs/Reglamento-Evaluacion-4564.pdf" },
-  { title: "Plan de Gestión Convivencia Escolar 2026", year: 2026, category: "Planes", href: "/docs/Plan-Gestion-Convivencia-2026.pdf" },
-  { title: "Plan de Formación Ciudadana 2026", year: 2026, category: "Planes", href: "/docs/Plan-Formacion-Ciudadana-2026.pdf" },
-  { title: "Plan de Sexualidad 2026", year: 2026, category: "Planes", href: "/docs/Plan-Sexualidad-2026.pdf" },
-  { title: "Plan de Orientación Vocacional 2026", year: 2026, category: "Planes", href: "/docs/Plan-Orientacion-Vocacional-2026.pdf" },
-  { title: "Guía Práctica de Medidas de Seguridad", year: 2026, category: "Seguridad", href: "/docs/Guia-Medidas-Seguridad.pdf" },
-  { title: "Informe Ejecutivo Colegio Bicentenario República del Brasil", year: 2026, category: "Informes", href: "/docs/Informe-Ejecutivo.pdf" },
+  { title: "Proyecto Educativo Institucional (PEI)", year: 2026, category: "PEI", href: "/docs/proyecto-educativo-institucional-2026.pdf" },
+  { title: "Reglamento Interno Escolar (RIE) 2026", year: 2026, category: "Reglamento", href: "/docs/reglamento-interno-2026.pdf" },
+  { title: "Circular de Reglamentos Internos N°781", year: 2026, category: "Reglamento", href: "/docs/circular-reglamentos-internos-781.pdf" },
+  { title: "Reglamento de Evaluación", year: 2026, category: "Reglamento", href: "/docs/reglamento-de-evaluacion.pdf" },
+  { title: "Plan de Gestión de Convivencia Escolar 2026", year: 2026, category: "Planes", href: "/docs/plan-convivencia-escolar-2026.pdf" },
+  { title: "Plan de Formación Ciudadana 2026", year: 2026, category: "Planes", href: "/docs/plan-formacion-ciudadana-2026.pdf" },
+  { title: "Plan de Sexualidad 2026", year: 2026, category: "Planes", href: "/docs/plan-sexualidad-2026.pdf" },
+  { title: "Plan de Orientación Vocacional 2026", year: 2026, category: "Planes", href: "/docs/plan-orientacion-vocacional-2026.pdf" },
+  { title: "Guía Práctica de Medidas de Seguridad", year: 2026, category: "Seguridad", href: "/docs/guia-medidas-de-seguridad.pdf" },
+  { title: "Informe Ejecutivo 2026", year: 2026, category: "Informes", href: "/docs/informe-ejecutivo-2026.pdf" },
 ];
 
 export const team = [
