@@ -30,7 +30,7 @@ const ContactForm = memo(function ContactForm() {
   }
 
   const inputCls =
-    "mt-1.5 min-h-[52px] w-full rounded-[18px] border border-slate-300 bg-white px-4 text-base text-slate-900 placeholder:text-slate-500 dark:border-slate-500 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-400";
+    "mt-1.5 min-h-[52px] w-full rounded-[18px] border border-slate-300 bg-white px-4 text-base text-slate-900 placeholder:text-slate-500";
   return (
     <form onSubmit={onSubmit} className="form-section ios-card space-y-4 p-6">
       <div>
@@ -87,7 +87,7 @@ export default function ContactPage() {
           </div>
           <div className="ios-card p-5">
             <h2 className="font-heading text-lg font-bold text-slate-900">Horario secretaría</h2>
-            <p className="mt-1 text-sm font-semibold text-slate-700 dark:text-slate-200">Lunes a viernes 8:30–17:30.</p>
+            <p className="mt-1 text-sm font-semibold text-slate-700">Lunes a viernes 8:30–17:30.</p>
           </div>
         </div>
       </div>

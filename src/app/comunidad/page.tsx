@@ -33,8 +33,8 @@ export default function ComunidadPage() {
       <SchoolGallery headingId="galeria-titulo" />
 
       <section className="ios-card mt-8 p-6" aria-labelledby="calendario-titulo">
-        <h2 id="calendario-titulo" className="font-heading text-xl font-bold">Calendario escolar</h2>
-        <p className="mt-1.5 text-sm font-medium leading-relaxed text-slate-700 dark:text-slate-200">
+        <h2 id="calendario-titulo" className="font-heading text-xl font-bold text-slate-900">Calendario escolar</h2>
+        <p className="mt-1.5 text-sm font-medium leading-relaxed text-slate-700">
           Actos, reuniones y fechas oficiales. En época SAE y matrícula, revisa también{" "}
           <a href={site.saeUrl} target="_blank" rel="noreferrer" className="font-bold text-[#0066cc] underline underline-offset-4">admisión SAE</a>.
         </p>

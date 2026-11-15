@@ -35,7 +35,16 @@ export const SiteFooter = memo(function SiteFooter() {
             <div className="mt-4 space-y-2.5 text-[15px] font-medium">
               <a className="block text-white hover:text-[#ffd60a]" href={site.phoneHref}>{site.phone}</a>
               <a className="block text-white hover:text-[#ffd60a]" href={`mailto:${site.email}`}>{site.email}</a>
-              <p className="pt-2 text-slate-200"><a className="text-white hover:text-[#ffd60a]" href={site.facebook} target="_blank" rel="noreferrer">Facebook</a> · <a className="text-white hover:text-[#ffd60a]" href={site.instagram} target="_blank" rel="noreferrer">Instagram</a></p>
+              <p className="pt-2 flex items-center gap-4">
+                <a className="flex items-center gap-2 text-white hover:text-[#ffd60a]" href={site.facebook} target="_blank" rel="noreferrer" aria-label="Facebook del colegio">
+                  <Image src="/icons/facebook-white.svg" alt="" width={20} height={20} className="h-5 w-5" />
+                  Facebook
+                </a>
+                <a className="flex items-center gap-2 text-white hover:text-[#ffd60a]" href={site.instagram} target="_blank" rel="noreferrer" aria-label="Instagram del colegio">
+                  <Image src="/icons/instagram-white.svg" alt="" width={20} height={20} className="h-5 w-5" />
+                  Instagram
+                </a>
+              </p>
             </div>
           </div>
         </div>

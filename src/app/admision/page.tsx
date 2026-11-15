@@ -32,7 +32,7 @@ export default function AdmisionPage() {
       </header>
 
       <section className="pt-10" aria-labelledby="pasos">
-        <h2 id="pasos" className="font-heading text-3xl font-bold text-pretty">4 pasos, sin salir de casa</h2>
+        <h2 id="pasos" className="font-heading text-[32px] font-extrabold tracking-tight text-slate-900">4 pasos, sin salir de casa</h2>
         <ol className="mt-5 grid gap-3 sm:grid-cols-2">
           {steps.map((s, i) => (
             <Reveal key={s.n} delay={i * 40}>
@@ -40,7 +40,7 @@ export default function AdmisionPage() {
                 <span className="icon-pop flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0066cc] font-heading text-lg font-bold text-white" aria-hidden="true">{s.n}</span>
                 <span className="min-w-0">
                   <span className="block font-heading text-lg font-bold text-slate-900">{s.t}</span>
-                  <span className="mt-1 block text-sm font-medium leading-relaxed text-slate-700 dark:text-slate-200">{s.d}</span>
+                  <span className="mt-1 block text-sm font-medium leading-relaxed text-slate-700">{s.d}</span>
                 </span>
               </div>
             </Reveal>
@@ -49,15 +49,15 @@ export default function AdmisionPage() {
       </section>
 
       <section className="pt-10" aria-labelledby="faq">
-        <h2 id="faq" className="font-heading text-3xl font-bold text-pretty">Preguntas frecuentes</h2>
+        <h2 id="faq" className="font-heading text-[32px] font-extrabold tracking-tight text-slate-900">Preguntas frecuentes</h2>
         <div className="mt-5 space-y-2">
           {faqs.map((f) => (
             <details key={f.q} className="ios-card group p-5">
-              <summary className="flex min-h-[44px] cursor-pointer items-center justify-between gap-4 font-heading font-bold marker:hidden">
+              <summary className="flex min-h-[44px] cursor-pointer items-center justify-between gap-4 rounded-xl px-2 py-1 font-heading font-bold text-slate-900">
                 {f.q}
                 <span className="chevron-spin text-xl text-[#0066cc]" aria-hidden="true">+</span>
               </summary>
-              <p className="mt-2 text-sm font-medium leading-relaxed text-slate-700 dark:text-slate-200">{f.a}</p>
+              <p className="mt-2 px-2 text-sm font-medium leading-relaxed text-slate-700">{f.a}</p>
             </details>
           ))}
         </div>

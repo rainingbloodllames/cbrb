@@ -126,6 +126,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SEDES TEMPORALES — por obras de conservación */}
+      <section className="mx-auto max-w-7xl px-4 pt-16 sm:px-6 sm:pt-20" aria-labelledby="sedes-titulo">
+        <p className="text-[13px] font-medium text-slate-500">Mientras duran las obras</p>
+        <h2 id="sedes-titulo" className="mt-2 font-heading text-[32px] font-bold leading-[1.05] tracking-tight sm:text-[40px]">Dónde estamos <span className="text-[#0066cc]">ahora</span></h2>
+        <p className="mt-2 max-w-xl text-[15px] font-medium text-slate-600">Por las obras de conservación 2025-2027, el colegio funciona en dos sedes cercanas, jornada tarde.</p>
+        <div className="mt-7 grid gap-4 lg:grid-cols-2">
+          <article className="border border-slate-900/10 bg-white p-6">
+            <p className="text-[13px] font-medium text-slate-500">Prekínder a 6° Básico</p>
+            <h3 className="mt-1 font-heading text-[22px] font-bold leading-tight text-slate-900">Colegio Bicentenario España</h3>
+            <p className="mt-1 text-[14px] text-slate-600">Av. Roosevelt 1596, Concepción — a pasos del colegio.</p>
+            <p className="mt-3 text-[14px] font-semibold text-slate-900"><span className="tabular-nums">13:30–18:45</span> · Clases <span className="tabular-nums">14:00–18:35</span></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Colegio+Bicentenario+Espa%C3%B1a+Roosevelt+1596+Concepci%C3%B3n" target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-[44px] items-center rounded-full bg-slate-900 px-5 text-sm font-bold text-white transition-colors hover:bg-slate-800">Cómo llegar</a>
+          </article>
+          <article className="border border-slate-900/10 bg-white p-6">
+            <p className="text-[13px] font-medium text-slate-500">7° Básico a IV Medio</p>
+            <h3 className="mt-1 font-heading text-[22px] font-bold leading-tight text-slate-900">Liceo Fiscal de Niñas</h3>
+            <p className="mt-1 text-[14px] text-slate-600">Rengo 249, Concepción — centro, SLEP Andalién Sur.</p>
+            <p className="mt-3 text-[14px] font-semibold text-slate-900"><span className="tabular-nums">13:30–18:45</span> · Clases <span className="tabular-nums">14:00–18:35</span></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Liceo+de+Ni%C3%B1as+Rengo+249+Concepci%C3%B3n" target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-[44px] items-center rounded-full bg-slate-900 px-5 text-sm font-bold text-white transition-colors hover:bg-slate-800">Cómo llegar</a>
+          </article>
+        </div>
+      </section>
+
+      {/* MAPA */}
+      <section className="mx-auto max-w-7xl px-4 pt-16 sm:px-6 sm:pt-20" aria-labelledby="mapa-titulo">
+        <h2 id="mapa-titulo" className="font-heading text-[32px] font-bold leading-[1.05] tracking-tight sm:text-[40px]">Encuéntranos en <span className="text-[#0066cc]">Concepción</span></h2>
+        <p className="mt-2 max-w-xl text-[15px] font-medium text-slate-600">San Martín 1580 — centro. Las clases se dictan en las 2 sedes de arriba.</p>
+        <div className="mt-6 overflow-hidden border border-slate-200 bg-white">
+          <iframe
+            title="Mapa Colegio República del Brasil, San Martín 1580, Concepción"
+            src="https://www.google.com/maps?q=Colegio%20Rep%C3%BAblica%20del%20Brasil%20San%20Mart%C3%ADn%201580%20Concepci%C3%B3n&output=embed"
+            className="h-80 w-full"
+            loading="lazy"
+          />
+          <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
+            <p className="text-[14px] font-semibold text-slate-900">San Martín 1580 · (41) 222 4711</p>
+            <a href={site.mapUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-[44px] items-center rounded-full bg-[#0066cc] px-5 text-sm font-bold text-white transition-colors hover:bg-[#0058af]">Abrir en Google Maps</a>
+          </div>
+        </div>
+      </section>
+
       {/* GALERÍA */}
       <SchoolGallery headingId="galeria-titulo" />
 
@@ -207,23 +248,31 @@ export default function Home() {
         <h2 id="social-titulo" className="font-heading text-[32px] font-bold leading-[1.05] tracking-tight sm:text-[40px]">Síguenos <span className="text-[#0066cc]">en redes</span></h2>
         <p className="mt-2 max-w-xl text-[15px] font-medium text-slate-600">El día a día — actos, desfiles, deportes y avisos — lo publicamos en nuestras redes oficiales.</p>
         <div className="mt-7 grid gap-4 sm:grid-cols-3">
-          <a href={site.instagram} target="_blank" rel="noreferrer" className="group block h-full border border-slate-900/10 bg-white p-6">
-            <p className="text-[13px] font-medium text-slate-500">Instagram</p>
-            <p className="mt-1 font-heading text-[20px] font-medium leading-tight text-slate-900">@colegio_brasil</p>
-            <p className="mt-1.5 text-[14px] leading-relaxed text-slate-600">Fotos y videos del colegio.</p>
-            <p className="mt-4 text-[15px] font-medium text-[#0066cc]">Seguir</p>
+          <a href={site.instagram} target="_blank" rel="noreferrer" className="group flex items-center gap-4 border border-slate-900/10 bg-white p-6">
+            <Image src="/icons/instagram-black.svg" alt="" width={28} height={28} className="h-7 w-7 shrink-0" />
+            <span>
+              <span className="block font-heading text-[20px] font-medium leading-tight text-slate-900">Instagram</span>
+              <span className="mt-0.5 block text-[14px] text-slate-600">@colegio_brasil</span>
+              <span className="mt-2 block text-[15px] font-medium text-[#0066cc]">Seguir</span>
+            </span>
           </a>
-          <a href={site.facebook} target="_blank" rel="noreferrer" className="group block h-full border border-slate-900/10 bg-white p-6">
-            <p className="text-[13px] font-medium text-slate-500">Facebook</p>
-            <p className="mt-1 font-heading text-[20px] font-medium leading-tight text-slate-900">Colegio Bicentenario</p>
-            <p className="mt-1.5 text-[14px] leading-relaxed text-slate-600">Noticias y transmisiones.</p>
-            <p className="mt-4 text-[15px] font-medium text-[#0066cc]">Seguir</p>
+          <a href={site.facebook} target="_blank" rel="noreferrer" className="group flex items-center gap-4 border border-slate-900/10 bg-white p-6">
+            <Image src="/icons/facebook-black.svg" alt="" width={28} height={28} className="h-7 w-7 shrink-0" />
+            <span>
+              <span className="block font-heading text-[20px] font-medium leading-tight text-slate-900">Facebook</span>
+              <span className="mt-0.5 block text-[14px] text-slate-600">Colegio Bicentenario</span>
+              <span className="mt-2 block text-[15px] font-medium text-[#0066cc]">Seguir</span>
+            </span>
           </a>
-          <Link href="/contacto" className="group block h-full border border-slate-900/10 bg-white p-6">
-            <p className="text-[13px] font-medium text-slate-500">Contacto</p>
-            <p className="mt-1 font-heading text-[20px] font-medium leading-tight text-slate-900">San Martín 1580</p>
-            <p className="mt-1.5 text-[14px] leading-relaxed text-slate-600">(41) 222 4711 · Concepción</p>
-            <p className="mt-4 text-[15px] font-medium text-[#0066cc]">Cómo llegar</p>
+          <Link href="/contacto" className="group flex items-center gap-4 border border-slate-900/10 bg-white p-6">
+            <span className="grid h-7 w-7 shrink-0 place-items-center">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0b1e44" strokeWidth="1.8" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </span>
+            <span>
+              <span className="block font-heading text-[20px] font-medium leading-tight text-slate-900">Contacto</span>
+              <span className="mt-0.5 block text-[14px] text-slate-600">San Martín 1580</span>
+              <span className="mt-2 block text-[15px] font-medium text-[#0066cc]">Cómo llegar</span>
+            </span>
           </Link>
         </div>
       </section>
