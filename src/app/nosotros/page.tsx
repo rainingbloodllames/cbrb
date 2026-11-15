@@ -48,7 +48,7 @@ export default function NosotrosPage() {
       </header>
 
       <section className="pt-10" aria-labelledby="historia-titulo">
-        <h2 id="historia-titulo" className="font-heading text-2xl font-bold text-slate-900">Historia</h2>
+        <h2 id="historia-titulo" className="font-heading text-[28px] font-extrabold tracking-tight text-slate-900 dark:text-white">Historia</h2>
         <ol className="mt-4 grid gap-3 sm:grid-cols-2">
           {HISTORIA.map((h, i) => (
             <Reveal key={h.y} delay={i * 40}>
@@ -63,12 +63,12 @@ export default function NosotrosPage() {
       </section>
 
       <section className="pt-10" aria-labelledby="ambiente-titulo">
-        <h2 id="ambiente-titulo" className="font-heading text-[28px] font-extrabold tracking-tight text-slate-900">Ambiente escolar</h2>
+        <h2 id="ambiente-titulo" className="font-heading text-[28px] font-extrabold tracking-tight text-slate-900 dark:text-white">Ambiente escolar</h2>
         <p className="mt-2 text-[15px] font-medium leading-relaxed text-slate-600 dark:text-slate-300">Fotos oficiales de la vitrina SAE: desfile, parvularia, acto cívico y bandera de Brasil.</p>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2" aria-label="Imágenes de ambiente escolar">
           {gallery.slice(0, 4).map((g, i) => (
             <Reveal key={g.title} delay={i * 40}>
-              <figure className="group card-lift overflow-hidden rounded-[24px] bg-white dark:bg-[#1c1c1e]">
+              <figure className="group overflow-hidden rounded-[24px] bg-white shadow-sm ring-1 ring-slate-200">
                 <Image
                   src={g.src}
                   alt={g.alt}

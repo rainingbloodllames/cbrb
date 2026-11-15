@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Lexend, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { PageTransition } from "@/components/PageTransition";
@@ -24,6 +24,18 @@ export const metadata: Metadata = {
   },
   description:
     "Colegio Bicentenario República del Brasil, Concepción. Educación pública de excelencia desde 1843. Parvularia a 4° Medio. Admisión SAE, transparencia, comunidad.",
+  icons: {
+    icon: [
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-64.png", sizes: "64x64", type: "image/png" },
+      { url: "/favicon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon-180.png", sizes: "180x180", type: "image/png" },
+    ],
+    apple: [{ url: "/favicon-180.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     title: site.name,
     description: site.tagline,
@@ -36,12 +48,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0b1e44" },
+    { media: "(prefers-color-scheme: dark)", color: "#090a0f" },
+  ],
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${jakarta.variable} ${lexend.variable} h-full antialiased`}>
-      <head>
-        <meta name="theme-color" content="#0f2a5c" />
-      </head>
       <body className="flex min-h-full flex-col">
         <a href="#contenido" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-[#0f2a5c] focus:px-5 focus:py-3 focus:text-sm focus:font-bold focus:text-white">
           Saltar al contenido

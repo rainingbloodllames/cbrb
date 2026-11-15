@@ -14,10 +14,10 @@ const NIVELES = [
 ];
 
 const PILARES = [
-  { tag: "Desde 1843", title: "183 años de historia", text: "Escuela N°2 de Concepción. Un colegio bicentenario que sigue formando generaciones." },
-  { tag: "Público", title: "Laico y gratuito", text: "Educación pública de calidad, sin pago, abierta a todas las familias." },
-  { tag: "SLEP", title: "Andalién Sur", text: "Parte del Servicio Local de Educación Pública de Concepción, Chiguayante, Florida y Hualqui." },
-  { tag: "RBD 4564", title: "Comunidad activa", text: "1.342 estudiantes, 132 docentes. Convivencia, deportes, artes y talleres en San Martín 1580." },
+  { tag: "Desde 1843", title: "183 años de historia", stat: "1843", text: "Escuela N°2 de Concepción. Un colegio bicentenario que sigue formando generaciones.", tint: "bg-[#EFF6FF] ring-[#0066cc]/15", num: "text-[#0066cc]", icon: "M12 8v4l3 2" },
+  { tag: "Público", title: "Laico y gratuito", stat: "100%", text: "Educación pública de calidad, sin pago, abierta a todas las familias.", tint: "bg-[#ECFDF5] ring-[#0b7a3e]/15", num: "text-[#0b7a3e]", icon: "M12 3l9 5-9 5-9-5 9-5Z" },
+  { tag: "SLEP", title: "Andalién Sur", stat: "80+", text: "Establecimientos en Concepción, Chiguayante, Florida y Hualqui.", tint: "bg-[#FFFBEB] ring-[#b45309]/15", num: "text-[#b45309]", icon: "M4 21V10l8-6 8 6v11" },
+  { tag: "RBD 4564", title: "Comunidad activa", stat: "1.342", text: "Estudiantes, 132 docentes. Convivencia, deportes y artes en San Martín 1580.", tint: "bg-[#FEF2F2] ring-[#c81e1e]/15", num: "text-[#c81e1e]", icon: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" },
 ];
 
 const TIMELINE = [
@@ -111,15 +111,17 @@ export default function Home() {
         <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {PILARES.map((p, i) => (
             <Reveal key={p.title} delay={i * 40}>
-              <article className="h-full border border-slate-900/10 bg-white p-6">
-                <div className="flex items-baseline justify-between gap-3">
-                  <span className="text-[13px] font-medium text-slate-500">{p.tag}</span>
-                  <span className="font-heading text-[13px] font-medium tabular-nums text-slate-400">0{i+1}</span>
+              <article className={`group relative h-full overflow-hidden border border-slate-900/[0.08] p-6 ${p.tint} shadow-[0_2px_8px_rgba(11,30,68,0.06),inset_0_1px_0_rgba(255,255,255,0.7)] ring-1 transition-transform duration-200 ease-out hover:-translate-y-0.5`}>
+                <div className="flex items-start justify-between gap-3">
+                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/80 shadow-sm">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b1e44" strokeWidth="1.8" aria-hidden="true"><path d={p.icon} strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </span>
+                  <span className={`font-heading text-[13px] font-medium tabular-nums ${p.num}`}>{p.stat}</span>
                 </div>
-                <div className="mt-8">
-                  <h3 className="font-heading text-[20px] font-medium leading-tight text-slate-900">{p.title}</h3>
-                  <p className="mt-2 text-[14px] leading-relaxed text-slate-600">{p.text}</p>
-                </div>
+                <p className="mt-5 text-[13px] font-medium text-slate-600">{p.tag}</p>
+                <h3 className="mt-1 font-heading text-[20px] font-medium leading-tight text-slate-900">{p.title}</h3>
+                <p className="mt-2 text-[14px] leading-relaxed text-slate-700">{p.text}</p>
+                <span className="pointer-events-none absolute -bottom-10 -right-6 h-28 w-28 rounded-full bg-white/50 blur-2xl" aria-hidden="true" />
               </article>
             </Reveal>
           ))}
@@ -239,6 +241,34 @@ export default function Home() {
             <Reveal key={n.slug} delay={i * 60}>
               <NewsCard item={n} featured={i === 0} />
             </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* SITIOS DE INTERÉS Y AYUDA */}
+      <section className="mx-auto max-w-7xl px-4 pt-16 sm:px-6 sm:pt-20" aria-labelledby="ayuda-titulo">
+        <p className="text-[13px] font-medium text-slate-500">Enlaces oficiales</p>
+        <h2 id="ayuda-titulo" className="mt-2 font-heading text-[32px] font-bold leading-[1.05] tracking-tight sm:text-[40px]">Sitios de <span className="text-[#0066cc]">interés y ayuda</span></h2>
+        <p className="mt-2 max-w-xl text-[15px] font-medium text-slate-600">Trámites, beneficios y líneas de ayuda verificadas. En situación urgente, llama al 133 (Carabineros) o 131 (SAMU).</p>
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { name: "MINEDUC", desc: "Ministerio de Educación: noticias, becas, SAE y políticas.", url: "https://www.mineduc.cl/", tel: null },
+            { name: "Ayuda Mineduc", desc: "Portal ciudadano: trámites y beneficios. Lun a vie 8:00–18:00.", url: "https://www.ayudamineduc.cl/", tel: "600 600 2626" },
+            { name: "SLEP Andalién Sur", desc: "Educación pública de Concepción, Chiguayante, Florida y Hualqui.", url: "https://andaliensur.gob.cl/", tel: "412524415" },
+            { name: "Salud Responde", desc: "Orientación en salud y salud mental, 24/7.", url: "https://saludresponde.minsal.cl/", tel: "600 360 7777" },
+            { name: "SENDA 1412", desc: "Fono Drogas y Alcohol. Gratis, anónimo, 24 horas.", url: "https://www.senda.gob.cl/orientacion/", tel: "1412" },
+            { name: "Chile Atiende", desc: "Todos los trámites del Estado en un solo sitio.", url: "https://www.chileatiende.gob.cl/", tel: null },
+            { name: "JUNAEB", desc: "Alimentación escolar, becas y apoyo a estudiantes.", url: "https://www.junaeb.gob.cl/", tel: null },
+            { name: "Beneficios Estudiantiles", desc: "FUAS: gratuidad, becas y créditos para educación superior.", url: "https://www.beneficiosestudiantiles.cl/", tel: null },
+         ].map((s) => (
+            <article key={s.name} className="flex h-full flex-col border border-slate-900/10 bg-white p-6">
+              <h3 className="font-heading text-[18px] font-bold leading-tight text-slate-900">{s.name}</h3>
+              <p className="mt-1.5 flex-1 text-[14px] leading-relaxed text-slate-600">{s.desc}</p>
+              {s.tel ? <p className="mt-3 text-[14px] font-bold text-slate-900"><a href={`tel:${s.tel.replace(/\s/g, "")}`} className="underline decoration-[#0066cc] decoration-2 underline-offset-4">{s.tel}</a></p> : null}
+              <a href={s.url} target="_blank" rel="noreferrer" className="mt-3 inline-flex min-h-[44px] items-center gap-1.5 text-[15px] font-bold text-[#0066cc]">Visitar sitio
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </a>
+            </article>
           ))}
         </div>
       </section>
