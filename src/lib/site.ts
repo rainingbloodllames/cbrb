@@ -10,8 +10,10 @@ export const site = {
   founded: 1843,
   director: "Dino Olivieri Díaz",
   saeUrl: "https://admision.mineduc.cl",
+  // Workspace no instalado aún en el colegio — oculto en UI (ver SiteHeader/Footer).
   workspaceUrl: "https://mail.google.com",
-  sigceUrl: process.env.NEXT_PUBLIC_SIGCE_URL ?? "https://sigce.cbrb.cl",
+  // SIGCE real en producción:
+  sigceUrl: process.env.NEXT_PUBLIC_SIGCE_URL ?? "https://sigce.cl",
   facebook: "https://www.facebook.com/ColegioBicentenarioRepublicadelBrasil/",
   instagram: "https://www.instagram.com/colegio_brasil/",
   mapUrl:

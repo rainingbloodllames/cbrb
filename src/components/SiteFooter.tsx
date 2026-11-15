@@ -25,10 +25,10 @@ export const SiteFooter = memo(function SiteFooter() {
                 <li key={h}><Link className="text-white underline decoration-white/20 underline-offset-4 hover:text-[#ffd60a] hover:decoration-[#ffd60a]" href={h}>{l}</Link></li>
               ))}
             </ul>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <a href={site.workspaceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-[44px] items-center rounded-full bg-white px-5 text-sm font-bold text-slate-900 transition-colors hover:bg-slate-100">Workspace</a>
-              <a href={site.sigceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-[44px] items-center rounded-full bg-[#ffd60a] px-5 text-sm font-extrabold text-slate-900 transition-colors hover:bg-[#ffdd2e]">SIGCE</a>
-            </div>
+            <p className="mt-8 border-t border-white/10 pt-6 text-[12px] font-medium text-white/50">RBD 4564 · SLEP Andalién Sur · © 2026</p>
+            <p className="mt-2 text-[12px] text-white/35">
+              <a href={site.sigceUrl} target="_blank" rel="noreferrer" className="hover:text-white/70">SIGCE — uso interno</a>
+            </p>
           </nav>
           <div>
             <p className="text-[13px] font-extrabold uppercase tracking-[0.14em] text-slate-300">Contacto</p>
@@ -37,7 +37,6 @@ export const SiteFooter = memo(function SiteFooter() {
               <a className="block text-white hover:text-[#ffd60a]" href={`mailto:${site.email}`}>{site.email}</a>
               <p className="pt-2 text-slate-200"><a className="text-white hover:text-[#ffd60a]" href={site.facebook} target="_blank" rel="noreferrer">Facebook</a> · <a className="text-white hover:text-[#ffd60a]" href={site.instagram} target="_blank" rel="noreferrer">Instagram</a></p>
             </div>
-            <p className="mt-8 border-t border-white/10 pt-6 text-[13px] font-medium text-slate-300">RBD 4564 · SLEP Andalién Sur · © 2026</p>
           </div>
         </div>
       </div>

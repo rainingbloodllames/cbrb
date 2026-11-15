@@ -75,32 +75,10 @@ section[id], main [id] { scroll-margin-top: 96px; }
   border: 1px solid #e2e8f0;
   box-shadow: 0 4px 20px rgba(11, 30, 68, 0.08);
 }
-@media (prefers-color-scheme: dark) {
-  .glass-panel {
-    background: #131827;
-    border-color: rgba(255,255,255,0.09);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
-  }
-}
-.dark .glass-panel {
-  background: #131827;
-  border-color: rgba(255,255,255,0.09);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
-}
 
 .solid-panel {
   background: #ffffff;
   border: 1px solid rgba(15, 23, 42, 0.08);
-}
-@media (prefers-color-scheme: dark) {
-  .solid-panel {
-    background: #131827;
-    border-color: rgba(255,255,255,0.09);
-  }
-}
-.dark .solid-panel {
-  background: #131827;
-  border-color: rgba(255,255,255,0.09);
 }
 
 .shadow-glass-light { box-shadow: 0 4px 20px rgba(11, 30, 68, 0.08); }

@@ -72,7 +72,7 @@ export default function ContactPage() {
         <div className="space-y-3">
           <div className="ios-card overflow-hidden">
             <div className="flex items-center justify-between gap-4 p-5">
-              <h2 className="font-heading text-lg font-bold text-slate-900 dark:text-white">Ubicación</h2>
+              <h2 className="font-heading text-lg font-bold text-slate-900">Ubicación</h2>
               <a href={site.mapUrl} target="_blank" rel="noreferrer" className="pressable flex min-h-[44px] items-center rounded-full bg-[#0066cc] px-4 text-sm font-bold text-white">
                 Cómo llegar
               </a>
@@ -86,7 +86,7 @@ export default function ContactPage() {
             <p className="sr-only">Mapa de San Martín 1580, Concepción</p>
           </div>
           <div className="ios-card p-5">
-            <h2 className="font-heading text-lg font-bold text-slate-900 dark:text-white">Horario secretaría</h2>
+            <h2 className="font-heading text-lg font-bold text-slate-900">Horario secretaría</h2>
             <p className="mt-1 text-sm font-semibold text-slate-700 dark:text-slate-200">Lunes a viernes 8:30–17:30.</p>
           </div>
         </div>

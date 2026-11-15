@@ -103,12 +103,6 @@ export const SiteHeader = memo(function SiteHeader() {
                   </li>
                 );
               })}
-              <li className="pt-1">
-                <a href={site.workspaceUrl} target="_blank" rel="noreferrer" className="flex min-h-[52px] items-center justify-between rounded-2xl bg-slate-50 px-4 text-[15px] font-bold text-slate-800 ring-1 ring-slate-100">Workspace <span className="text-xs font-semibold text-slate-500">Externo ↗</span></a>
-              </li>
-              <li>
-                <a href={site.sigceUrl} target="_blank" rel="noreferrer" className="flex min-h-[52px] items-center justify-between rounded-2xl bg-[#0b1e44] px-4 text-[15px] font-extrabold text-white">SIGCE <span className="grid h-6 w-6 place-items-center rounded-full bg-[#ffd60a] text-slate-900"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17 17 7M8 7h9v9" strokeLinecap="round"/></svg></span></a>
-              </li>
               <li className="pt-2">
                 <a href={site.saeUrl} target="_blank" rel="noreferrer" className="flex min-h-[56px] items-center justify-center gap-2 rounded-full bg-[#ffd60a] px-5 text-[16px] font-extrabold text-slate-900 shadow-sm">
                   Postula por SAE — Admisión 2027

@@ -72,24 +72,23 @@ export default function Home() {
           </div>
 
           <aside aria-label="Identidad del colegio" className="self-start">
-            <div className="overflow-hidden rounded-[28px] bg-white p-6 text-slate-900 shadow-2xl shadow-black/30 sm:p-7">
-              <div className="flex items-center gap-4">
-                <div className="flex-1 min-w-0">
-                  <p className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-500">Escuela N°2 de 1843</p>
-                  <p className="mt-1 font-heading text-[15px] font-extrabold leading-tight">Concepción · Biobío</p>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    <span className="rounded-full bg-[#0066cc] px-2.5 py-1 text-[11px] font-bold text-white">Chile</span>
-                    <span className="rounded-full bg-emerald-600 px-2.5 py-1 text-[11px] font-bold text-white">Brasil</span>
-                    <span className="rounded-full bg-slate-900 px-2.5 py-1 text-[11px] font-bold text-white">Bicentenario</span>
+            <div className="overflow-hidden rounded-[28px] bg-white shadow-2xl shadow-black/30">
+              <div className="relative">
+                <Image src="/fotos/estandarte-media.jpg" alt="Estudiantes de enseñanza media con estandarte del colegio en desfile" width={1200} height={900} priority sizes="(min-width: 1024px) 40vw, 90vw" className="aspect-[4/3] w-full object-cover" />
+                <span className="absolute left-3 top-3 rounded-full bg-slate-900/70 px-3 py-1 text-[11px] font-bold text-white backdrop-blur">Foto oficial · SAE MINEDUC</span>
+                <div className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-2xl bg-white/90 p-3 backdrop-blur">
+                  <Image src="/logos/cbrb.png" alt="" width={80} height={109} className="h-14 w-auto" />
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-500">Escuela N°2 de 1843</p>
+                    <p className="font-heading text-[14px] font-extrabold leading-tight text-slate-900">Concepción · Biobío</p>
+                    <div className="mt-1.5 flex flex-wrap gap-1">
+                      <span className="rounded-full bg-[#0066cc] px-2 py-0.5 text-[10px] font-bold text-white">Chile</span>
+                      <span className="rounded-full bg-[#30d158] px-2 py-0.5 text-[10px] font-bold text-[#052e16]">Brasil</span>
+                    </div>
                   </div>
                 </div>
-                <div className="shrink-0">
-                  <Image src="/logos/cbrb.png" alt="Escudo del Colegio República del Brasil" width={200} height={272} priority className="h-36 w-auto sm:h-44" />
-                </div>
               </div>
-              <div className="mt-5 border-t border-slate-100 pt-4">
-                <Image src="/logos/slep-andalien-sur.png" alt="SLEP Andalién Sur" width={240} height={130} className="h-12 w-auto" />
-              </div>
+              <Image src="/logos/slep-andalien-sur.png" alt="SLEP Andalién Sur" width={240} height={130} className="mx-auto h-12 w-auto py-3" />
             </div>
           </aside>
         </div>
@@ -204,46 +203,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ACCESO RÁPIDO */}
-      <section className="mx-auto max-w-7xl px-4 pt-16 sm:px-6 sm:pt-20" aria-labelledby="plataformas-titulo">
-        <h2 id="plataformas-titulo" className="font-heading text-[32px] font-extrabold leading-[1.05] tracking-tight sm:text-[40px]">Acceso <span className="text-[#0066cc]">rápido</span></h2>
-        <div className="mt-7 grid gap-4 sm:grid-cols-2">
-          <Reveal delay={0}>
-            <a href={site.workspaceUrl} target="_blank" rel="noreferrer" className="group block h-full relative overflow-hidden rounded-[28px] bg-[#0066cc] p-7 text-white shadow-lg shadow-blue-900/20 transition-transform hover:-translate-y-0.5 sm:p-8" style={{minHeight:190}}>
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" aria-hidden="true" />
-              <div className="relative flex h-full flex-col justify-between">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="text-[12px] font-extrabold uppercase tracking-[0.14em] text-white/80">Plataforma</p>
-                    <p className="mt-1 font-heading text-[26px] font-extrabold leading-tight">Google Workspace</p>
-                    <p className="mt-1.5 text-[15px] font-medium text-white">Gmail, Classroom y Drive @cbrb.cl vía MINEDUC.</p>
-                  </div>
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/20 ring-1 ring-white/30 backdrop-blur">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
-                  </span>
-                </div>
-                <p className="mt-6 inline-flex items-center gap-2 text-[15px] font-bold">Acceder <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[#0066cc] transition-transform group-hover:translate-x-0.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round"/></svg></span></p>
-              </div>
-            </a>
-          </Reveal>
-          <Reveal delay={60}>
-            <a href={site.sigceUrl} target="_blank" rel="noreferrer" className="group block h-full relative overflow-hidden rounded-[28px] bg-[#0b1e44] p-7 text-white shadow-lg shadow-slate-900/20 transition-transform hover:-translate-y-0.5 sm:p-8" style={{minHeight:190}}>
-              <div className="absolute inset-0 bg-gradient-to-br from-[#ffd60a]/20 to-transparent" aria-hidden="true" />
-              <div className="relative flex h-full flex-col justify-between">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="text-[12px] font-extrabold uppercase tracking-[0.14em] text-[#ffd60a]">Gestión</p>
-                    <p className="mt-1 font-heading text-[26px] font-extrabold leading-tight">SIGCE</p>
-                    <p className="mt-1.5 text-[15px] font-medium text-slate-200">Convivencia escolar para funcionarios.</p>
-                  </div>
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#ffd60a] text-slate-900">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
-                  </span>
-                </div>
-                <p className="mt-6 inline-flex items-center gap-2 text-[15px] font-bold">Acceder <span className="grid h-8 w-8 place-items-center rounded-full bg-[#ffd60a] text-slate-900 transition-transform group-hover:translate-x-0.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round"/></svg></span></p>
-              </div>
-            </a>
-          </Reveal>
+      {/* SÍGUENOS */}
+      <section className="mx-auto max-w-7xl px-4 pt-16 sm:px-6 sm:pt-20" aria-labelledby="social-titulo">
+        <h2 id="social-titulo" className="font-heading text-[32px] font-extrabold leading-[1.05] tracking-tight sm:text-[40px]">Síguenos <span className="text-[#0066cc]">en redes</span></h2>
+        <p className="mt-2 max-w-xl text-[15px] font-medium text-slate-600">El día a día — actos, desfiles, deportes y avisos — lo publicamos en nuestras redes oficiales.</p>
+        <div className="mt-7 grid gap-4 sm:grid-cols-3">
+          <a href={site.instagram} target="_blank" rel="noreferrer" className="group block h-full rounded-[28px] bg-slate-900 p-7 text-white shadow-lg transition-transform hover:-translate-y-0.5" style={{minHeight:160}}>
+            <p className="text-[12px] font-extrabold uppercase tracking-[0.14em] text-slate-300">Instagram</p>
+            <p className="mt-1 font-heading text-[22px] font-extrabold leading-tight">@colegio_brasil</p>
+            <p className="mt-1.5 text-[15px] font-medium text-slate-300">Fotos y videos del colegio.</p>
+            <p className="mt-4 text-[15px] font-bold">Seguir →</p>
+          </a>
+          <a href={site.facebook} target="_blank" rel="noreferrer" className="group block h-full rounded-[28px] bg-[#0066cc] p-7 text-white shadow-lg transition-transform hover:-translate-y-0.5" style={{minHeight:160}}>
+            <p className="text-[12px] font-extrabold uppercase tracking-[0.14em] text-white/80">Facebook</p>
+            <p className="mt-1 font-heading text-[22px] font-extrabold leading-tight">Colegio Bicentenario</p>
+            <p className="mt-1.5 text-[15px] font-medium text-white/90">Noticias y transmisiones.</p>
+            <p className="mt-4 text-[15px] font-bold">Seguir →</p>
+          </a>
+          <Link href="/contacto" className="group block h-full rounded-[28px] bg-[#ffd60a] p-7 text-slate-900 shadow-lg transition-transform hover:-translate-y-0.5" style={{minHeight:160}}>
+            <p className="text-[12px] font-extrabold uppercase tracking-[0.14em] text-slate-700">Contacto</p>
+            <p className="mt-1 font-heading text-[22px] font-extrabold leading-tight">San Martín 1580</p>
+            <p className="mt-1.5 text-[15px] font-medium text-slate-800">(41) 222 4711 · Concepción</p>
+            <p className="mt-4 text-[15px] font-bold">Cómo llegar →</p>
+          </Link>
         </div>
       </section>
 

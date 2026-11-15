@@ -48,13 +48,13 @@ export default function NosotrosPage() {
       </header>
 
       <section className="pt-10" aria-labelledby="historia-titulo">
-        <h2 id="historia-titulo" className="font-heading text-2xl font-bold text-slate-900 dark:text-white">Historia</h2>
+        <h2 id="historia-titulo" className="font-heading text-2xl font-bold text-slate-900">Historia</h2>
         <ol className="mt-4 grid gap-3 sm:grid-cols-2">
           {HISTORIA.map((h, i) => (
             <Reveal key={h.y} delay={i * 40}>
               <div className="card-lift ios-card h-full p-5">
                 <p className="font-heading text-2xl font-bold tabular-nums text-[#0f2a5c] dark:text-white">{h.y}</p>
-                <p className="mt-1 font-heading font-bold text-slate-900 dark:text-white">{h.t}</p>
+                <p className="mt-1 font-heading font-bold text-slate-900">{h.t}</p>
                 <p className="mt-1 text-sm font-medium leading-relaxed text-slate-700 dark:text-slate-200">{h.d}</p>
               </div>
             </Reveal>
@@ -63,7 +63,7 @@ export default function NosotrosPage() {
       </section>
 
       <section className="pt-10" aria-labelledby="ambiente-titulo">
-        <h2 id="ambiente-titulo" className="font-heading text-2xl font-bold text-slate-900 dark:text-white">Ambiente escolar</h2>
+        <h2 id="ambiente-titulo" className="font-heading text-2xl font-bold text-slate-900">Ambiente escolar</h2>
         <p className="mt-1.5 text-sm font-semibold text-slate-700 dark:text-slate-200">Fotos oficiales de la vitrina SAE: desfile, parvularia, acto cívico y bandera de Brasil.</p>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2" aria-label="Imágenes de ambiente escolar">
           {gallery.slice(0, 4).map((g, i) => (
@@ -78,7 +78,7 @@ export default function NosotrosPage() {
                   className="media-zoom aspect-[4/3] w-full object-cover"
                 />
                 <figcaption className="px-4 py-3">
-                  <p className="font-heading text-sm font-bold text-slate-900 dark:text-white">{g.title}</p>
+                  <p className="font-heading text-sm font-bold text-slate-900">{g.title}</p>
                   <p className="mt-0.5 text-xs font-medium text-slate-700 dark:text-slate-200">{g.caption}</p>
                 </figcaption>
               </figure>
@@ -89,13 +89,13 @@ export default function NosotrosPage() {
 
       <section className="grid gap-3 pt-8 sm:grid-cols-2" aria-label="Misión y sellos">
         <div className="ios-card p-6">
-          <h2 className="font-heading text-xl font-bold text-slate-900 dark:text-white">Misión</h2>
+          <h2 className="font-heading text-xl font-bold text-slate-900">Misión</h2>
           <p className="mt-2 text-sm font-medium leading-relaxed text-slate-700 dark:text-slate-200">
             Formar estudiantes íntegros, críticos y comprometidos con su comunidad, en un ambiente público, laico y de excelencia.
           </p>
         </div>
         <div className="ios-card p-6">
-          <h2 className="font-heading text-xl font-bold text-slate-900 dark:text-white">Sellos</h2>
+          <h2 className="font-heading text-xl font-bold text-slate-900">Sellos</h2>
           <ul className="mt-2 space-y-1.5 text-sm font-semibold text-slate-700 dark:text-slate-200">
             <li>Educación pública de calidad</li>
             <li>Convivencia y respeto</li>
@@ -105,12 +105,12 @@ export default function NosotrosPage() {
       </section>
 
       <section className="ios-card mt-8 p-6" aria-labelledby="equipo-titulo">
-        <h2 id="equipo-titulo" className="font-heading text-2xl font-bold text-slate-900 dark:text-white">Equipo directivo</h2>
+        <h2 id="equipo-titulo" className="font-heading text-2xl font-bold text-slate-900">Equipo directivo</h2>
         <ul className="mt-4">
           {team.map((m) => (
             <li key={m.role} className="flex min-h-[52px] items-center justify-between gap-4 border-b border-slate-200 py-3 last:border-0 dark:border-slate-700">
               <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">{m.role}</span>
-              <span className="text-right text-sm font-bold text-slate-900 dark:text-white">{m.name}</span>
+              <span className="text-right text-sm font-bold text-slate-900">{m.name}</span>
             </li>
           ))}
         </ul>

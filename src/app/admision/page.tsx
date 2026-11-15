@@ -39,7 +39,7 @@ export default function AdmisionPage() {
               <div className="card-lift ios-card flex h-full gap-4 p-5">
                 <span className="icon-pop flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0066cc] font-heading text-lg font-bold text-white" aria-hidden="true">{s.n}</span>
                 <span className="min-w-0">
-                  <span className="block font-heading text-lg font-bold text-slate-900 dark:text-white">{s.t}</span>
+                  <span className="block font-heading text-lg font-bold text-slate-900">{s.t}</span>
                   <span className="mt-1 block text-sm font-medium leading-relaxed text-slate-700 dark:text-slate-200">{s.d}</span>
                 </span>
               </div>
