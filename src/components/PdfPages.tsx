@@ -10,9 +10,11 @@ import type { PDFDocumentProxy } from "pdfjs-dist";
 pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString();
 
 const ZOOMS = [0.7, 0.9, 1.1, 1.4, 1.8] as const;
-const TURN_TIMEOUT_MS = 680; // fallback de seguridad (la animación dura 420ms)
+const TURN_TIMEOUT_MS = 1050; // fallback (la hoja dura 800ms)
+const WARM_TIMEOUT_MS = 900; // si el raster no llega, girar igual
 
-type Turn = { from: number; to: number; dir: 1 | -1; kind: "flip" | "jump"; id: number };
+type Turn = { from: number; to: number; dir: 1 | -1; kind: "flip" | "jump"; snapshot: string | null };
+type TurnReq = { from: number; to: number };
 type Hit = { page: number; count: number; snippet: string };
 type Size = { w: number; h: number };
 
@@ -148,6 +150,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
   const [numPages, setNumPages] = useState(0);
   const [page, setPage] = useState(1);
   const [turn, setTurn] = useState<Turn | null>(null);
+  const [turnReq, setTurnReq] = useState<TurnReq | null>(null);
   const [zoomIdx, setZoomIdx] = useState(2);
   const [fit, setFit] = useState(false);
   const [spread, setSpread] = useState(false);
@@ -167,11 +170,15 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
 
   const rootRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const pageInputRef = useRef<HTMLInputElement>(null);
   const pdfRef = useRef<PDFDocumentProxy | null>(null);
   const pendingRef = useRef<number | null>(null);
   const turnRef = useRef<Turn | null>(null);
+  const turnReqRef = useRef<TurnReq | null>(null);
+  /** Páginas ya rasterizadas a la escala/rotación actual (clave: nº de página). */
+  const armedRef = useRef<Set<string>>(new Set());
   const searchSeqRef = useRef(0);
   const textCacheRef = useRef<Map<number, string>>(new Map());
   const thumbRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
@@ -180,6 +187,9 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
   useEffect(() => {
     turnRef.current = turn;
   }, [turn]);
+  useEffect(() => {
+    turnReqRef.current = turnReq;
+  }, [turnReq]);
 
   const spreadOn = spread && mode === "libro";
   const step = mode === "continuo" ? 1 : spreadOn ? 2 : 1;
@@ -221,12 +231,36 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
   const startTurn = useCallback(
     (from: number, to: number) => {
       if (from === to) return;
-      const dir = to > from ? 1 : -1;
-      const kind = Math.abs(to - from) > 2 ? "jump" : "flip";
+      const dir = (to > from ? 1 : -1) as 1 | -1;
+      const wantLeaf = Math.abs(to - from) === 1 && !spreadOn;
+      let snapshot: string | null = null;
+      if (wantLeaf) {
+        try {
+          const canvas = stageRef.current?.querySelector("canvas") as HTMLCanvasElement | null;
+          snapshot = canvas ? canvas.toDataURL("image/jpeg", 0.92) : null;
+        } catch {
+          snapshot = null;
+        }
+      }
       scrollToReaderTop();
-      setTurn({ from, to, dir, kind, id: Date.now() });
+      setTurn({ from, to, dir, kind: wantLeaf && snapshot ? "flip" : "jump", snapshot });
     },
-    [scrollToReaderTop],
+    [scrollToReaderTop, spreadOn],
+  );
+
+  // Una página quedó rasterizada: arma + si era el destino esperado, gira ya
+  const onPageRendered = useCallback(
+    (p: number, viewport: { width: number; height: number }) => {
+      handleRenderSuccess(viewport);
+      armedRef.current.add(String(p));
+      const req = turnReqRef.current;
+      if (req && req.to === p) {
+        turnReqRef.current = null;
+        setTurnReq(null);
+        startTurn(req.from, req.to);
+      }
+    },
+    [handleRenderSuccess, startTurn],
   );
 
   const finishTurn = useCallback(() => {
@@ -256,7 +290,13 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
         return;
       }
       if (t === page) return;
-      startTurn(page, t);
+      // Si el destino ya está rasterizado a esta escala, girar ya.
+      // Si no, se monta tibia (invisible) y onPageRendered gira al quedar armada.
+      if (armedRef.current.has(String(t))) {
+        startTurn(page, t);
+      } else {
+        setTurnReq({ from: page, to: t });
+      }
     },
     [numPages, mode, page, startTurn],
   );
@@ -286,6 +326,27 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
     const t = window.setTimeout(finishTurn, TURN_TIMEOUT_MS);
     return () => window.clearTimeout(t);
   }, [turn, finishTurn]);
+
+  // Si el destino tarda en rasterizar, girar igual tras el fallback
+  useEffect(() => {
+    if (!turnReq) return;
+    const t = window.setTimeout(() => {
+      const req = turnReqRef.current;
+      if (req) {
+        turnReqRef.current = null;
+        setTurnReq(null);
+        startTurn(req.from, req.to);
+      }
+    }, WARM_TIMEOUT_MS);
+    return () => window.clearTimeout(t);
+  }, [turnReq, startTurn]);
+
+  // Escala/rotación cambian: los armados dejan de valer y el turno se asienta
+  useEffect(() => {
+    armedRef.current.clear();
+    if (turnRef.current) finishTurn();
+    setTurnReq(null);
+  }, [scale, rotate, finishTurn]);
 
   // NOTA: no hay efecto de reset por href. react-pdf <Document> usa Suspense:
   // el commit ocurre tras resolver y el efecto hijo (onLoadSuccess) corre antes
@@ -508,7 +569,14 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
       <div className="overflow-hidden rounded-[18px] bg-white p-1.5 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
         <div className={opts?.spine ? "bg-white shadow-[inset_-16px_0_24px_-16px_rgba(0,0,0,0.45)]" : "bg-white"}>
           {opts?.preload ? (
-            <Page pageNumber={p} scale={scale} rotate={rotate} renderTextLayer={false} renderAnnotationLayer={false} />
+            <Page
+              pageNumber={p}
+              scale={scale}
+              rotate={rotate}
+              renderTextLayer={false}
+              renderAnnotationLayer={false}
+              onRenderSuccess={(v) => onPageRendered(p, v)}
+            />
           ) : (
             <Page
               pageNumber={p}
@@ -517,7 +585,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
               renderTextLayer
               renderAnnotationLayer
               customTextRenderer={textRenderer}
-              onRenderSuccess={handleRenderSuccess}
+              onRenderSuccess={(v) => onPageRendered(p, v)}
               loading={<div className="aspect-[3/4] w-full animate-pulse bg-slate-200" aria-hidden="true" />}
             />
           )}
@@ -716,6 +784,8 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
           setPageInput("1");
           setTurn(null);
           turnRef.current = null;
+          turnReqRef.current = null;
+          setTurnReq(null);
           pendingRef.current = null;
           setQuery("");
           setHits([]);
@@ -747,27 +817,74 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
           onDoubleClick={() => setFit((v) => !v)}
         >
           {mode === "libro" ? (
-            <div className="pdf-stack">
-              {turn ? (
-                <>
-                  <div
-                    className={`pdf-layer ${turn.kind === "flip" ? (turn.dir > 0 ? "pdf-out-next" : "pdf-out-prev") : "pdf-fade-out"}`}
-                    aria-hidden="true"
-                  >
-                    {spreadPages(turn.from)}
+            turn?.kind === "flip" ? (
+              /* Hoja real: destino ya renderizado debajo, snapshot girando encima */
+              <div ref={stageRef} className="pdf-stage">
+                <div className="flex justify-center">
+                  <div className="relative w-fit">
+                    {pageCard(turn.to)}
+                    <div className={`pdf-dest-shadow pdf-dest-shadow-${turn.dir > 0 ? "next" : "prev"}`} aria-hidden="true" />
+                    <div
+                      className={`pdf-leaf pdf-leaf-${turn.dir > 0 ? "next" : "prev"}`}
+                      onAnimationEnd={onTurnEnd}
+                      aria-hidden="true"
+                    >
+                      {turn.dir > 0 ? (
+                        <>
+                          <div className="pdf-leaf-face">
+                            {turn.snapshot ? <img src={turn.snapshot} alt="" draggable={false} /> : null}
+                            <div className="pdf-leaf-curl pdf-leaf-curl-next" />
+                          </div>
+                          <div className="pdf-leaf-face pdf-leaf-backface">
+                            {turn.snapshot ? (
+                              <div className="pdf-leaf-back-lift">
+                                <img src={turn.snapshot} alt="" draggable={false} />
+                              </div>
+                            ) : null}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="pdf-leaf-face">
+                            {turn.snapshot ? (
+                              <div className="pdf-leaf-back-lift">
+                                <img src={turn.snapshot} alt="" draggable={false} />
+                              </div>
+                            ) : null}
+                          </div>
+                          <div className="pdf-leaf-face pdf-leaf-backface">
+                            {turn.snapshot ? <img src={turn.snapshot} alt="" draggable={false} /> : null}
+                            <div className="pdf-leaf-curl pdf-leaf-curl-prev" />
+                          </div>
+                        </>
+                      )}
+                    </div>
                   </div>
-                  <div
-                    key={turn.id}
-                    className={`pdf-layer ${turn.kind === "flip" ? (turn.dir > 0 ? "pdf-in-next" : "pdf-in-prev") : "pdf-fade-in"}`}
-                    onAnimationEnd={onTurnEnd}
-                  >
-                    {spreadPages(turn.to)}
-                  </div>
-                </>
-              ) : (
+                </div>
+              </div>
+            ) : turn ? (
+              /* Salto largo: fade sobre página ya renderizada */
+              <div ref={stageRef} className="pdf-stack">
+                <div className="pdf-layer pdf-fade-out" aria-hidden="true">
+                  {spreadPages(turn.from)}
+                </div>
+                <div className="pdf-layer pdf-fade-in" onAnimationEnd={onTurnEnd}>
+                  {spreadPages(turn.to)}
+                </div>
+              </div>
+            ) : turnReq ? (
+              /* Esperando el raster: destino tibio invisible, saliente intacta */
+              <div ref={stageRef} className="pdf-stack">
+                <div className="pdf-layer">{spreadPages(turnReq.from)}</div>
+                <div className="pdf-layer pdf-warm" aria-hidden="true">
+                  {spreadPages(turnReq.to)}
+                </div>
+              </div>
+            ) : (
+              <div ref={stageRef} className="pdf-stack">
                 <div className="pdf-layer">{spreadPages(page)}</div>
-              )}
-            </div>
+              </div>
+            )
           ) : null}
 
           {mode === "continuo" && numPages > 0 ? (

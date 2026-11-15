@@ -212,12 +212,11 @@ details[open] > p {
   .dialog-enter,
   .motion-sheet[data-open="true"],
   .page-fade,
-  .pdf-in-next,
-  .pdf-in-prev,
-  .pdf-out-next,
-  .pdf-out-prev,
-  .pdf-fade-in,
-  .pdf-fade-out,
+  .pdf-leaf-next,
+  .pdf-leaf-prev,
+  .pdf-leaf-curl,
+  .pdf-dest-shadow,
+  .pdf-warm-in,
   details[open] > p {
     animation: enter-fade-in 150ms ease-out both !important;
   }
@@ -242,46 +241,129 @@ details[open] > p {
   }
 }
 
-/* --- PDF reader: premium book turn (direction-aware, CSS native) --- */
+/* --- PDF reader: real leaf turn (snapshot <img> + 3D hinge, canvas never transformed) --- */
 .pdf-stack { display: grid; }
 .pdf-layer {
   grid-area: 1 / 1;
   min-width: 0;
   display: flex;
   justify-content: center;
-  will-change: transform, opacity, filter;
 }
+.pdf-warm { opacity: 0; pointer-events: none; }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
-@keyframes pdf-in-next {
-  from { opacity: 0; transform: perspective(1200px) translateX(56px) rotateY(-10deg); transform-origin: 0% 50%; filter: blur(2px); }
-  to { opacity: 1; transform: none; filter: blur(0); }
+/* Stage con perspectiva para la hoja */
+.pdf-stage {
+  position: relative;
+  perspective: 2200px;
+  perspective-origin: 50% 50%;
 }
-@keyframes pdf-out-next {
-  from { opacity: 1; transform: none; filter: blur(0); }
-  to { opacity: 0; transform: perspective(1200px) translateX(-40px) rotateY(8deg); transform-origin: 100% 50%; filter: blur(2px); }
+
+/* Hoja que gira (solo transform, solo bitmap) */
+.pdf-leaf {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 20;
+  user-select: none;
+  -webkit-user-select: none;
 }
-@keyframes pdf-in-prev {
-  from { opacity: 0; transform: perspective(1200px) translateX(-56px) rotateY(10deg); transform-origin: 100% 50%; filter: blur(2px); }
-  to { opacity: 1; transform: none; filter: blur(0); }
+.pdf-leaf-next {
+  transform-origin: left center;
+  animation: pdf-leaf-next 800ms cubic-bezier(0.65, 0.05, 0.3, 1) both;
 }
-@keyframes pdf-out-prev {
-  from { opacity: 1; transform: none; filter: blur(0); }
-  to { opacity: 0; transform: perspective(1200px) translateX(40px) rotateY(-8deg); transform-origin: 0% 50%; filter: blur(2px); }
+.pdf-leaf-prev {
+  transform-origin: right center;
+  animation: pdf-leaf-prev 800ms cubic-bezier(0.65, 0.05, 0.3, 1) both;
 }
+@keyframes pdf-leaf-next {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(-180deg); }
+}
+@keyframes pdf-leaf-prev {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(180deg); }
+}
+.pdf-leaf-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: #fff;
+}
+.pdf-leaf-face img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.pdf-leaf-backface {
+  transform: rotateY(180deg);
+  background: linear-gradient(100deg, #ffffff 0%, #eef1f6 70%, #e2e7f0 100%);
+}
+/* Show-through: el texto se trasluce apenas en el reverso del papel */
+.pdf-leaf-back-lift {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.pdf-leaf-back-lift img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform: scaleX(-1);
+  opacity: 0.13;
+  filter: brightness(1.02) saturate(0.6);
+}
+/* Sombra de rizo: pico a mitad del giro */
+.pdf-leaf-curl {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  animation: pdf-curl 800ms ease-in-out both;
+}
+.pdf-leaf-curl-next {
+  background: linear-gradient(270deg, rgba(8, 20, 48, 0.22) 0%, rgba(8, 20, 48, 0.08) 22%, transparent 45%);
+}
+.pdf-leaf-curl-prev {
+  background: linear-gradient(90deg, rgba(8, 20, 48, 0.22) 0%, rgba(8, 20, 48, 0.08) 22%, transparent 45%);
+}
+@keyframes pdf-curl {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  60% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+/* Sombra que la hoja proyecta sobre la página destino */
+.pdf-dest-shadow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  animation: pdf-curl 800ms ease-in-out both;
+}
+.pdf-dest-shadow-next {
+  background: linear-gradient(90deg, rgba(8, 20, 48, 0.16) 0%, transparent 45%);
+}
+.pdf-dest-shadow-prev {
+  background: linear-gradient(270deg, rgba(8, 20, 48, 0.16) 0%, transparent 45%);
+}
+
+/* Saltos largos: fade breve sobre página ya renderizada */
 @keyframes pdf-fade-in {
-  from { opacity: 0; transform: translateY(8px) scale(0.994); filter: blur(2px); }
-  to { opacity: 1; transform: none; filter: blur(0); }
+  from { opacity: 0; transform: translateY(8px) scale(0.994); }
+  to { opacity: 1; transform: none; }
 }
 @keyframes pdf-fade-out {
   from { opacity: 1; transform: none; }
   to { opacity: 0; transform: translateY(-6px) scale(0.994); }
 }
-.pdf-in-next { animation: pdf-in-next 420ms var(--ease-out) both; pointer-events: none; }
-.pdf-out-next { animation: pdf-out-next 420ms var(--ease-out) both; pointer-events: none; }
-.pdf-in-prev { animation: pdf-in-prev 420ms var(--ease-out) both; pointer-events: none; }
-.pdf-out-prev { animation: pdf-out-prev 420ms var(--ease-out) both; pointer-events: none; }
 .pdf-fade-in { animation: pdf-fade-in 260ms var(--ease-out) both; pointer-events: none; }
 .pdf-fade-out { animation: pdf-fade-out 260ms var(--ease-out) both; pointer-events: none; }
 
