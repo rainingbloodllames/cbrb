@@ -35,7 +35,7 @@ export default function ComunidadPage() {
         <h2 id="calendario-titulo" className="font-heading text-xl font-bold">Calendario escolar</h2>
         <p className="mt-1.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
           Actos, reuniones y fechas oficiales. En época SAE y matrícula, revisa también{" "}
-          <a href={site.saeUrl} target="_blank" rel="noreferrer" className="font-bold text-[#0a84ff] underline underline-offset-4">admisión SAE</a>.
+          <a href={site.saeUrl} target="_blank" rel="noreferrer" className="font-bold text-[#0066cc] underline underline-offset-4">admisión SAE</a>.
         </p>
       </section>
     </div>

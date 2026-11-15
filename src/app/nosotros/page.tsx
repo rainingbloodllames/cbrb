@@ -106,7 +106,7 @@ export default function NosotrosPage() {
         <ul className="mt-4">
           {team.map((m) => (
             <li key={m.role} className="flex min-h-[52px] items-center justify-between gap-4 border-b border-slate-100 py-3 last:border-0 dark:border-slate-800">
-              <span className="text-sm text-slate-500">{m.role}</span>
+              <span className="text-sm text-slate-600">{m.role}</span>
               <span className="text-right text-sm font-semibold">{m.name}</span>
             </li>
           ))}

@@ -11,8 +11,8 @@ const NIVELES = [
 ];
 
 const PILARES = [
-  { tag: "1843", title: "183 años de historia", text: "Escuela N°2 de Concepción. Un colegio bicentenario que sigue formando generaciones.", tone: "bg-[#0a84ff]" },
-  { tag: "Público", title: "Laico y gratuito", text: "Educación pública de calidad, sin pago, abierta a todas las familias.", tone: "bg-[#30d158]" },
+  { tag: "1843", title: "183 años de historia", text: "Escuela N°2 de Concepción. Un colegio bicentenario que sigue formando generaciones.", tone: "bg-[#0066cc]" },
+  { tag: "Público", title: "Laico y gratuito", text: "Educación pública de calidad, sin pago, abierta a todas las familias.", tone: "bg-[#30d158] text-[#052e16]" },
   { tag: "SLEP", title: "Andalién Sur", text: "Parte del Servicio Local de Educación Pública de Concepción, Chiguayante, Florida y Hualqui.", tone: "bg-[#ffd60a]" },
   { tag: "RBD 4564", title: "Comunidad activa", text: "1.342 estudiantes, 132 docentes. Convivencia, deportes, artes y talleres en San Martín 1580.", tone: "bg-[#ff453a]" },
 ];
@@ -66,8 +66,8 @@ export default function Home() {
               <img src="/logos/slep-andalien-sur.png" alt="Servicio Local de Educación Pública Andalién Sur" width={240} height={130} className="mx-auto mt-4 h-16 w-auto" />
               <p className="mt-4 text-center text-sm font-semibold">Escuela N°2 de 1843 · Concepción, Biobío</p>
               <div className="mt-4 flex justify-center gap-2">
-                <span className="rounded-full bg-[#0a84ff] px-3 py-1 text-xs font-bold text-white">Chile</span>
-                <span className="rounded-full bg-[#30d158] px-3 py-1 text-xs font-bold text-white">Brasil</span>
+                <span className="rounded-full bg-[#0066cc] px-3 py-1 text-xs font-bold text-white">Chile</span>
+                <span className="rounded-full bg-[#30d158] px-3 py-1 text-xs font-bold text-[#052e16]">Brasil</span>
                 <span className="rounded-full bg-slate-900/10 px-3 py-1 text-xs font-bold dark:bg-white/15">Bicentenario</span>
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function Home() {
         <div className="stagger mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {PILARES.map((p) => (
             <article key={p.title} className="animate-enter-up ios-card min-w-0 p-6">
-              <span className={`inline-flex rounded-full px-3 py-1 text-xs font-bold text-white ${p.tone} ${p.tag === "SLEP" ? "text-slate-900" : ""}`}>{p.tag}</span>
+              <span className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ${p.tone} ${p.tone.includes("text-[#052e16]") || p.tone.includes("text-slate-900") ? "" : "text-white"}`}>{p.tag}</span>
               <h3 className="mt-3 font-heading text-lg font-bold leading-snug">{p.title}</h3>
               <p className="mt-1.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{p.text}</p>
             </article>
@@ -105,15 +105,15 @@ export default function Home() {
         <div className="stagger mt-5 grid gap-3 lg:grid-cols-3">
           {NIVELES.map((n, i) => (
             <Link key={n.n} href="/admision" className="animate-enter-up group ios-card flex min-h-[120px] items-center gap-4 p-5">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#0a84ff] font-heading text-lg font-bold text-white" aria-hidden="true">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#0066cc] font-heading text-lg font-bold text-white" aria-hidden="true">
                 {n.n === "Parvularia" ? "PK" : n.n === "Básica" ? "B" : "M"}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block text-xs font-bold text-slate-500">{n.edad}</span>
+                <span className="block text-xs font-bold text-slate-600">{n.edad}</span>
                 <span className="mt-0.5 block font-heading text-lg font-bold leading-snug">{n.t}</span>
                 <span className="mt-1 block text-sm leading-relaxed text-slate-600 dark:text-slate-400">{n.d}</span>
               </span>
-              <span className="shrink-0 font-heading text-lg text-slate-300 transition-colors duration-150 group-hover:text-[#0a84ff]" aria-hidden="true">0{i + 1}</span>
+              <span className="shrink-0 font-heading text-lg text-slate-300 transition-colors duration-150 group-hover:text-[#0066cc]" aria-hidden="true">0{i + 1}</span>
             </Link>
           ))}
         </div>
@@ -154,7 +154,7 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-5" aria-labelledby="plataformas-titulo">
         <h2 id="plataformas-titulo" className="font-heading text-3xl font-bold text-pretty sm:text-4xl">Acceso rápido</h2>
         <div className="stagger mt-5 grid gap-3 sm:grid-cols-2">
-          <a href={site.workspaceUrl} target="_blank" rel="noreferrer" className="animate-enter-up group rounded-[28px] bg-gradient-to-br from-[#0a84ff] to-[#0066cc] p-6 text-white">
+          <a href={site.workspaceUrl} target="_blank" rel="noreferrer" className="animate-enter-up group rounded-[28px] bg-gradient-to-br from-[#0066cc] to-[#0066cc] p-6 text-white">
             <p className="font-heading text-xl font-bold">Google Workspace</p>
             <p className="mt-1 text-sm text-white/85">Gmail, Classroom y Drive @cbrb.cl vía MINEDUC.</p>
             <p className="mt-4 flex min-h-[44px] items-center text-sm font-bold">Acceder</p>

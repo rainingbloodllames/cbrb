@@ -2,10 +2,13 @@
 // Fase 2: migrar a Sanity free (mismo shape). Fase 1: este archivo = CMS.
 // Para publicar una noticia: copia un objeto, cambia título/fecha/texto, commit.
 // Fuentes reales verificadas nov 2026: Resumen.cl, Diario Concepción, Andalién Sur,
-// DEP/MINEDUC, SAE (cdnsae.mineduc.cl, RBD 4564), Educación en Datos.
+// DEP/MINEDUC, SAE (cdnsae.mineduc.cl, RBD 4564), Educación en Datos, Constructora Nahen.
 // Fotos oficiales en public/fotos/ provienen de la vitrina SAE del colegio (MINEDUC).
-// Google Photos (álbumes privados) no es indexable ni scrapeable: si el colegio
-// comparte un link público, se agrega como enlace externo, no como hotlink de imágenes.
+// Google Imágenes: lo que aparece son (a) SAE, (b) prensa con crédito, (c) redes
+// oficiales. Aparecer en Google Imágenes NO da permiso de reutilizar: toda foto
+// de prensa/social se publica con crédito visible + enlace a la fuente original.
+// Cobertura de protestas/denuncias (Resumen 2019-2024) se excluye a propósito
+// de la web institucional decorativa.
 
 export type NewsItem = {
   slug: string;
@@ -130,6 +133,20 @@ export const news: NewsItem[] = [
     source: "Diario Concepción · TVU",
     sourceUrl: "https://www.diarioconcepcion.cl/ciudad/2025/07/11/3-mil-600-millones-colegio-brasil-tendra-importante-obra-de-conservacion-en-infraestructura-y-equipamiento.html",
   },
+  {
+    slug: "educacion-publica-excelencia-historia",
+    title: "Educación pública de excelencia: la historia desde la Escuela N°2 de 1843",
+    date: "2022-10-30",
+    category: "Académica",
+    excerpt:
+      "De Escuela de Primeras Letras a Colegio Bicentenario con enseñanza parvularia, básica y media. 1.470 estudiantes en 2022 y guardadores del Pabellón de Brasil.",
+    body: "La historia académica comienza en 1843 como Escuela N°2, en madera, con preceptores y clases de lectura, aritmética y catecismo. Pasó por Angol con Chacabuco, Cochrane con Serrano y Rengo 65, y desde 2013 ocupa Galvarino esquina San Martín y Roosevelt. En 2022 contaba 48 cursos y 1.470 estudiantes de prekínder a IV medio humanista-científico, con Programa de Integración Escolar, estudiantes sordos y decenas de estudiantes migrantes. Desde sus orígenes es guardador del Pabellón Patrio de la República del Brasil.",
+    image: "https://assets.diarioconcepcion.cl/2022/10/pag-14-4-Colegio-Bicentenario-Republica-de-Brasil-foto-isidoro.jpg",
+    imageAlt: "Sala de clases del Colegio República del Brasil con estudiantes de básica con polera verde y su profesora",
+    imageCredit: "Foto: Isidoro Valenzuela · Diario Concepción (oct 2022)",
+    source: "Diario Concepción · Silvanio Mariani",
+    sourceUrl: "https://www.diarioconcepcion.cl/ciudad/2022/10/30/colegio-bicentenario-republica-de-brasil-educacion-publica-de-excelencia-en-biobio.html",
+  },
 ];
 
 export type GalleryItem = {
@@ -141,11 +158,13 @@ export type GalleryItem = {
 };
 
 /**
- * Galería — fotos oficiales del colegio desde la vitrina SAE (MINEDUC, RBD 4564).
- * Archivos locales en public/fotos/ (copias de cdnsae.mineduc.cl/imagenes/4564/).
- * Lo que aparece en Google Imágenes / Google Maps para este RBD son estas fotos
- * SAE + prensa + redes oficiales. Google Photos privado no se puede embeber por
- * hotlink: si tienes un álbum compartido público, enlázalo en Comunidad.
+ * Galería — fotos oficiales del colegio desde la vitrina SAE (MINEDUC, RBD 4564)
+ * + letrero oficial de la obra SLEP/MINEDUC en Google Imágenes.
+ * Archivos SAE locales en public/fotos/ (copias de cdnsae.mineduc.cl/imagenes/4564/).
+ * Lo que aparece en Google Imágenes para este RBD son estas fotos SAE + prensa
+ * (Resumen.cl, Diario Concepción, DEP, Nahen) + redes oficiales. Aparecer en
+ * Google Imágenes no autoriza reutilizar sin crédito: toda foto de prensa se
+ * cita con crédito visible + enlace a la fuente.
  */
 export const gallery: GalleryItem[] = [
   {
@@ -189,6 +208,13 @@ export const gallery: GalleryItem[] = [
     title: "Estudiantes de ayer",
     caption: "Patrimonio fotográfico del colegio bicentenario. Escuela N°2 de 1843.",
     credit: "Foto histórica: SAE · MINEDUC",
+  },
+  {
+    src: "https://nahen.cl/imagenes/Letreros/ConservacionColegioBrasil.jpeg",
+    alt: "Letrero oficial de obra Aquí se construye Educación Pública del SLEP Andalién Sur junto al patio del colegio",
+    title: "Obra en curso · Aquí se construye",
+    caption: "Conservación del colegio: inicio 2 oct 2025, plazo 600 días, contratista Constructora Nahen.",
+    credit: "Foto: Constructora Nahen / SLEP Andalién Sur · MINEDUC",
   },
 ];
 

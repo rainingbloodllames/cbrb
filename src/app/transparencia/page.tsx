@@ -18,7 +18,7 @@ export default function TransparenciaPage() {
 
       <TransparenciaClientWrapper docs={documents} />
 
-      <p className="mt-5 text-xs text-slate-500">PEI, reglamento y planes RBD 4564 · SLEP Andalién Sur. Si un archivo no abre, escribe a <a href="mailto:contacto@cbrb.cl" className="underline">contacto@cbrb.cl</a>.</p>
+      <p className="mt-5 text-xs text-slate-600">PEI, reglamento y planes RBD 4564 · SLEP Andalién Sur. Si un archivo no abre, escribe a <a href="mailto:contacto@cbrb.cl" className="underline">contacto@cbrb.cl</a>.</p>
     </div>
   );
 }

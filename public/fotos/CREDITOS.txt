@@ -22,15 +22,27 @@ Archivos:
 Uso: sitio web oficial del establecimiento. Crédito visible requerido:
   "Foto oficial: vitrina SAE · MINEDUC (RBD 4564)"
 
-Google Photos / Google Maps:
-  Lo que aparece en Google Imágenes para este RBD son [a] estas fotos SAE,
-  [b] prensa (Resumen.cl, Diario Concepción, DEP/MINEDUC) y [c] redes oficiales
+Google Imágenes (buscar "Colegio Brasil Concepción"):
+  Lo que aparece es [a] estas fotos SAE, [b] prensa (Resumen.cl, Diario
+  Concepción, DEP/MINEDUC, Constructora Nahen) y [c] redes oficiales
   (Instagram @colegio_brasil, Facebook ColegioBicentenarioRepublicadelBrasil).
-  Álbumes privados de Google Photos no son indexables ni embebibles por hotlink.
-  Si el colegio comparte un link público de álbum, enlázalo externamente.
+  Aparecer en Google Imágenes NO autoriza reutilizar sin crédito ni permiso.
+  Toda foto de prensa/social se publica con crédito visible + enlace a la
+  fuente original (ver src/lib/content.ts). Álbumes privados de Google Photos
+  no son indexables ni embebibles por hotlink.
 
-Fotos de prensa en Noticias (no están en esta carpeta):
-  - Resumen.cl (sep 2026): media.resumen.cl/...
-  - Diario Concepción (ago 2025): assets.diarioconcepcion.cl/...
+Fotos de prensa / obra en Noticias y Galería (remotas, con crédito):
+  - Resumen.cl (sep 2026): media.resumen.cl/.../obras-de-colegio-...62-de-avance...
+  - Diario Concepción (ago 2025): assets.diarioconcepcion.cl/2025/08/pag-8-...jpg
+  - Diario Concepción (oct 2022, Isidoro Valenzuela):
+      assets.diarioconcepcion.cl/2022/10/pag-14-4-Colegio-...-foto-isidoro.jpg
+      assets.diarioconcepcion.cl/2022/10/colegio-brasil-850x500.jpg
+      assets.diarioconcepcion.cl/2022/10/colegio-brasil-e1667099639654.jpg
   - DEP/MINEDUC (nov 2025): dep.gob.cl/wp-content/uploads/2025/11/biobio-portada.jpg
-  Ver src/lib/content.ts para créditos y links originales.
+  - Constructora Nahen / SLEP (obra):
+      nahen.cl/imagenes/Letreros/ConservacionColegioBrasil.jpeg
+      (letrero "Aquí se construye Educación Pública", inversión e inicio visible)
+  - Resumen.cl 2019-2024 (protestas/denuncias/tomas): EXCLUIDAS a propósito
+    de la web institucional decorativa. No se usan como imagen decorativa.
+
+Para sumar fotos nuevas: súbelas a esta carpeta y actualiza src/lib/content.ts.

@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "assets.diarioconcepcion.cl" },
       { protocol: "https", hostname: "dep.gob.cl" },
       { protocol: "https", hostname: "cdnsae.mineduc.cl" },
+      { protocol: "https", hostname: "nahen.cl" },
     ],
   },
   turbopack: {

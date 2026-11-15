@@ -51,14 +51,14 @@ export const SchoolGallery = memo(function SchoolGallery({ headingId = "galeria-
               <figcaption className="glass-panel absolute inset-x-3 bottom-3 rounded-[20px] px-4 py-3">
                 <p className="font-heading text-sm font-bold leading-snug">{g.title}</p>
                 <p className="mt-0.5 text-xs leading-snug text-slate-600 dark:text-slate-300">{g.caption}</p>
-                <p className="mt-1 text-[10px] leading-snug text-slate-500 dark:text-slate-400">{g.credit}</p>
+                <p className="mt-1 text-[10px] leading-snug text-slate-600 dark:text-slate-400">{g.credit}</p>
               </figcaption>
             </figure>
           </li>
         ))}
       </ul>
 
-      <p className="mt-4 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+      <p className="mt-4 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
         Fotos: vitrina SAE · MINEDUC (RBD 4564, originales en cdnsae.mineduc.cl) y prensa (Resumen.cl, Diario Concepción, DEP).
         Google Photos privado no se puede embeber: si el colegio comparte un álbum público, enlázalo aquí.
         Para sumar fotos nuevas: súbelas a <code className="rounded bg-slate-900/5 px-1.5 py-0.5 dark:bg-white/10">public/fotos/</code> y actualiza <code className="rounded bg-slate-900/5 px-1.5 py-0.5 dark:bg-white/10">src/lib/content.ts</code>.

@@ -9,7 +9,7 @@ export const SiteHeader = memo(function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
       <div className="tricolor-rule" aria-hidden="true">
-        <span className="bg-[#0a84ff]" /><span className="bg-white" /><span className="bg-[#ff453a]" /><span className="bg-white" /><span className="bg-[#30d158]" />
+        <span className="bg-[#0066cc]" /><span className="bg-white" /><span className="bg-[#ff453a]" /><span className="bg-white" /><span className="bg-[#30d158] text-[#052e16]" />
       </div>
       <div className="glass-panel mx-3 mt-3 rounded-[28px] px-3 py-2 sm:mx-5 sm:px-4">
         <div className="mx-auto flex max-w-6xl items-center gap-2">
@@ -17,7 +17,7 @@ export const SiteHeader = memo(function SiteHeader() {
             <img src="/logos/cbrb.png" alt="Escudo Colegio República del Brasil" width={42} height={57} className="h-11 w-auto shrink-0" />
             <span className="min-w-0 leading-tight">
               <span className="block truncate font-heading text-[15px] font-bold">Colegio Bicentenario</span>
-              <span className="block truncate text-[11px] text-slate-500 dark:text-slate-400">República del Brasil · Concepción</span>
+              <span className="block truncate text-[11px] text-slate-600 dark:text-slate-400">República del Brasil · Concepción</span>
             </span>
           </Link>
 

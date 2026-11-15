@@ -35,7 +35,7 @@ export default function AdmisionPage() {
         <ol className="stagger mt-5 grid gap-3 sm:grid-cols-2">
           {steps.map((s) => (
             <li key={s.n} className="animate-enter-up ios-card flex gap-4 p-5">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0a84ff] font-heading text-lg font-bold text-white" aria-hidden="true">{s.n}</span>
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0066cc] font-heading text-lg font-bold text-white" aria-hidden="true">{s.n}</span>
               <span className="min-w-0">
                 <span className="block font-heading text-lg font-bold">{s.t}</span>
                 <span className="mt-1 block text-sm leading-relaxed text-slate-600 dark:text-slate-400">{s.d}</span>
@@ -52,7 +52,7 @@ export default function AdmisionPage() {
             <details key={f.q} className="ios-card group p-5">
               <summary className="flex min-h-[44px] cursor-pointer items-center justify-between gap-4 font-heading font-bold marker:hidden">
                 {f.q}
-                <span className="text-xl text-[#0a84ff] transition-transform duration-200 group-open:rotate-45" aria-hidden="true">+</span>
+                <span className="text-xl text-[#0066cc] transition-transform duration-200 group-open:rotate-45" aria-hidden="true">+</span>
               </summary>
               <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{f.a}</p>
             </details>
