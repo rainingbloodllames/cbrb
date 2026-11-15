@@ -98,6 +98,16 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
             <p className="min-w-0 flex-1 truncate font-heading font-bold">{selected.title}</p>
             <a
               href={selected.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Abrir ${selected.title} en el visor del navegador (pestaña nueva)`}
+              className="pressable flex min-h-[44px] items-center gap-1.5 rounded-full bg-white/10 px-4 text-sm font-bold hover:bg-white/20"
+            >
+              Abrir
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </a>
+            <a
+              href={selected.href}
               download
               className="pressable flex min-h-[44px] items-center rounded-full bg-white px-4 text-sm font-bold text-[#0b1e44] hover:bg-slate-100"
             >
