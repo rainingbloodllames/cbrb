@@ -212,6 +212,12 @@ details[open] > p {
   .dialog-enter,
   .motion-sheet[data-open="true"],
   .page-fade,
+  .pdf-in-next,
+  .pdf-in-prev,
+  .pdf-out-next,
+  .pdf-out-prev,
+  .pdf-fade-in,
+  .pdf-fade-out,
   details[open] > p {
     animation: enter-fade-in 150ms ease-out both !important;
   }
@@ -234,4 +240,63 @@ details[open] > p {
     transition-property: opacity, background-color, color, border-color !important;
     transform: none !important;
   }
+}
+
+/* --- PDF reader: premium book turn (direction-aware, CSS native) --- */
+.pdf-stack { display: grid; }
+.pdf-layer {
+  grid-area: 1 / 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  will-change: transform, opacity, filter;
+}
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@keyframes pdf-in-next {
+  from { opacity: 0; transform: perspective(1200px) translateX(56px) rotateY(-10deg); transform-origin: 0% 50%; filter: blur(2px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes pdf-out-next {
+  from { opacity: 1; transform: none; filter: blur(0); }
+  to { opacity: 0; transform: perspective(1200px) translateX(-40px) rotateY(8deg); transform-origin: 100% 50%; filter: blur(2px); }
+}
+@keyframes pdf-in-prev {
+  from { opacity: 0; transform: perspective(1200px) translateX(-56px) rotateY(10deg); transform-origin: 100% 50%; filter: blur(2px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes pdf-out-prev {
+  from { opacity: 1; transform: none; filter: blur(0); }
+  to { opacity: 0; transform: perspective(1200px) translateX(40px) rotateY(-8deg); transform-origin: 0% 50%; filter: blur(2px); }
+}
+@keyframes pdf-fade-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.994); filter: blur(2px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes pdf-fade-out {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-6px) scale(0.994); }
+}
+.pdf-in-next { animation: pdf-in-next 420ms var(--ease-out) both; pointer-events: none; }
+.pdf-out-next { animation: pdf-out-next 420ms var(--ease-out) both; pointer-events: none; }
+.pdf-in-prev { animation: pdf-in-prev 420ms var(--ease-out) both; pointer-events: none; }
+.pdf-out-prev { animation: pdf-out-prev 420ms var(--ease-out) both; pointer-events: none; }
+.pdf-fade-in { animation: pdf-fade-in 260ms var(--ease-out) both; pointer-events: none; }
+.pdf-fade-out { animation: pdf-fade-out 260ms var(--ease-out) both; pointer-events: none; }
+
+/* Search highlights inside the PDF text layer */
+.react-pdf__Page__textContent mark {
+  background: #ffd60a;
+  color: #081430;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(8, 20, 48, 0.18);
+}
+
+/* Fullscreen reader takes over the screen, scrolls internally */
+.pdf-reader:fullscreen {
+  background: #0b1e44;
+  overflow-y: auto;
+  padding: 16px;
+  max-width: none;
 }

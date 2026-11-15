@@ -85,7 +85,7 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
             </a>
           </div>
           <div className="min-h-0 flex-1 overflow-auto px-4 pb-6">
-            <PdfPages href={selected.href} />
+            <PdfPages key={selected.href} href={selected.href} />
           </div>
         </div>
       ) : null}
