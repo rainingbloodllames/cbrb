@@ -5,11 +5,16 @@ import { Reveal } from "@/components/Reveal";
 import { SchoolGallery } from "@/components/SchoolGallery";
 import { Band, PageIntro } from "@/components/Section";
 import { news } from "@/lib/content";
+import { getFacebookPosts } from "@/lib/facebook";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Comunidad" };
 
-export default function ComunidadPage() {
+export default async function ComunidadPage() {
+  const fbPosts = await getFacebookPosts(9);
+  const featured = fbPosts[0] ?? news[0];
+  const restCurated = fbPosts.length ? news : news.slice(1);
+  const rest = [...fbPosts.slice(1), ...restCurated];
   return (
     <div className="pb-20">
       <PageIntro
@@ -44,11 +49,11 @@ export default function ComunidadPage() {
         <h2 id="noticias-titulo" className="mt-2 font-heading text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">Noticias con fuente</h2>
         <div className="mt-8">
           <Reveal>
-            <NewsCard item={news[0]} featured />
+            <NewsCard item={featured} featured />
           </Reveal>
         </div>
         <div className="grid gap-x-6 gap-y-10 pt-10 sm:grid-cols-2 lg:grid-cols-3">
-          {news.slice(1).map((n, i) => (
+          {rest.map((n, i) => (
             <Reveal key={n.slug} delay={Math.min(i, 5) * 40}>
               <NewsCard item={n} />
             </Reveal>
