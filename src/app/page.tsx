@@ -6,6 +6,7 @@ import { NewsCard } from "@/components/NewsCard";
 import { Reveal } from "@/components/Reveal";
 import { SchoolGallery } from "@/components/SchoolGallery";
 import { news } from "@/lib/content";
+import { getFacebookPosts } from "@/lib/facebook";
 import { site } from "@/lib/site";
 
 const NIVELES = [
@@ -28,7 +29,8 @@ const TIMELINE = [
   { year: "Hoy", title: "SLEP Andalién Sur", text: "Parvularia a IV medio. Obras al 62,88%, entrega en mayo de 2027." },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const fbPosts = await getFacebookPosts(6);
   return (
     <div className="pb-20 sm:pb-16">
       {/* HERO — panel navy con foto en tamaño nativo (512 y fortiori nítida) */}
@@ -186,9 +188,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GALERÍA */}
-      <SchoolGallery headingId="galeria-titulo" />
-
       {/* NIVELES */}
       <section className="mx-auto max-w-7xl px-4 pt-20 sm:px-6 sm:pt-24 lg:px-8" aria-labelledby="niveles-titulo">
         <div className="flex flex-wrap items-end justify-between gap-4">
@@ -238,13 +237,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NOTICIAS */}
+      {/* EN LAS NOTICIAS */}
       <section className="mx-auto max-w-7xl px-4 pt-20 sm:px-6 sm:pt-24 lg:px-8" aria-labelledby="noticias-titulo">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-
-            <h2 id="noticias-titulo" className="t-h2 mt-2">Noticias con fuente</h2>
-            <p className="t-lead mt-3 max-w-xl">Resumen.cl, Diario Concepción, SLEP y MINEDUC. Crédito visible y enlace a la cobertura.</p>
+            <h2 id="noticias-titulo" className="t-h2 mt-2">El Colegio Brasil en las noticias</h2>
+            <p className="t-lead mt-3 max-w-xl">Resumen.cl, Diario Concepción, SLEP y MINEDUC. Crédito visible y enlace a cada cobertura.</p>
           </div>
           <Link href="/comunidad" className="link">Ver todas</Link>
         </div>
@@ -261,6 +259,36 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* FACEBOOK */}
+      {fbPosts.length > 0 ? (
+        <section className="mt-20 bg-[var(--band)] py-16 sm:mt-24 sm:py-20" aria-labelledby="facebook-titulo">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <h2 id="facebook-titulo" className="t-h2">Publicaciones en Facebook</h2>
+                <p className="t-lead mt-3 max-w-xl">Lo que el colegio publica cada día, directo de la página. Sin salir de Facebook.</p>
+              </div>
+              <a href={site.facebook} target="_blank" rel="noreferrer" className="link">Seguir la página</a>
+            </div>
+            <div className="mt-8">
+              <Reveal>
+                <NewsCard item={fbPosts[0]} featured />
+              </Reveal>
+            </div>
+            <div className="grid gap-x-6 gap-y-10 pt-10 sm:grid-cols-2 lg:grid-cols-3">
+              {fbPosts.slice(1).map((n, i) => (
+                <Reveal key={n.slug} delay={i * 40}>
+                  <NewsCard item={n} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {/* GALERÍA */}
+      <SchoolGallery headingId="galeria-titulo" />
 
       {/* PÁGINAS DE INTERÉS */}
       <section className="mt-20 bg-[var(--band)] py-16 sm:mt-24 sm:py-20" aria-labelledby="ayuda-titulo">
