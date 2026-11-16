@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { NewsCard } from "@/components/NewsCard";
 import { Reveal } from "@/components/Reveal";
 import { SchoolGallery } from "@/components/SchoolGallery";
@@ -22,6 +23,21 @@ export default function ComunidadPage() {
           <a href={site.facebook} target="_blank" rel="noreferrer" className="link">Facebook</a>
         </p>
       </PageIntro>
+
+      <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
+        <a href={site.instagram} target="_blank" rel="noreferrer" className="block overflow-hidden rounded-2xl shadow-[0_4px_24px_rgba(11,30,68,0.12)] ring-1 ring-slate-900/5">
+          <Image
+            src="/fotos/858319963_1611210279846921_4356698573315485571_n.jpeg"
+            alt="Banner del Colegio Bicentenario República del Brasil con escudo, Instagram @colegio_brasil y lema Desarrollando habilidades para lograr la Excelencia Académica"
+            width={1671}
+            height={941}
+            quality={90}
+            sizes="(min-width: 1024px) 1200px, 90vw"
+            className="aspect-[1671/941] w-full object-cover"
+          />
+        </a>
+        <p className="t-meta mt-2">Banner oficial · Síguenos en @colegio_brasil</p>
+      </div>
 
       <Band tone="band" labelledBy="noticias-titulo" wide>
 

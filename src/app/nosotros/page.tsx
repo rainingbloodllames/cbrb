@@ -86,6 +86,36 @@ export default function NosotrosPage() {
         </ul>
       </Band>
 
+      <Band tone="white" labelledBy="uniforme-titulo">
+        <SectionHead titleId="uniforme-titulo" title="Uniforme escolar 2026" lead="Dos conjuntos según el nivel. Consulta el afiche oficial antes de comprar." />
+        <div className="mt-8 grid gap-10 lg:grid-cols-[480px_1fr] lg:items-start">
+          <figure>
+            <div className="overflow-hidden rounded-xl bg-white shadow-[0_4px_24px_rgba(11,30,68,0.1)] ring-1 ring-slate-900/5">
+              <Image
+                src="/fotos/images.jpeg"
+                alt="Afiche Uniformes escolares 2026: conjunto deportivo azul para Prekínder a 6° básico y camisa con corbata y pantalón para 7° básico a IV medio"
+                width={605}
+                height={507}
+                quality={90}
+                sizes="480px"
+                className="aspect-[605/507] w-full object-cover"
+              />
+            </div>
+            <figcaption className="t-meta mt-2">Afiche del colegio · Uniformes 2026</figcaption>
+          </figure>
+          <ul className="space-y-4">
+            <li className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
+              <h3 className="t-h3">Prekínder a 6° básico</h3>
+              <p className="t-body mt-2">Buzo deportivo azul con franjas amarillas, polera y pantalón del conjunto.</p>
+            </li>
+            <li className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
+              <h3 className="t-h3">7° básico a IV medio</h3>
+              <p className="t-body mt-2">Camisa, corbata y pantalón gris para diario. Consulta el afiche completo para medidas y venta.</p>
+            </li>
+          </ul>
+        </div>
+      </Band>
+
       <Band tone="band" labelledBy="mision-titulo">
         <SectionHead titleId="mision-titulo" title="Misión y visión" lead="PEI 2025–2027, en palabras del colegio." />
         <div className="mt-8 grid gap-10 sm:grid-cols-2">
