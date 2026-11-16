@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { Band, PageIntro, RuleList, SectionHead } from "@/components/Section";
 import { gallery, team } from "@/lib/content";
@@ -23,7 +24,14 @@ export default function NosotrosPage() {
         title="Nosotros"
         lead="Nacimos en 1843 como Escuela N°2. Hoy dependemos del SLEP Andalién Sur y seguimos en San Martín 1580."
         meta="RBD 4564 · San Martín 1580 · 183 años"
-      />
+      >
+        <nav aria-label="Secciones de Nosotros" className="flex flex-wrap gap-2">
+          <span className="inline-flex h-10 items-center rounded-lg bg-[#0b1e44] px-4 text-sm font-semibold text-white" aria-current="page">Nosotros</span>
+          <Link href="/nosotros/historia" className="inline-flex h-10 items-center rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-900 transition-colors duration-150 hover:border-slate-900">
+            Historia 1843 a hoy
+          </Link>
+        </nav>
+      </PageIntro>
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <figure className="mt-8">
           <div className="max-w-[512px] overflow-hidden rounded-xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.08)] ring-1 ring-slate-900/5">
