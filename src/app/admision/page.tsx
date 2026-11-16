@@ -71,7 +71,7 @@ export default function AdmisionPage() {
             <span className="t-body">Matrícula en la Región del Biobío. Recibir una asignación no reemplaza la matrícula presencial.</span>
           </li>
         </RuleList>
-        <p className="t-body mt-4">Consultas de matrícula: <a href="mailto:matriculasbrasil@andaliensur.cl" className="link-mail">matriculasbrasil@andaliensur.cl</a></p>
+        <p className="t-body mt-4">Consultas de matrícula: <a href="mailto:brasil@andaliensur.cl" className="link-mail">brasil@andaliensur.cl</a></p>
       </Band>
 
       <Band tone="band" labelledBy="carrusel">
@@ -92,7 +92,7 @@ export default function AdmisionPage() {
             />
             <figcaption className="border-t border-slate-200 px-4 py-3">
               <p className="t-name !text-sm">Matrículas abiertas</p>
-              <p className="t-small mt-1">Infórmate en SAE. Consultas: <a href="mailto:matriculasbrasil@andaliensur.cl" className="link-mail">matriculasbrasil@andaliensur.cl</a></p>
+              <p className="t-small mt-1">Infórmate en SAE. Consultas: <a href="mailto:brasil@andaliensur.cl" className="link-mail">brasil@andaliensur.cl</a></p>
             </figcaption>
           </figure>
           <Reveal>
@@ -105,7 +105,7 @@ export default function AdmisionPage() {
                 <li className="t-body flex gap-3"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0b1e44]" aria-hidden="true" /><span><strong className="t-name">Terapia ocupacional:</strong> autonomía y participación escolar.</span></li>
                 <li className="t-body flex gap-3"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0b1e44]" aria-hidden="true" /><span><strong className="t-name">Educadora diferencial:</strong> adecuaciones curriculares para cada ritmo.</span></li>
               </ul>
-              <p className="t-small mt-5">San Martín 1580 · <a href="mailto:matriculasbrasil@andaliensur.cl" className="link-mail">matriculasbrasil@andaliensur.cl</a> · @colegio_brasil</p>
+              <p className="t-small mt-5">San Martín 1580 · <a href="mailto:brasil@andaliensur.cl" className="link-mail">brasil@andaliensur.cl</a> · @colegio_brasil</p>
             </div>
           </Reveal>
         </div>

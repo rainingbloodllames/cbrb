@@ -346,7 +346,7 @@ export default function Home() {
                   <span className="link-light t-small">Cómo llegar</span>
                 </Link>
               </div>
-              <p className="t-small mt-5 !text-slate-400">¿Dudas de matrícula? <a href="mailto:matriculasbrasil@andaliensur.cl" className="link-yarn">matriculasbrasil@andaliensur.cl</a></p>
+              <p className="t-small mt-5 !text-slate-400">¿Dudas de matrícula? <a href="mailto:brasil@andaliensur.cl" className="link-yarn">brasil@andaliensur.cl</a></p>
             </div>
             <div className="grid content-start gap-4">
               <figure>
