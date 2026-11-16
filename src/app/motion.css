@@ -88,32 +88,29 @@
   animation: enter-fade-up 220ms var(--ease-out) both;
 }
 
-/* --- Cards: lift on hover (fine pointers only) --- */
+/* --- Tarjeta sobria en hover (fines punteros): solo borde/sombra, sin desplazamiento --- */
 .card-lift {
-  transition-property: transform, box-shadow;
+  transition-property: border-color, box-shadow;
   transition-duration: var(--dur-base);
   transition-timing-function: var(--ease-out);
 }
 @media (hover: hover) and (pointer: fine) {
   .card-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08), 0 20px 40px rgba(15, 23, 42, 0.12);
-  }
-  .media-zoom {
-    transition-property: transform;
-    transition-duration: var(--dur-media);
-    transition-timing-function: var(--ease-out);
-  }
-  .group:hover .media-zoom,
-  .media-zoom:hover {
-    transform: scale(1.04);
+    border-color: rgba(15, 23, 42, 0.2);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
   }
   .group:hover .caption-slide {
     transform: translateY(-2px);
   }
 }
-@media (hover: none) {
-  .media-zoom { transition-property: transform; transition-duration: var(--dur-fast); transition-timing-function: var(--ease-out); }
+.media-zoom {
+  transition-property: opacity;
+  transition-duration: var(--dur-media);
+  transition-timing-function: var(--ease-out);
+}
+.group:hover .media-zoom,
+.media-zoom:hover {
+  opacity: 0.98;
 }
 .caption-slide {
   transition-property: transform;
@@ -189,6 +186,22 @@ details[open] .chevron-spin {
   pointer-events: none;
 }
 
+/* --- Hero slideshow: barra de progreso + Ken Burns (solo transform) --- */
+@keyframes hero-progress-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.hero-progress {
+  animation: hero-progress-fill 5s linear both;
+}
+@keyframes ken-burns {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.08); }
+}
+.hero-kenburns {
+  animation: ken-burns 6s var(--ease-out) both;
+}
+
 /* --- Icon pop on card hover --- */
 .icon-pop {
   transition-property: transform;
@@ -221,7 +234,9 @@ details[open] > p {
     animation: enter-fade-in 150ms ease-out both !important;
   }
   .pulse-dot,
-  .hero-sheen::after {
+  .hero-sheen::after,
+  .hero-kenburns,
+  .hero-progress {
     animation: none !important;
     opacity: 0 !important;
   }

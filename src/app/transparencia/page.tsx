@@ -1,24 +1,32 @@
 import type { Metadata } from "next";
 import { TransparenciaClientWrapper } from "@/components/TransparenciaClientWrapper";
+import { PageIntro } from "@/components/Section";
 import { documents } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Transparencia" };
 
 export default function TransparenciaPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 pb-16 pt-8 sm:px-6">
-      <header className="hero-mesh relative overflow-hidden rounded-2xl p-8 text-white sm:rounded-3xl sm:p-10">
-        <p className="text-[13px] font-bold  text-white/90">Documentos oficiales</p>
-        <h1 className="mt-3 font-heading text-[42px] font-bold leading-[0.95] tracking-tight text-white sm:text-[56px]">Transparencia</h1>
-        <p className="mt-4 max-w-prose text-[17px] font-medium leading-relaxed text-slate-100">
-          Lee los documentos aquí mismo, como un libro: pasa páginas, acerca y descarga el PDF. Todo en nombres claros.
-        </p>
-        <p className="mt-4 inline-flex rounded-full bg-white px-4 py-2 text-[13px] font-bold text-slate-900">PEI · RIE · Planes · Evaluación · Seguridad</p>
-      </header>
+    <div className="pb-20">
+      <PageIntro
+        kicker="Documentos oficiales"
+        title="Transparencia"
+        lead="Lee los documentos aquí mismo: pasa páginas, acerca y descarga el PDF."
+        meta="PEI · Reglamento interno · Planes · Evaluación · Seguridad — RBD 4564"
+      />
 
-      <TransparenciaClientWrapper docs={documents} />
+      <div className="mx-auto max-w-4xl px-4 pt-8 sm:px-6">
+        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
+          <div className="border-b border-slate-200 bg-[#f8fafc] px-6 py-3 font-mono text-xs text-slate-500">
+            Documentos PEI, reglamento y planes — RBD 4564 · SLEP Andalién Sur
+          </div>
+          <div className="px-2 sm:px-4">
+            <TransparenciaClientWrapper docs={documents} />
+          </div>
+        </div>
 
-      <p className="mt-5 text-[13px] font-semibold text-slate-700 dark:text-slate-200">PEI, reglamento y planes RBD 4564 · SLEP Andalién Sur. Si un archivo no abre, escribe a <a href="mailto:contacto@cbrb.cl" className="underline font-bold text-slate-900">contacto@cbrb.cl</a>.</p>
+        <p className="mt-8 max-w-prose text-sm leading-relaxed text-slate-600">PEI, reglamento y planes RBD 4564 · SLEP Andalién Sur. Si un archivo no abre, escribe a <a href="mailto:brasil@andaliensur.cl" className="link-inline">brasil@andaliensur.cl</a>.</p>
+      </div>
     </div>
   );
 }

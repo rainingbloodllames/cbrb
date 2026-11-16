@@ -3,28 +3,45 @@
 
 :root {
   --background: #ffffff;
+  --surface: #ffffff;
+  --band: #eef3f9;
+  --band-strong: #e2e8f3;
   --foreground: #0f172a;
+  --ink: #0f172a;
+  --muted: #475569;
+  --faint: #64748b;
+  --line: #e2e8f0;
+  --line-strong: #0f172a;
+  --navy: #0b1e44;
   --cbrb-navy: #0b1e44;
   --cbrb-chile: #0066cc;
   --br-green: #0b7a3e;
   --br-yellow: #ffd60a;
   --chile-red: #c81e1e;
+  --r-lg: 16px;
+  --r-md: 12px;
+  --shadow-sm: 0 1px 2px rgba(11, 30, 68, 0.08);
+  --shadow-md: 0 4px 24px rgba(11, 30, 68, 0.1);
+  --shadow-lg: 0 8px 32px rgba(11, 30, 68, 0.14);
+  --sec-y: clamp(4rem, 8vw, 6rem);
+  --band-y: clamp(3.5rem, 6vw, 5rem);
   --font-jakarta: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   --font-lexend: "Lexend", system-ui, -apple-system, sans-serif;
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --background: #090a0f;
-    --foreground: #f8fafc;
-  }
-}
-
+/* Sitio institucional solo claro: no sigue el modo oscuro del SO */
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-band: var(--band);
+  --color-band-strong: var(--band-strong);
   --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-navy: var(--navy);
   --color-cbrb-navy: var(--cbrb-navy);
   --font-sans: var(--font-jakarta);
   --font-heading: var(--font-lexend);
@@ -63,11 +80,6 @@ section[id], main [id] { scroll-margin-top: 96px; }
   border-radius: 16px;
   box-shadow: 0 1px 3px rgba(11, 30, 68, 0.08), 0 12px 32px rgba(11, 30, 68, 0.08);
 }
-@media (prefers-color-scheme: dark) {
-  .ios-card {
-    border-color: rgba(11,30,68,0.18);
-  }
-}
 
 /* Header elevado */
 .glass-panel {
@@ -98,11 +110,50 @@ section[id], main [id] { scroll-margin-top: 96px; }
   background-size: 28px 28px, 100% 100%;
 }
 
+/* Hoja elevada sobre banda: única caja con sombra del sistema */
+.sheet {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* Banda navy con textura: mismo vocabulario que el hero, sin nuevo color */
+.band-navy-texture {
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0),
+    linear-gradient(160deg, #0f2a5c 0%, #0b1e44 60%, #081430 100%);
+  background-size: 28px 28px, 100% 100%;
+}
+
 .tricolor-rule {
   display: grid;
   grid-template-columns: 30% 1fr 28% 1fr 26%;
   height: 4px;
 }
+
+/* — Tipo: única escala (Lexend solo títulos, Jakarta cuerpo) — */
+.t-h1 { font-family: var(--font-lexend); font-size: clamp(2.75rem, 5vw, 4rem); font-weight: 600; line-height: 1.02; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+.t-h2 { font-family: var(--font-lexend); font-size: clamp(1.9rem, 3vw, 2.75rem); font-weight: 600; line-height: 1.08; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+.t-h3 { font-family: var(--font-lexend); font-size: 1.25rem; font-weight: 600; line-height: 1.25; color: var(--ink); }
+.t-lead { font-size: 1.125rem; line-height: 1.7; color: var(--muted); }
+.t-body { font-size: 1rem; line-height: 1.7; color: var(--muted); }
+.t-small { font-size: 0.875rem; line-height: 1.6; color: var(--muted); }
+.t-name { font-size: 1rem; font-weight: 600; line-height: 1.5; color: var(--ink); }
+.t-role { font-size: 0.875rem; line-height: 1.5; color: var(--faint); }
+.t-meta { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.75rem; line-height: 1.5; color: var(--faint); font-variant-numeric: tabular-nums; }
+
+/* — Links: única definición (tamaño hereda del contexto, sin hardcodear) — */
+.link { font-weight: 600; color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; transition-property: color, text-decoration-color; transition-duration: 150ms; }
+.link:hover { color: var(--cbrb-chile); text-decoration-color: var(--cbrb-chile); }
+.link-inline { font-weight: 600; color: var(--cbrb-chile); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; transition-property: color; transition-duration: 150ms; }
+.link-inline:hover { color: #0058af; }
+.link-mail { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.875rem; font-variant-numeric: tabular-nums; color: var(--cbrb-chile); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; transition-property: color; transition-duration: 150ms; }
+.link-mail:hover { color: #0058af; }
+.link-light { font-weight: 600; color: #ffffff; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; transition-property: color, text-decoration-color; transition-duration: 150ms; }
+.link-light:hover { color: var(--br-yellow); text-decoration-color: var(--br-yellow); }
+.link-yarn { font-weight: 600; color: var(--br-yellow); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.link-yarn:hover { color: #ffffff; }
 
 .form-section {
   contain: layout style;

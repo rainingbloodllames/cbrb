@@ -1,120 +1,156 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
+import { Band, PageIntro, RuleList, SectionHead } from "@/components/Section";
 import { gallery, team } from "@/lib/content";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Nosotros" };
 
 const HISTORIA = [
-  { y: "1843", t: "Escuela N°2", d: "Fundación en Concepción, en el corazón del Biobío." },
-  { y: "Siglo XX", t: "Crecimiento", d: "Escuela pública central. Formación de generaciones penquistas." },
-  { y: "Bicentenario", t: "Sello Bicentenario", d: "Excelencia, infraestructura renovada y comunidad activa." },
-  { y: "2026", t: "SLEP Andalién Sur", d: `Parvularia a IV Medio, San Martín 1580. Director ${site.director}.` },
+  { y: "1843", t: "Escuela N°2", d: "Lincoyán con Víctor Lamas. Madera, director y preceptores." },
+  { y: "1975", t: "Escuela D-519", d: "Se unen Brasil, Bolivia y la Nocturna. Tres historias en una." },
+  { y: "1988", t: "Colegio República del Brasil", d: "Se suma la enseñanza media. Parvularia a IV medio." },
+  { y: "2012", t: "Bicentenario", d: "Ingresa al Programa de Liceos Bicentenario. Sede actual desde 2013." },
+  { y: "Hoy", t: "SLEP Andalién Sur", d: `Parvularia a IV medio, San Martín 1580. Director ${site.director}.` },
 ];
 
 export default function NosotrosPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 pb-16 pt-8 sm:px-6">
-      <header className="hero-mesh relative overflow-hidden rounded-2xl text-white sm:rounded-3xl">
-        <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-2">
-          <div className="min-w-0">
-            <p className="text-[13px] font-bold  text-white/90">Desde 1843 · Concepción, Biobío</p>
-            <h1 className="mt-3 font-heading text-[42px] font-bold leading-[0.95] tracking-tight text-white sm:text-[56px]">Nosotros</h1>
-            <p className="mt-4 max-w-prose text-[17px] font-medium leading-relaxed text-slate-100">
-              En 1843 nacimos como Escuela N°2. Hoy somos colegio público, laico y bicentenario del SLEP Andalién Sur.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-[#0b1e44]">RBD 4564</span>
-              <span className="rounded-full bg-slate-700 px-3 py-1 text-xs font-bold text-white">San Martín 1580</span>
-              <span className="rounded-full bg-slate-700 px-3 py-1 text-xs font-bold text-white">183 años</span>
-            </div>
-          </div>
-          <figure className="min-w-0 overflow-hidden rounded-[24px]">
+    <div className="pb-20">
+      <PageIntro
+        kicker="SLEP Andalién Sur"
+        title="Nosotros"
+        lead="Nacimos en 1843 como Escuela N°2. Hoy dependemos del SLEP Andalién Sur y seguimos en San Martín 1580."
+        meta="RBD 4564 · San Martín 1580 · 183 años"
+      />
+      <div className="mx-auto max-w-4xl px-4 sm:px-6">
+        <figure className="mt-8">
+          <div className="max-w-[512px] overflow-hidden rounded-xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.08)] ring-1 ring-slate-900/5">
             <Image
               src="/fotos/bandera-brasil.jpg"
               alt="Niña con polera del colegio sosteniendo la bandera de Brasil en el aula"
-              width={1200}
-              height={800}
-              sizes="(min-width: 1024px) 45vw, 90vw"
+              width={512}
+              height={384}
+              quality={90}
+              sizes="512px"
               priority
               className="aspect-[4/3] w-full object-cover"
             />
-            <figcaption className="bg-[#0b1e44] px-4 py-2 text-xs font-semibold text-white">
-              Foto oficial: vitrina SAE · MINEDUC. Día a día en Instagram @colegio_brasil.
-            </figcaption>
-          </figure>
-        </div>
-      </header>
+          </div>
+          <figcaption className="pt-3 font-mono text-xs text-slate-500">
+            Foto SAE. Día a día en @colegio_brasil.
+          </figcaption>
+        </figure>
+      </div>
 
-      <section className="pt-10" aria-labelledby="historia-titulo">
-        <h2 id="historia-titulo" className="font-heading text-[28px] font-extrabold tracking-tight text-slate-900 dark:text-white">Historia</h2>
-        <ol className="mt-4 grid gap-3 sm:grid-cols-2">
+      <Band tone="band" labelledBy="historia-titulo">
+        <SectionHead titleId="historia-titulo" title="Historia" />
+        <RuleList label="Hitos del colegio">
           {HISTORIA.map((h, i) => (
             <Reveal key={h.y} delay={i * 40}>
-              <div className="card-lift ios-card h-full p-5">
-                <p className="font-heading text-2xl font-bold tabular-nums text-[#0b1e44]">{h.y}</p>
-                <p className="mt-1 font-heading font-bold text-slate-900">{h.t}</p>
-                <p className="mt-1 text-sm font-medium leading-relaxed text-slate-700">{h.d}</p>
-              </div>
+              <li className="grid gap-2 border-b border-slate-300 py-5 sm:grid-cols-[140px_200px_1fr] sm:items-baseline sm:gap-6">
+                <p className="font-heading text-2xl font-semibold tabular-nums text-slate-900">{h.y}</p>
+                <p className="font-heading text-lg font-semibold text-slate-900">{h.t}</p>
+                <p className="text-base leading-relaxed text-slate-600">{h.d}</p>
+              </li>
             </Reveal>
           ))}
-        </ol>
-      </section>
+        </RuleList>
+      </Band>
 
-      <section className="pt-10" aria-labelledby="ambiente-titulo">
-        <h2 id="ambiente-titulo" className="font-heading text-[28px] font-extrabold tracking-tight text-slate-900 dark:text-white">Ambiente escolar</h2>
-        <p className="mt-2 text-[15px] font-medium leading-relaxed text-slate-600 dark:text-slate-300">Fotos oficiales de la vitrina SAE: desfile, parvularia, acto cívico y bandera de Brasil.</p>
-        <ul className="mt-4 grid gap-3 sm:grid-cols-2" aria-label="Imágenes de ambiente escolar">
+      <Band tone="white" labelledBy="ambiente-titulo">
+        <SectionHead titleId="ambiente-titulo" title="Ambiente escolar" lead="Desfile, parvularia, acto cívico y bandera de Brasil." />
+        <ul className="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2" aria-label="Imágenes de ambiente escolar">
           {gallery.slice(0, 4).map((g, i) => (
             <Reveal key={g.title} delay={i * 40}>
-              <figure className="group overflow-hidden rounded-[24px] bg-white shadow-sm ring-1 ring-slate-200">
-                <Image
-                  src={g.src}
-                  alt={g.alt}
-                  width={1200}
-                  height={800}
-                  sizes="(min-width: 640px) 50vw, 90vw"
-                  className="media-zoom aspect-[4/3] w-full object-cover"
-                />
-                <figcaption className="px-4 py-3">
-                  <p className="font-heading text-sm font-bold text-slate-900">{g.title}</p>
-                  <p className="mt-0.5 text-xs font-medium text-slate-700">{g.caption}</p>
+              <figure>
+                <div className="max-w-[512px] overflow-hidden rounded-xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.08)] ring-1 ring-slate-900/5">
+                  <Image
+                    src={g.src}
+                    alt={g.alt}
+                    width={512}
+                    height={384}
+                    quality={90}
+                    sizes="(min-width: 640px) 400px, 90vw"
+                    className="media-zoom aspect-[4/3] w-full object-cover"
+                  />
+                </div>
+                <figcaption className="pt-3">
+                  <p className="font-heading text-sm font-semibold text-slate-900">{g.title} <span className="ml-2 font-mono text-xs font-normal text-slate-500">{g.credit}</span></p>
+                  <p className="mt-1 text-sm text-slate-600">{g.caption}</p>
                 </figcaption>
               </figure>
             </Reveal>
           ))}
         </ul>
-      </section>
+      </Band>
 
-      <section className="grid gap-3 pt-8 sm:grid-cols-2" aria-label="Misión y sellos">
-        <div className="ios-card p-6">
-          <h2 className="font-heading text-xl font-bold text-slate-900">Misión</h2>
-          <p className="mt-2 text-sm font-medium leading-relaxed text-slate-700">
-            Formar estudiantes íntegros, críticos y comprometidos con su comunidad, en un ambiente público, laico y de excelencia.
-          </p>
+      <Band tone="band" labelledBy="mision-titulo">
+        <SectionHead titleId="mision-titulo" title="Misión y visión" lead="PEI 2025–2027, en palabras del colegio." />
+        <div className="mt-8 grid gap-10 sm:grid-cols-2">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.08)] sm:p-8">
+            <h3 className="t-h3">Misión</h3>
+            <blockquote className="t-body mt-3 border-l-4 border-[#0b1e44] pl-4">
+              Somos una comunidad educativa que otorga una educación centrada en desarrollar habilidades y competencias para la educación superior, con formación valórica, ciudadana y académica, compromiso ambiental, pensamiento crítico y proyecto de vida.
+            </blockquote>
+            <h3 className="t-h3 mt-6">Visión</h3>
+            <blockquote className="t-body mt-3 border-l-4 border-[#0b1e44] pl-4">
+              Otorgar una educación integral con formación valórica y cívica para el proyecto de vida, basada en el prestigio institucional.
+            </blockquote>
+            <p className="t-meta mt-4">PEI 2025–2027</p>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.08)] sm:p-8">
+            <h3 className="t-h3">Sellos</h3>
+            <ul className="mt-3 space-y-3">
+              <li className="t-body flex items-start gap-3"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0b1e44]" aria-hidden="true" />Talentos artísticos, deportivos y culturales</li>
+              <li className="t-body flex items-start gap-3"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0b1e44]" aria-hidden="true" />Habilidades para continuar a la educación superior</li>
+              <li className="t-body flex items-start gap-3"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0b1e44]" aria-hidden="true" />Ciudadanos responsables en lo personal, familiar, social y ambiental</li>
+            </ul>
+            <h3 className="t-h3 mt-6">Valores</h3>
+            <p className="t-body mt-2">Compromiso, empatía, excelencia y respeto.</p>
+            <p className="t-meta mt-4">RIE / PEI</p>
+          </div>
         </div>
-        <div className="ios-card p-6">
-          <h2 className="font-heading text-xl font-bold text-slate-900">Sellos</h2>
-          <ul className="mt-2 space-y-1.5 text-sm font-semibold text-slate-700">
-            <li>Educación pública de calidad</li>
-            <li>Convivencia y respeto</li>
-            <li>Tradición bicentenaria penquista</li>
-          </ul>
-        </div>
-      </section>
+      </Band>
 
-      <section className="ios-card mt-8 p-6" aria-labelledby="equipo-titulo">
-        <h2 id="equipo-titulo" className="font-heading text-2xl font-bold text-slate-900">Equipo directivo</h2>
-        <ul className="mt-4">
-          {team.map((m) => (
-            <li key={m.role} className="flex min-h-[52px] items-center justify-between gap-4 border-b border-slate-200 py-3 last:border-0 ">
-              <span className="text-sm font-semibold text-slate-700">{m.role}</span>
-              <span className="text-right text-sm font-bold text-slate-900">{m.name}</span>
+      <Band tone="white" labelledBy="convivencia-titulo">
+        <SectionHead titleId="convivencia-titulo" title="Cómo convivimos" lead="Del RIE: convivencia positiva, preventiva y mediadora. La hacemos todos." />
+        <RuleList label="Cuatro marcas de convivencia">
+          <li className="grid gap-1 border-b border-slate-200 py-4 sm:grid-cols-[240px_1fr] sm:items-baseline sm:gap-6">
+            <span className="t-name">Trato respetuoso</span>
+            <span className="t-body">Confianza, verdad y justicia. Cuidar al otro como persona con dignidad y derechos.</span>
+          </li>
+          <li className="grid gap-1 border-b border-slate-200 py-4 sm:grid-cols-[240px_1fr] sm:items-baseline sm:gap-6">
+            <span className="t-name">Inclusión y diversidad</span>
+            <span className="t-body">Reconocer identidades distintas como riqueza, no como obstáculo.</span>
+          </li>
+          <li className="grid gap-1 border-b border-slate-200 py-4 sm:grid-cols-[240px_1fr] sm:items-baseline sm:gap-6">
+            <span className="t-name">Participación democrática</span>
+            <span className="t-body">Pertenecer importa: cada uno aporta según su rol, con derechos y responsabilidades.</span>
+          </li>
+          <li className="grid gap-1 py-4 sm:grid-cols-[240px_1fr] sm:items-baseline sm:gap-6">
+            <span className="t-name">Diálogo para resolver</span>
+            <span className="t-body">Cuando hay desacuerdo, resolvemos conversando, no con violencia.</span>
+          </li>
+        </RuleList>
+        <p className="t-small mt-4">El RIE se entrega en la matrícula («acuso recibo y tomo conocimiento»). Respaldo: Ley 21.040 y Política Nacional de Convivencia.</p>
+      </Band>
+
+      <Band tone="white" labelledBy="equipo-titulo">
+        <SectionHead titleId="equipo-titulo" title="Equipo directivo" lead="Correos institucionales (SLEP Andalién Sur). Para matrícula usa SAE." />
+        <RuleList label="Equipo directivo y correos">
+          {[...team, { role: "Secretaría general", name: "Colegio", email: "brasil@andaliensur.cl" }].map((m) => (
+            <li key={m.email} className="grid gap-1 border-b border-slate-300 py-4 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
+              <span>
+                <span className="block text-sm text-slate-500">{m.role}</span>
+                <span className="block text-base font-semibold text-slate-900">{m.name}</span>
+              </span>
+              <a href={`mailto:${m.email}`} className="link-mail">{m.email}</a>
             </li>
           ))}
-        </ul>
-      </section>
+        </RuleList>
+      </Band>
     </div>
   );
 }

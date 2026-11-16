@@ -1,11 +1,11 @@
 export const site = {
   name: "Colegio Bicentenario República del Brasil",
   shortName: "CBRB",
-  tagline: "Educación pública de excelencia desde 1843",
+  tagline: "Colegio público, laico y gratuito desde 1843. Parvularia a IV Medio en Concepción.",
   address: "San Martín 1580, Concepción, Región del Biobío",
   phone: "(41) 222 4711",
   phoneHref: "tel:+56412224711",
-  email: "contacto@cbrb.cl",
+  email: "brasil@andaliensur.cl",
   domain: "https://cbrb.cl",
   founded: 1843,
   director: "Dino Olivieri Díaz",

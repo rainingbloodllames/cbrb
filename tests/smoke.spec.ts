@@ -4,9 +4,9 @@ test.describe("smoke CBRB", () => {
   test("home carga y muestra hero + CTA SAE", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveTitle(/Colegio Bicentenario/);
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("Tu futuro");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("República del Brasil");
     await expect(page.getByRole("link", { name: /Postula por SAE/i }).first()).toBeVisible();
-    await expect(page.getByAltText("Escudo del Colegio República del Brasil")).toBeVisible();
+    await expect(page.getByAltText("Escudo CBRB")).toBeVisible();
   });
 
   test("equipo directivo sin placeholders", async ({ page }) => {
@@ -32,7 +32,7 @@ test.describe("smoke CBRB", () => {
   test("movil: CTA SAE fijado y sin scroll horizontal", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
-    await expect(page.getByRole("link", { name: /Admisión abierta/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Postula por SAE/i }).last()).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
     expect(overflow).toBe(false);
   });

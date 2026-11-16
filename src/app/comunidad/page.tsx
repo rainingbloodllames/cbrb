@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NewsCard } from "@/components/NewsCard";
 import { Reveal } from "@/components/Reveal";
 import { SchoolGallery } from "@/components/SchoolGallery";
+import { Band, PageIntro } from "@/components/Section";
 import { news } from "@/lib/content";
 import { site } from "@/lib/site";
 
@@ -9,36 +10,48 @@ export const metadata: Metadata = { title: "Comunidad" };
 
 export default function ComunidadPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6">
-      <header className="hero-mesh relative overflow-hidden rounded-2xl p-8 text-white sm:rounded-3xl sm:p-10">
-        <p className="text-[13px] font-bold  text-white/90">Vida escolar</p>
-        <h1 className="mt-3 font-heading text-[42px] font-bold leading-[0.95] tracking-tight text-white sm:text-[56px]">Comunidad</h1>
-        <p className="mt-4 max-w-prose text-[17px] font-medium leading-relaxed text-slate-100">
-          Noticias con fuente, vida escolar y galería. Todo con crédito y enlace a la cobertura original.
+    <div className="pb-20">
+      <PageIntro
+        kicker="Vida escolar"
+        title="Comunidad"
+        lead="Noticias con fuente y galería. La vida diaria — Congreso Explora, Admisión 2027 y actos — también está en Instagram @colegio_brasil y Facebook."
+        wide
+      >
+        <p className="flex flex-wrap gap-5 text-base font-semibold">
+          <a href={site.instagram} target="_blank" rel="noreferrer" className="link">Instagram @colegio_brasil</a>
+          <a href={site.facebook} target="_blank" rel="noreferrer" className="link">Facebook</a>
         </p>
-        <div className="mt-7 flex flex-wrap gap-3">
-          <a href={site.instagram} target="_blank" rel="noreferrer" className="inline-flex min-h-[48px] items-center rounded-full bg-white px-6 text-sm font-bold text-[#0b1e44]">Instagram @colegio_brasil</a>
-          <a href={site.facebook} target="_blank" rel="noreferrer" className="inline-flex min-h-[48px] items-center rounded-full bg-white/10 px-6 text-sm font-bold text-white ring-1 ring-white/20">Facebook</a>
-        </div>
-      </header>
+      </PageIntro>
 
-      <div className="grid gap-3 pt-8 sm:grid-cols-2 lg:grid-cols-3">
-        {news.map((n, i) => (
-          <Reveal key={n.slug} delay={Math.min(i, 5) * 40}>
-            <NewsCard item={n} featured={i === 0} />
+      <Band tone="band" labelledBy="noticias-titulo" wide>
+
+        <h2 id="noticias-titulo" className="mt-2 font-heading text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">Noticias con fuente</h2>
+        <div className="mt-8">
+          <Reveal>
+            <NewsCard item={news[0]} featured />
           </Reveal>
-        ))}
-      </div>
+        </div>
+        <div className="grid gap-x-6 gap-y-10 pt-10 sm:grid-cols-2 lg:grid-cols-3">
+          {news.slice(1).map((n, i) => (
+            <Reveal key={n.slug} delay={Math.min(i, 5) * 40}>
+              <NewsCard item={n} />
+            </Reveal>
+          ))}
+        </div>
+      </Band>
 
       <SchoolGallery headingId="galeria-titulo" />
 
-      <section className="ios-card mt-8 p-6" aria-labelledby="calendario-titulo">
-        <h2 id="calendario-titulo" className="font-heading text-xl font-bold text-slate-900">Calendario escolar</h2>
-        <p className="mt-1.5 text-sm font-medium leading-relaxed text-slate-700">
-          Actos, reuniones y fechas oficiales. En época SAE y matrícula, revisa también{" "}
-          <a href={site.saeUrl} target="_blank" rel="noreferrer" className="font-bold text-[#0066cc] underline underline-offset-4">admisión SAE</a>.
-        </p>
-      </section>
+      {/* Calendario como ficha con definición */}
+      <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
+        <section aria-labelledby="calendario-titulo" className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.08)] sm:p-8">
+          <h2 id="calendario-titulo" className="font-heading text-2xl font-semibold text-slate-900">Calendario escolar</h2>
+          <p className="mt-2 max-w-prose text-base leading-relaxed text-slate-600">
+            Actos, reuniones y fechas oficiales. En época SAE y matrícula, revisa también{" "}
+            <a href={site.saeUrl} target="_blank" rel="noreferrer" className="link-inline">admisión SAE</a>.
+          </p>
+        </section>
+      </div>
     </div>
   );
 }

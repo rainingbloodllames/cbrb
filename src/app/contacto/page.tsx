@@ -1,6 +1,7 @@
 "use client";
 
 import { memo, useState } from "react";
+import { Band, PageIntro, RuleList, SectionHead } from "@/components/Section";
 import { site } from "@/lib/site";
 
 const ContactForm = memo(function ContactForm() {
@@ -23,74 +24,100 @@ const ContactForm = memo(function ContactForm() {
 
   if (sent) {
     return (
-      <p className="ios-card p-6 font-medium" role="status">
-        Gracias, tu mensaje fue enviado. Te responderemos a {site.email}.
-      </p>
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.08)]" role="status">
+        <p className="border-l-4 border-slate-900 pl-4 text-base font-medium text-slate-900">Mensaje enviado. Te responderemos a {site.email}.</p>
+      </div>
     );
   }
 
   const inputCls =
-    "mt-1.5 min-h-[52px] w-full rounded-[18px] border border-slate-300 bg-white px-4 text-base text-slate-900 placeholder:text-slate-500";
+    "mt-1.5 h-12 w-full rounded-lg border border-slate-300 bg-white px-4 text-base text-slate-900 placeholder:text-slate-500";
   return (
-    <form onSubmit={onSubmit} className="form-section ios-card space-y-4 p-6">
+    <form onSubmit={onSubmit} className="form-section space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.08)] sm:p-8">
       <div>
-        <label htmlFor="nombre" className="block text-sm font-bold">Nombre</label>
+        <label htmlFor="nombre" className="block text-sm font-semibold text-slate-900">Nombre</label>
         <input id="nombre" name="nombre" required autoComplete="name" spellCheck={false} className={inputCls} />
       </div>
       <div>
-        <label htmlFor="email" className="block text-sm font-bold">Email</label>
+        <label htmlFor="email" className="block text-sm font-semibold text-slate-900">Email</label>
         <input id="email" name="email" type="email" inputMode="email" required autoComplete="email" spellCheck={false} className={inputCls} />
       </div>
       <div>
-        <label htmlFor="mensaje" className="block text-sm font-bold">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" required rows={5} className={`${inputCls} min-h-[120px] py-3`} />
+        <label htmlFor="mensaje" className="block text-sm font-semibold text-slate-900">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" required rows={5} className={`${inputCls} h-auto min-h-[120px] py-3`} />
       </div>
       <button
         type="submit"
         disabled={sending}
-        className="pressable flex min-h-[52px] w-full items-center justify-center rounded-full bg-[#0f2a5c] px-6 font-heading text-base font-bold text-white transition-colors duration-150 hover:bg-[#1a3f7a] disabled:opacity-60 sm:w-auto"
+        className="pressable flex h-12 w-full items-center justify-center rounded-lg bg-slate-900 px-6 font-heading text-base font-semibold text-white transition-colors duration-150 hover:bg-slate-800 disabled:opacity-60 sm:w-auto"
       >
         {sending ? "Enviando…" : "Enviar mensaje"}
       </button>
-      <p className="text-xs text-slate-700">Respuesta en días hábiles. Para matrícula usa SAE, no este formulario.</p>
+      <p className="text-xs leading-relaxed text-slate-500">Respuesta en días hábiles. Para matrícula usa SAE, no este formulario.</p>
     </form>
   );
 });
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 pb-16 pt-8 sm:px-6">
-      <header className="hero-mesh relative overflow-hidden rounded-2xl p-8 text-white sm:rounded-3xl sm:p-10">
-        <h1 className="font-heading text-[42px] font-bold leading-[0.95] tracking-tight text-white sm:text-[56px]">Contacto</h1>
-        <p className="mt-4 text-[17px] font-medium leading-relaxed text-slate-100">
-          {site.address} · <a className="font-bold underline decoration-[#ffd60a] decoration-2 underline-offset-4" href={site.phoneHref}>{site.phone}</a> · {site.email}
-        </p>
-      </header>
+    <div className="pb-20">
+      <PageIntro
+        kicker="San Martín 1580, Concepción"
+        title="Contacto"
+        lead="Escríbenos por el formulario o por correo institucional. Para matrícula usa SAE en admision.mineduc.cl."
+        meta={`${site.phone} · ${site.email}`}
+      />
 
-      <div className="grid gap-3 pt-8 lg:grid-cols-2">
-        <ContactForm />
-        <div className="space-y-3">
-          <div className="ios-card overflow-hidden">
-            <div className="flex items-center justify-between gap-4 p-5">
-              <h2 className="font-heading text-lg font-bold text-slate-900">Ubicación</h2>
-              <a href={site.mapUrl} target="_blank" rel="noreferrer" className="pressable flex min-h-[44px] items-center rounded-full bg-[#0066cc] px-4 text-sm font-bold text-white">
-                Cómo llegar
-              </a>
+      <div className="mx-auto max-w-4xl px-4 pt-12 sm:px-6">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <ContactForm />
+          <div className="space-y-8">
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
+              <div className="flex items-center justify-between gap-4 px-5 py-4">
+                <h2 className="font-heading text-xl font-semibold text-slate-900">Ubicación</h2>
+                <a href={site.mapUrl} target="_blank" rel="noreferrer" className="pressable flex h-11 items-center link">
+                  Cómo llegar
+                </a>
+              </div>
+              <iframe
+                title="Mapa Colegio República del Brasil"
+                src="https://www.google.com/maps?q=Colegio%20Rep%C3%BAblica%20del%20Brasil%20San%20Mart%C3%ADn%201580%20Concepci%C3%B3n&output=embed"
+                className="h-64 w-full border-t border-slate-200"
+                loading="lazy"
+              />
+              <p className="sr-only">Mapa de San Martín 1580, Concepción</p>
             </div>
-            <iframe
-              title="Mapa Colegio República del Brasil"
-              src="https://www.google.com/maps?q=Colegio%20Rep%C3%BAblica%20del%20Brasil%20San%20Mart%C3%ADn%201580%20Concepci%C3%B3n&output=embed"
-              className="h-64 w-full border-t border-slate-100 dark:border-slate-800"
-              loading="lazy"
-            />
-            <p className="sr-only">Mapa de San Martín 1580, Concepción</p>
-          </div>
-          <div className="ios-card p-5">
-            <h2 className="font-heading text-lg font-bold text-slate-900">Horario secretaría</h2>
-            <p className="mt-1 text-sm font-semibold text-slate-700">Lunes a viernes 8:30–17:30.</p>
+            <div className="rounded-2xl border border-slate-200 bg-[#f8fafc] p-6">
+              <h2 className="font-heading text-xl font-semibold text-slate-900">Horario secretaría</h2>
+              <p className="mt-2 text-base tabular-nums text-slate-600">Lunes a viernes 8:30–17:30.</p>
+              <p className="mt-3 font-mono text-sm tabular-nums text-slate-600"><a href="mailto:brasil@andaliensur.cl" className="link-mail">brasil@andaliensur.cl</a></p>
+              <p className="mt-1 font-mono text-sm tabular-nums text-slate-600"><a href={site.phoneHref} className="link-mail">{site.phone}</a></p>
+            </div>
           </div>
         </div>
       </div>
+
+      <Band tone="band" labelledBy="correos-titulo">
+        <SectionHead titleId="correos-titulo" title="Correos directivos" lead="Correos institucionales (SLEP Andalién Sur). Para matrícula usa SAE en admision.mineduc.cl." />
+        <RuleList label="Correos directivos">
+          {[
+            ["Dirección", "Dino Fauricio Olivieri Díaz", "dino.olivieri@andaliensur.cl"],
+            ["Inspectora General Enseñanza Media", "Rebeca Pinto Espinoza", "rebeca.pinto@andaliensur.cl"],
+            ["Inspector General Enseñanza Básica", "Alejandro Olave Parra", "alejandro.olave@andaliensur.cl"],
+            ["Encargada de Convivencia Educativa", "María Lourdes Alid Lagos", "maria.alid@andaliensur.cl"],
+            ["Jefe de UTP", "César Pizarro Hidalgo", "cesar.pizarro@andaliensur.cl"],
+            ["Secretaría general", "Colegio", "brasil@andaliensur.cl"],
+          ].map(([role, name, email]) => (
+            <li key={email} className="grid gap-1 border-b border-slate-300 py-4 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
+              <span>
+                <span className="block text-sm text-slate-500">{role}</span>
+                <span className="block text-base font-semibold text-slate-900">{name}</span>
+              </span>
+              <a href={`mailto:${email}`} className="link-mail">{email}</a>
+            </li>
+          ))}
+        </RuleList>
+      </Band>
     </div>
   );
 }

@@ -3,35 +3,23 @@ import Image from "next/image";
 import type { NewsItem } from "@/lib/content";
 
 export const NewsCard = memo(function NewsCard({ item, featured = false }: { item: NewsItem; featured?: boolean }) {
-  const inner = (
+  const meta = (
+    <p className="t-meta flex items-center gap-3">
+      <span className="t-name !text-xs">{item.category}</span>
+      <span>{item.date}</span>
+    </p>
+  );
+  const body = (
     <>
-      {item.image ? (
-        <figure className="overflow-hidden rounded-[18px] bg-slate-100">
-          <Image
-            src={item.image}
-            alt={item.imageAlt ?? item.title}
-            width={1200}
-            height={400}
-            sizes="(min-width: 768px) 33vw, 90vw"
-            className="media-zoom aspect-[16/8] w-full object-cover"
-          />
-          {item.imageCredit ? (
-            <figcaption className="px-1 pt-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{item.imageCredit}</figcaption>
-          ) : null}
-        </figure>
-      ) : null}
-      <p className="mt-4 flex flex-wrap items-center gap-2">
-        <span className="rounded-full bg-slate-900 px-3 py-1.5 text-[12px] font-bold text-white">{item.category}</span>
-        <span className="text-[12px] font-bold text-slate-500 tabular-nums">{item.date}</span>
-      </p>
-      <h3 className={`mt-3 font-heading font-bold leading-tight tracking-tight text-pretty text-slate-900 transition-colors group-hover:text-[#0066cc] ${featured ? "text-[24px]" : "text-[19px]"}`}>
+      {meta}
+      <h3 className="t-h3 mt-2 text-pretty">
         {item.title}
       </h3>
-      <p className={`mt-2.5 leading-relaxed text-slate-600 ${featured ? "text-[15px]" : "line-clamp-3 text-[14px]"}`}>{item.excerpt}</p>
+      <p className={`mt-2 ${featured ? "t-body" : "t-small line-clamp-3"}`}>{item.excerpt}</p>
       {item.source ? (
-        <p className="mt-4 pt-4 border-t border-slate-100 text-[12px] font-bold uppercase tracking-wide text-slate-500">
+        <p className="t-meta mt-3">
           {item.sourceUrl ? (
-            <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="underline decoration-slate-300 underline-offset-4 hover:text-[#0066cc] hover:decoration-[#0066cc]">
+            <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="link-inline">
               {item.source} ↗
             </a>
           ) : (
@@ -41,9 +29,50 @@ export const NewsCard = memo(function NewsCard({ item, featured = false }: { ite
       ) : null}
     </>
   );
+
+  if (featured) {
+    return (
+      <article className="group grid gap-6 md:grid-cols-[512px_1fr] md:items-start">
+        {item.image ? (
+          <figure className="w-full max-w-[512px] overflow-hidden rounded-lg">
+            <Image
+              src={item.image}
+              alt={item.imageAlt ?? item.title}
+              width={512}
+              height={288}
+              quality={90}
+              sizes="(min-width: 768px) 512px, 90vw"
+              className="media-zoom aspect-[16/9] w-full object-cover"
+            />
+            {item.imageCredit ? (
+              <figcaption className="t-meta pt-2">{item.imageCredit}</figcaption>
+            ) : null}
+          </figure>
+        ) : null}
+        <div className="border-t-2 border-slate-900 pt-4">{body}</div>
+      </article>
+    );
+  }
+
   return (
-    <article className="group h-full min-w-0 rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
-      {inner}
+    <article className="group border-t-2 border-slate-900 pt-4">
+      {body}
+      {item.image ? (
+        <figure className="mt-4 max-w-[512px] overflow-hidden rounded-lg">
+          <Image
+            src={item.image}
+            alt={item.imageAlt ?? item.title}
+            width={512}
+            height={288}
+            quality={90}
+            sizes="(min-width: 768px) 400px, 90vw"
+            className="media-zoom aspect-[16/9] w-full object-cover"
+          />
+          {item.imageCredit ? (
+            <figcaption className="t-meta pt-2">{item.imageCredit}</figcaption>
+          ) : null}
+        </figure>
+      ) : null}
     </article>
   );
 });

@@ -37,15 +37,15 @@ export type DocItem = {
 export const news: NewsItem[] = [
   {
     slug: "admision-sae-2027",
-    title: "Admisión SAE 2027: te invitamos a ser parte del CBRB",
+    title: "Admisión SAE 2027: parvularia y 1° básico",
     date: "2026-10-15",
     category: "Admisión",
     excerpt:
-      "Periodo complementario del Sistema de Admisión Escolar. Postula a Educación Parvularia y 1° Básico en admision.mineduc.cl.",
-    body: "El Colegio Bicentenario República del Brasil invita a las familias de Concepción a postular vía SAE. Somos un colegio público, laico y bicentenario con historia desde 1843, ubicado en San Martín 1580.",
+      "Periodo complementario SAE. Postula a parvularia y a 1° básico en admision.mineduc.cl.",
+    body: "La postulación es solo por SAE. Para 2027 revisa cupos en parvularia y básica en admision.mineduc.cl.",
     image: "/fotos/parvularia-acto.jpg",
     imageAlt: "Estudiantes de parvularia con polera verde del colegio levantando paletas de colores en un acto escolar",
-    imageCredit: "Foto oficial: vitrina SAE · MINEDUC (RBD 4564)",
+    imageCredit: "Foto SAE",
     source: "MINEDUC · SAE",
     sourceUrl: "https://admision.mineduc.cl",
   },
@@ -65,7 +65,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "resultados-simce-paes-2025-2026",
-    title: "SIMCE 2025 y PAES 2026: 1.342 estudiantes, 132 docentes y resultados por sobre el promedio comunal",
+    title: "SIMCE 2025 y PAES 2026: matrícula 1.342, 132 docentes",
     date: "2026-03-09",
     category: "Académica",
     excerpt:
@@ -79,7 +79,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "ministro-cataldo-visita-obras-noviembre-2025",
-    title: "Ministro Nicolás Cataldo inspecciona obras de conservación junto a la comunidad",
+    title: "Visita del ministro Nicolás Cataldo a las obras (nov 2025)",
     date: "2025-11-12",
     category: "Comunidad",
     excerpt:
@@ -93,15 +93,15 @@ export const news: NewsItem[] = [
   },
   {
     slug: "aniversario-182-anos",
-    title: "Celebramos 182 años: el colegio más grande de Concepción",
+    title: "182 años: acto oficial y reconocimiento al personal",
     date: "2025-09-18",
     category: "Comunidad",
     excerpt:
-      "Más de 1.400 estudiantes. Fundado en 1843 como Escuela N°2 de Primeras Letras, hoy colegio bicentenario del SLEP Andalién Sur.",
-    body: "Comenzó sus actividades en 1843 como Escuela de Primeras Letras con clases de lectura, aritmética y catecismo. Con más de 1.400 estudiantes es el establecimiento educacional más grande de Concepción. La comunidad educativa celebró 182 años junto a apoderados, estudiantes y SLEP Andalién Sur, con acto oficial y reconocimiento a funcionarios con trayectoria.",
+      "Fundado en 1843 como Escuela N°2 de Primeras Letras. Hoy, colegio del SLEP Andalién Sur con más de 1.400 estudiantes en 2025.",
+    body: "Comenzó en 1843 como Escuela de Primeras Letras, con clases de lectura, aritmética y catecismo. En septiembre de 2025 la comunidad celebró 182 años con acto oficial y reconocimiento a funcionarios con trayectoria.",
     image: "/fotos/estandarte-media.jpg",
     imageAlt: "Estudiantes de enseñanza media con estandarte del colegio en un desfile en Concepción",
-    imageCredit: "Foto oficial: vitrina SAE · MINEDUC (RBD 4564) · Saludo: Municipalidad de Concepción",
+    imageCredit: "Foto SAE — Muni Concepción",
     source: "Municipalidad de Concepción · Instagram @colegio_brasil",
     sourceUrl: "https://www.instagram.com/colegio_brasil/",
   },
@@ -121,7 +121,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "inversion-3631-millones-conservacion",
-    title: "$3.631 millones: conservación de techumbre, baños, accesibilidad y sistema eléctrico",
+    title: "$3.631 millones en techumbre, baños y accesibilidad",
     date: "2025-07-11",
     category: "Comunidad",
     excerpt:
@@ -135,7 +135,7 @@ export const news: NewsItem[] = [
   },
   {
     slug: "educacion-publica-excelencia-historia",
-    title: "Educación pública de excelencia: la historia desde la Escuela N°2 de 1843",
+    title: "Escuela N°2 de 1843: historia y sedes",
     date: "2022-10-30",
     category: "Académica",
     excerpt:
@@ -171,43 +171,43 @@ export const gallery: GalleryItem[] = [
     src: "/fotos/estandarte-media.jpg",
     alt: "Estudiantes de enseñanza media con estandarte del colegio en un desfile en Concepción",
     title: "Desfile de enseñanza media",
-    caption: "Estandarte y desfila en Concepción. Comunidad de parvularia a IV medio.",
-    credit: "Foto oficial: SAE · MINEDUC",
+    caption: "Desfile en Concepción, con cursos de parvularia a IV medio.",
+    credit: "Vitrina SAE",
   },
   {
     src: "/fotos/parvularia-acto.jpg",
     alt: "Estudiantes de parvularia con polera verde levantando paletas de colores en un acto",
     title: "Parvularia en acto escolar",
-    caption: "Párvulos con paletas de colores. Juego, lenguaje y socialización.",
-    credit: "Foto oficial: SAE · MINEDUC",
+    caption: "Acto con paletas en parvularia.",
+    credit: "Ficha 4564",
   },
   {
     src: "/fotos/acto-civico.jpg",
     alt: "Estudiantes de básica en un acto cívico con la mano al pecho junto a sillas del patio",
     title: "Acto cívico",
-    caption: "Himno y respeto en el patio. Formación ciudadana del colegio.",
-    credit: "Foto oficial: SAE · MINEDUC",
+    caption: "Acto cívico en el patio de básica.",
+    credit: "Archivo colegio",
   },
   {
     src: "/fotos/bandera-brasil.jpg",
     alt: "Niña con polera del colegio sosteniendo la bandera de Brasil en el aula",
     title: "Bandera de Brasil",
-    caption: "El colegio es guardador del Pabellón de la República del Brasil desde el siglo XX.",
-    credit: "Foto oficial: SAE · MINEDUC",
+    caption: "El colegio guarda el Pabellón de Brasil desde el siglo XX.",
+    credit: "Patrimonio histórico",
   },
   {
     src: "/fotos/docentes-historicos.jpg",
     alt: "Fotografía histórica en color de un grupo de docentes del colegio",
-    title: "Docentes de ayer",
-    caption: "Generaciones de profesoras y profesores desde la Escuela N°2 de 1843.",
-    credit: "Foto histórica: SAE · MINEDUC",
+    title: "Docentes, siglo XX",
+    caption: "Docentes de la Escuela N°2.",
+    credit: "Archivo histórico",
   },
   {
     src: "/fotos/estudiantes-historicos.jpg",
     alt: "Fotografía histórica en blanco y negro de estudiantes del colegio en el siglo XX",
-    title: "Estudiantes de ayer",
-    caption: "Patrimonio fotográfico del colegio bicentenario. Escuela N°2 de 1843.",
-    credit: "Foto histórica: SAE · MINEDUC",
+    title: "Estudiantes, siglo XX",
+    caption: "Estudiantes de la Escuela N°2.",
+    credit: "Archivo histórico",
   },
   {
     src: "https://nahen.cl/imagenes/Letreros/ConservacionColegioBrasil.jpeg",
@@ -215,6 +215,66 @@ export const gallery: GalleryItem[] = [
     title: "Obra en curso · Aquí se construye",
     caption: "Conservación del colegio: inicio 2 oct 2025, plazo 600 días, contratista Constructora Nahen.",
     credit: "Foto: Constructora Nahen / SLEP Andalién Sur · MINEDUC",
+  },
+];
+
+/** Carrusel SAE 2027 (8 láminas oficiales, en orden de lectura). */
+export const saeCarousel: GalleryItem[] = [
+  {
+    src: "/fotos/Carrusel%20SAE/901919710_2606042879875014_2410338374525380810_n.jpeg",
+    alt: "Portada del carrusel: sede histórica en remodelación y ¿Quieres estudiar en el Colegio Brasil? con fecha SAE 2027",
+    title: "Portada",
+    caption: "¿Quieres estudiar en el Colegio Brasil? Sede histórica en remodelación.",
+    credit: "Carrusel SAE 2027",
+  },
+  {
+    src: "/fotos/Carrusel%20SAE/900924523_1803241770790233_3651402398147546902_n.jpeg",
+    alt: "Lámina ¿Qué es el SAE? Plataforma oficial del MINEDUC para postular en línea",
+    title: "¿Qué es el SAE?",
+    caption: "Plataforma oficial del MINEDUC. La postulación es en línea.",
+    credit: "Carrusel SAE 2027",
+  },
+  {
+    src: "/fotos/Carrusel%20SAE/901641010_985486644108020_7331215627700095965_n.jpeg",
+    alt: "Paso 1: ingresa al SAE. Visita sistemadeadmisionescolar.cl y crea tu cuenta como apoderado",
+    title: "Paso 1: ingresa",
+    caption: "Entra a sistemadeadmisionescolar.cl y crea tu cuenta.",
+    credit: "Carrusel SAE 2027",
+  },
+  {
+    src: "/fotos/Carrusel%20SAE/902872203_1126603743347338_7830352652922988579_n.jpeg",
+    alt: "Paso 2: busca el Colegio Brasil. Elige Biobío, Concepción y busca República del Brasil",
+    title: "Paso 2: busca",
+    caption: "Biobío → Concepción → República del Brasil.",
+    credit: "Carrusel SAE 2027",
+  },
+  {
+    src: "/fotos/Carrusel%20SAE/901046883_1836832504316504_6768247768308512943_n.jpeg",
+    alt: "Paso 3: ordena y envía. Ordena preferencias y descarga el comprobante",
+    title: "Paso 3: ordena y envía",
+    caption: "Ordena tus preferencias y descarga el comprobante.",
+    credit: "Carrusel SAE 2027",
+  },
+  {
+    src: "/fotos/Carrusel%20SAE/902000471_1629791382515813_9006492365465713688_n.jpeg",
+    alt: "¿Qué pasa después? Revisa resultados el 1 de diciembre. Postulación, asignación, matrícula",
+    title: "Después",
+    caption: "Resultados el 1 de diciembre. Matrícula presencial.",
+    credit: "Carrusel SAE 2027",
+  },
+  {
+    src: "/fotos/Carrusel%20SAE/902143017_1122751457272293_4808248143837862719_n.jpeg",
+    alt: "Fechas SAE 2027: 10 al 17 de noviembre de 2026 complementario, 1 de diciembre resultados, 9 al 22 de diciembre matrícula",
+    title: "Fechas",
+    caption: "10–17 nov complementario · 1 dic resultados · 9–22 dic matrícula.",
+    credit: "Carrusel SAE 2027",
+  },
+  {
+    src: "/fotos/Carrusel%20SAE/901547701_1157692010023205_4093921886273021387_n.jpeg",
+    alt: "Cierre: Aprender, compartir, crecer. Postular no garantiza una vacante, la asignación es del sistema",
+    title: "Cierre",
+    caption: "Postular no garantiza una vacante: asigna el sistema.",
+    credit: "Carrusel SAE 2027",
   },
 ];
 
@@ -232,9 +292,9 @@ export const documents: DocItem[] = [
 ];
 
 export const team = [
-  { role: "Director", name: "Dino Fauricio Olivieri Díaz" },
-  { role: "Inspectora General Enseñanza Media", name: "Rebeca Pinto Espinoza" },
-  { role: "Inspector General Enseñanza Básica", name: "Alejandro Olave Parra" },
-  { role: "Encargada de Convivencia Educativa", name: "María Lourdes Alid Lagos" },
-  { role: "Jefe de UTP", name: "César Pizarro Hidalgo" },
+  { role: "Director", name: "Dino Fauricio Olivieri Díaz", email: "dino.olivieri@andaliensur.cl" },
+  { role: "Inspectora General Enseñanza Media", name: "Rebeca Pinto Espinoza", email: "rebeca.pinto@andaliensur.cl" },
+  { role: "Inspector General Enseñanza Básica", name: "Alejandro Olave Parra", email: "alejandro.olave@andaliensur.cl" },
+  { role: "Encargada de Convivencia Educativa", name: "María Lourdes Alid Lagos", email: "maria.alid@andaliensur.cl" },
+  { role: "Jefe de UTP", name: "César Pizarro Hidalgo", email: "cesar.pizarro@andaliensur.cl" },
 ] as const;

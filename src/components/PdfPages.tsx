@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- snapshots del visor PDF son bitmaps (data/blob), Next Image no aplica */
 "use client";
 
 import "react-pdf/dist/Page/AnnotationLayer.css";

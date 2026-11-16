@@ -37,10 +37,10 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
 
   return (
     <>
-      <ul className="mt-6 space-y-2">
+      <ul>
         {docs.map((d, i) => (
           <Reveal key={d.href} delay={Math.min(i, 8) * 40}>
-            <div className="card-lift ios-card flex min-h-[72px] items-center gap-4 p-4">
+            <li className="flex min-h-[72px] items-center gap-4 border-b border-slate-200 px-4 py-4 transition-colors duration-150 hover:bg-slate-50">
               <button
                 type="button"
                 onClick={() => setSelected(d)}
@@ -49,33 +49,33 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
                 className="pressable flex min-w-0 flex-1 items-center gap-4 text-left"
                 aria-haspopup="dialog"
               >
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[18px] bg-[#0066cc] text-white" aria-hidden="true">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 3h7l4 4v14H7V3Z" strokeLinejoin="round"/><path d="M14 3v4h4" strokeLinejoin="round"/></svg>
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-slate-900 text-white" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 3h7l4 4v14H7V3Z" strokeLinejoin="round"/><path d="M14 3v4h4" strokeLinejoin="round"/></svg>
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate font-heading font-bold text-slate-900">{d.title}</span>
-                  <span className="mt-1 block text-[13px] font-semibold text-slate-600">{d.category} · <span className="tabular-nums">{d.year}</span> · PDF</span>
+                  <span className="block truncate font-heading text-base font-semibold text-slate-900">{d.title}</span>
+                  <span className="mt-1 block font-mono text-xs tabular-nums text-slate-500">{d.category} · {d.year} · PDF</span>
                 </span>
               </button>
-              <div className="flex shrink-0 items-center gap-2">
+              <div className="flex shrink-0 items-center gap-4">
                 <button
                   type="button"
                   onClick={() => setSelected(d)}
                   onMouseEnter={preloadViewer}
                   onFocus={preloadViewer}
-                  className="pressable flex min-h-[44px] items-center rounded-full bg-[#0066cc] px-5 text-sm font-bold text-white transition-colors duration-150 hover:bg-[#0058af]"
+                  className="pressable flex h-11 items-center link"
                 >
                   Leer
                 </button>
                 <a
                   href={d.href}
                   download
-                  className="pressable hidden min-h-[44px] items-center rounded-full bg-slate-100 px-4 text-sm font-bold text-slate-900 ring-1 ring-slate-200 sm:flex hover:bg-slate-200"
+                  className="pressable hidden h-11 items-center link sm:flex"
                 >
                   Descargar
                 </a>
               </div>
-            </div>
+            </li>
           </Reveal>
         ))}
       </ul>
@@ -91,25 +91,25 @@ export const TransparenciaClient = memo(function TransparenciaClient({ docs }: {
             <button
               type="button"
               onClick={() => setSelected(null)}
-              className="pressable flex min-h-[44px] items-center rounded-full bg-white/10 px-4 text-sm font-bold hover:bg-white/20"
+              className="pressable flex h-11 items-center rounded-xl bg-white/10 px-4 text-sm font-semibold hover:bg-white/20"
             >
               Cerrar
             </button>
-            <p className="min-w-0 flex-1 truncate font-heading font-bold">{selected.title}</p>
+            <p className="min-w-0 flex-1 truncate font-heading text-base font-semibold">{selected.title}</p>
             <a
               href={selected.href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Abrir ${selected.title} en el visor del navegador (pestaña nueva)`}
-              className="pressable flex min-h-[44px] items-center gap-1.5 rounded-full bg-white/10 px-4 text-sm font-bold hover:bg-white/20"
+              className="pressable flex h-11 items-center gap-1.5 rounded-xl bg-white/10 px-4 text-sm font-semibold hover:bg-white/20"
             >
               Abrir
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </a>
             <a
               href={selected.href}
               download
-              className="pressable flex min-h-[44px] items-center rounded-full bg-white px-4 text-sm font-bold text-[#0b1e44] hover:bg-slate-100"
+              className="pressable flex h-11 items-center rounded-xl bg-white px-4 text-sm font-semibold text-[#0b1e44] hover:bg-slate-100"
             >
               Descargar
             </a>

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description:
-    "Colegio Bicentenario República del Brasil, Concepción. Educación pública de excelencia desde 1843. Parvularia a 4° Medio. Admisión SAE, transparencia, comunidad.",
+    "Colegio Bicentenario República del Brasil, Concepción. Escuela pública, laica y gratuita desde 1843. Parvularia a IV medio. Admisión SAE, transparencia y comunidad.",
   icons: {
     icon: [
       { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
@@ -52,17 +52,14 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0b1e44" },
-    { media: "(prefers-color-scheme: dark)", color: "#090a0f" },
-  ],
+  themeColor: "#0b1e44",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${jakarta.variable} ${lexend.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <a href="#contenido" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-[#0f2a5c] focus:px-5 focus:py-3 focus:text-sm focus:font-bold focus:text-white">
+        <a href="#contenido" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-[#0b1e44] focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white">
           Saltar al contenido
         </a>
         <SiteHeader />
