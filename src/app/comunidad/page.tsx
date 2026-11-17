@@ -9,6 +9,7 @@ import { getFacebookPosts } from "@/lib/facebook";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Comunidad" };
+export const instant = false;
 
 
 export default async function ComunidadPage() {

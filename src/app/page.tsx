@@ -8,6 +8,8 @@ import { news } from "@/lib/content";
 import { getFacebookPosts } from "@/lib/facebook";
 import { site } from "@/lib/site";
 
+export const instant = false;
+
 const NIVELES = [
   { edad: "3 a 5 años", t: "Parvularia", d: "Jardín y transición. Nivel prioritario: más cupos.", ava: "Más cupos" },
   { edad: "1° a 8° básico", t: "Básica", d: "Lectura, matemática, ciencias y convivencia. Nivel prioritario: más cupos.", ava: "Más cupos" },
