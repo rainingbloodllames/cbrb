@@ -1,7 +1,7 @@
 // Contenido editorial — EDITABLE por periodista sin código.
 // Fase 2: migrar a Sanity free (mismo shape). Fase 1: este archivo = CMS.
 // Para publicar una noticia: copia un objeto, cambia título/fecha/texto, commit.
-// Fuentes reales verificadas nov 2026: Resumen.cl, Diario Concepción, Andalién Sur,
+// Fuentes reales verificadas nov 2026: Diario Concepción, Andalién Sur,
 // DEP/MINEDUC, SAE (cdnsae.mineduc.cl, RBD 4564), Educación en Datos, Constructora Nahen.
 // Fotos oficiales en public/fotos/ provienen de la vitrina SAE del colegio (MINEDUC).
 // Google Imágenes: lo que aparece son (a) SAE, (b) prensa con crédito, (c) redes
@@ -48,20 +48,6 @@ export const news: NewsItem[] = [
     imageCredit: "Foto SAE",
     source: "MINEDUC · SAE",
     sourceUrl: "https://admision.mineduc.cl",
-  },
-  {
-    slug: "obras-62-avance-entrega-mayo-2027",
-    title: "Obras de conservación alcanzan 62,88%: SLEP proyecta entrega en mayo de 2027",
-    date: "2026-09-21",
-    category: "Comunidad",
-    excerpt:
-      "Informe técnico al 25 de agosto de 2026 certifica 62,88% de avance físico sin paralizaciones. Inversión de $3.602 millones a cargo de Constructora Nahen.",
-    body: "Las obras de conservación del Colegio Bicentenario República del Brasil de Concepción alcanzan un 62,88% de avance según el último informe de inspección técnica (periodo 2 de octubre de 2025 al 25 de agosto de 2026). El término legal se mantiene para mayo de 2027, sin paralizaciones ni modificaciones de plazo. La empresa Constructora Nahen publica un periodo hasta octubre de 2027 en su web, diferencia de cinco meses que mantiene en duda la fecha efectiva de retorno de la comunidad educativa. Mientras tanto, los estudiantes siguen en el Colegio España y el Liceo de Niñas.",
-    image: "https://media.resumen.cl/1180x400/80/wp-content/uploads/2026/09/obras-de-colegio-republica-del-brasil-tienen-un-62-de-avance-se-deberia-entregar-en-mayo-de-2027.jpg.webp",
-    imageAlt: "Obras de conservación en el edificio del Colegio República del Brasil en Concepción",
-    imageCredit: "Foto: Resumen.cl (sep 2026)",
-    source: "Resumen.cl · SLEP Andalién Sur vía Ley de Transparencia",
-    sourceUrl: "https://resumen.cl/articulos/colegio-republica-del-brasil-alcanza-62-de-avance-slep-proyecta-entrega-en-mayo-de-2027",
   },
   {
     slug: "resultados-simce-paes-2025-2026",
@@ -162,7 +148,7 @@ export type GalleryItem = {
  * + letrero oficial de la obra SLEP/MINEDUC en Google Imágenes.
  * Archivos SAE locales en public/fotos/ (copias de cdnsae.mineduc.cl/imagenes/4564/).
  * Lo que aparece en Google Imágenes para este RBD son estas fotos SAE + prensa
- * (Resumen.cl, Diario Concepción, DEP, Nahen) + redes oficiales. Aparecer en
+ * (Diario Concepción, DEP, Nahen) + redes oficiales. Aparecer en
  * Google Imágenes no autoriza reutilizar sin crédito: toda foto de prensa se
  * cita con crédito visible + enlace a la fuente.
  */

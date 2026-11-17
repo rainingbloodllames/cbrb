@@ -246,7 +246,7 @@ export default async function Home() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 id="noticias-titulo" className="t-h2 mt-2">El Colegio Brasil en las noticias</h2>
-            <p className="t-lead mt-3 max-w-xl">Resumen.cl, Diario Concepción, SLEP y MINEDUC. Crédito visible y enlace a cada cobertura.</p>
+            <p className="t-lead mt-3 max-w-xl">Diario Concepción, SLEP y MINEDUC. Crédito visible y enlace a cada cobertura.</p>
           </div>
           <Link href="/comunidad" className="link">Ver todas</Link>
         </div>
