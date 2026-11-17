@@ -264,31 +264,35 @@ export default async function Home() {
       </section>
 
       {/* FACEBOOK */}
-      {fbPosts.length > 0 ? (
-        <section className="mt-20 bg-[var(--band)] py-16 sm:mt-24 sm:py-20" aria-labelledby="facebook-titulo">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <h2 id="facebook-titulo" className="t-h2">Publicaciones en Facebook</h2>
-                <p className="t-lead mt-3 max-w-xl">Lo que el colegio publica cada día, directo de la página. Sin salir de Facebook.</p>
-              </div>
-              <a href={site.facebook} target="_blank" rel="noreferrer" className="link">Seguir la página</a>
+      <section className="mt-20 bg-[var(--band)] py-16 sm:mt-24 sm:py-20" aria-labelledby="facebook-titulo">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <h2 id="facebook-titulo" className="t-h2">Publicaciones en Facebook</h2>
+              <p className="t-lead mt-3 max-w-xl">Lo que el colegio publica cada día, directo de la página.</p>
             </div>
-            <div className="mt-8">
-              <Reveal>
-                <NewsCard item={fbPosts[0]} featured />
-              </Reveal>
-            </div>
-            <div className="grid gap-x-6 gap-y-10 pt-10 sm:grid-cols-2 lg:grid-cols-3">
-              {fbPosts.slice(1).map((n, i) => (
-                <Reveal key={n.slug} delay={i * 40}>
-                  <NewsCard item={n} />
-                </Reveal>
-              ))}
-            </div>
+            <a href={site.facebook} target="_blank" rel="noreferrer" className="link">Seguir la página</a>
           </div>
-        </section>
-      ) : null}
+          {fbPosts.length > 0 ? (
+            <>
+              <div className="mt-8">
+                <Reveal>
+                  <NewsCard item={fbPosts[0]} featured />
+                </Reveal>
+              </div>
+              <div className="grid gap-x-6 gap-y-10 pt-10 sm:grid-cols-2 lg:grid-cols-3">
+                {fbPosts.slice(1).map((n, i) => (
+                  <Reveal key={n.slug} delay={i * 40}>
+                    <NewsCard item={n} />
+                  </Reveal>
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className="t-body mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.08)]">Estamos conectando Facebook. Revisa de nuevo en una hora.</p>
+          )}
+        </div>
+      </section>
 
       {/* PÁGINAS DE INTERÉS */}
       <section className="mt-20 bg-[var(--band)] py-16 sm:mt-24 sm:py-20" aria-labelledby="ayuda-titulo">
