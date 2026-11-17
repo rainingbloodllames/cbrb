@@ -53,6 +53,13 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
+a, button { touch-action: manipulation; }
+
+@media (max-width: 380px) {
+  .t-display { font-size: 2.5rem; }
+  .t-stat-lg { font-size: 1.9rem; }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -200,7 +207,7 @@ textarea.field { height: auto; min-height: 7.5rem; padding-block: 0.75rem; }
 .link:hover { color: var(--cbrb-chile); text-decoration-color: var(--cbrb-chile); }
 .link-inline { font-weight: 600; color: var(--cbrb-chile); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; transition-property: color; transition-duration: 150ms; }
 .link-inline:hover { color: #0058af; }
-.link-mail { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.875rem; font-variant-numeric: tabular-nums; color: var(--cbrb-chile); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; transition-property: color; transition-duration: 150ms; }
+.link-mail { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.875rem; font-variant-numeric: tabular-nums; color: var(--cbrb-chile); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; transition-property: color; transition-duration: 150ms; overflow-wrap: anywhere; }
 .link-mail:hover { color: #0058af; }
 .link-light { font-weight: 600; color: #ffffff; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; transition-property: color, text-decoration-color; transition-duration: 150ms; }
 .link-light:hover { color: var(--br-yellow); text-decoration-color: var(--br-yellow); }

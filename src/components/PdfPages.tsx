@@ -737,7 +737,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
               onFocus={(e) => e.currentTarget.select()}
               inputMode="numeric"
               aria-label="Número de página"
-              className="t-label h-10 w-12 rounded-full bg-black/40 text-center tabular-nums text-white ring-1 ring-white/20"
+              className="t-label h-11 w-12 rounded-full bg-black/40 text-center tabular-nums text-white ring-1 ring-white/20"
             />
             <span className="t-meta">/ {numPages || "…"}</span>
           </form>
@@ -749,9 +749,9 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
           <span className="mx-1 h-6 w-px shrink-0 bg-white/25" aria-hidden="true" />
 
           <div className="flex shrink-0 items-center rounded-full bg-black/40 p-0.5 ring-1 ring-white/20" role="group" aria-label="Zoom">
-            <button type="button" onClick={zoomOut} aria-label="Alejar" className="pressable grid h-9 w-9 place-items-center rounded-full text-white hover:bg-white/20">−</button>
+            <button type="button" onClick={zoomOut} aria-label="Alejar" className="pressable grid h-11 w-11 place-items-center rounded-full text-white hover:bg-white/20">−</button>
             <span className="t-meta-inv min-w-[48px] text-center">{Math.round(scale * 100)}%</span>
-            <button type="button" onClick={zoomIn} aria-label="Acercar" className="pressable grid h-9 w-9 place-items-center rounded-full text-white hover:bg-white/20">+</button>
+            <button type="button" onClick={zoomIn} aria-label="Acercar" className="pressable grid h-11 w-11 place-items-center rounded-full text-white hover:bg-white/20">+</button>
           </div>
 
           <button type="button" onClick={() => setFit((v) => !v)} aria-pressed={fit} aria-label="Ajustar a ancho" className={toolBtn(fit)}>

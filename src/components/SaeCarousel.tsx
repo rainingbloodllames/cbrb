@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState, type TouchEvent } from "react";
 import type { GalleryItem } from "@/lib/content";
 
 /**
@@ -16,6 +16,19 @@ export const SaeCarousel = memo(function SaeCarousel({ items }: { items: Gallery
   const go = useCallback((delta: number) => {
     setIndex((i) => (i + delta + items.length) % items.length);
   }, [items.length]);
+
+  const touchX = useRef<number | null>(null);
+  const onTouchStart = useCallback((e: TouchEvent) => {
+    touchX.current = e.touches[0]?.clientX ?? null;
+  }, []);
+  const onTouchEnd = useCallback((e: TouchEvent) => {
+    if (touchX.current === null) return;
+    const endX = e.changedTouches[0]?.clientX ?? touchX.current;
+    const dx = endX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(dx) < 40) return;
+    go(dx < 0 ? 1 : -1);
+  }, [go]);
 
   useEffect(() => {
     reduced.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -37,8 +50,10 @@ export const SaeCarousel = memo(function SaeCarousel({ items }: { items: Gallery
       onMouseLeave={() => setPaused(reduced.current ? true : false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => !reduced.current && setPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
-      <figure className="w-full max-w-[480px] overflow-hidden rounded-xl bg-white shadow-[0_4px_24px_rgba(11,30,68,0.1)] ring-1 ring-slate-900/5">
+      <figure className="w-full max-w-[480px] overflow-hidden rounded-xl bg-white shadow-[0_4px_24px_rgba(11,30,68,0.1)] ring-1 ring-slate-900/5" style={{ touchAction: "pan-y" }}>
         <Image
           key={current.src}
           src={current.src}
@@ -55,15 +70,15 @@ export const SaeCarousel = memo(function SaeCarousel({ items }: { items: Gallery
         </figcaption>
         <div className="flex items-center justify-between gap-3 border-t border-slate-200 px-4 py-3">
           <div className="flex gap-2">
-            <button type="button" onClick={() => go(-1)} aria-label="Lámina anterior" className="pressable grid h-10 w-10 place-items-center rounded-lg border border-slate-300 text-slate-900 transition-colors duration-150 hover:border-slate-900 hover:bg-slate-900 hover:text-white">
+            <button type="button" onClick={() => go(-1)} aria-label="Lámina anterior" className="pressable grid h-11 w-11 place-items-center rounded-lg border border-slate-300 text-slate-900 transition-colors duration-150 hover:border-slate-900 hover:bg-slate-900 hover:text-white">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
-            <button type="button" onClick={() => go(1)} aria-label="Lámina siguiente" className="pressable grid h-10 w-10 place-items-center rounded-lg border border-slate-300 text-slate-900 transition-colors duration-150 hover:border-slate-900 hover:bg-slate-900 hover:text-white">
+            <button type="button" onClick={() => go(1)} aria-label="Lámina siguiente" className="pressable grid h-11 w-11 place-items-center rounded-lg border border-slate-300 text-slate-900 transition-colors duration-150 hover:border-slate-900 hover:bg-slate-900 hover:text-white">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
           </div>
           <p className="t-meta">{index + 1} / {items.length}{paused ? " · Pausado" : ""}</p>
-          <div className="flex gap-1.5" role="tablist" aria-label="Elegir lámina">
+          <div className="flex items-center gap-0.5" role="tablist" aria-label="Elegir lámina">
             {items.map((g, i) => (
               <button
                 key={g.src}
@@ -72,8 +87,10 @@ export const SaeCarousel = memo(function SaeCarousel({ items }: { items: Gallery
                 aria-selected={i === index}
                 aria-label={`${g.title}: lámina ${i + 1} de ${items.length}`}
                 onClick={() => setIndex(i)}
-                className={`h-2.5 rounded-full transition-colors duration-150 ${i === index ? "w-7 bg-[#0b1e44]" : "w-2.5 bg-slate-300"}`}
-              />
+                className="flex h-11 items-center px-1"
+              >
+                <span className={`block h-2.5 rounded-full transition-colors duration-150 ${i === index ? "w-7 bg-[#0b1e44]" : "w-2.5 bg-slate-300"}`} aria-hidden="true" />
+              </button>
             ))}
           </div>
         </div>

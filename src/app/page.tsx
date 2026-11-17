@@ -207,7 +207,7 @@ export default async function Home() {
               <span className="t-h3">{n.t}</span>
               <span className="t-body min-w-0 flex-1">{n.d} <span className={`ml-2 ${n.ava === "Más cupos" ? "t-pill-ok" : "t-pill"}`}>{n.ava}</span></span>
               <span className="t-pill shrink-0">{n.edad}</span>
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-500 transition-colors duration-150 group-hover:border-slate-900 group-hover:bg-slate-900 group-hover:text-white">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-500 transition-colors duration-150 group-hover:border-slate-900 group-hover:bg-slate-900 group-hover:text-white">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" className="arrow-nudge"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </span>
             </Link>
