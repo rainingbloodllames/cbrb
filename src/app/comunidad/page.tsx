@@ -10,6 +10,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Comunidad" };
 
+
 export default async function ComunidadPage() {
   const fbPosts = await getFacebookPosts(9);
   const featured = fbPosts[0] ?? news[0];

@@ -4,7 +4,6 @@ import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { NewsCard } from "@/components/NewsCard";
 import { Reveal } from "@/components/Reveal";
-import { SchoolGallery } from "@/components/SchoolGallery";
 import { news } from "@/lib/content";
 import { getFacebookPosts } from "@/lib/facebook";
 import { site } from "@/lib/site";
@@ -21,6 +20,8 @@ const FACTS = [
   { k: "SLEP Andalién Sur", v: "Concepción, Chiguayante, Florida y Hualqui." },
   { k: "Matrícula 2025", v: "1.342 estudiantes y 132 docentes en San Martín 1580." },
 ];
+
+
 
 const TIMELINE = [
   { year: "1843", title: "Escuela N°2", text: "Primera escuela de Concepción, con clases de lectura y aritmética." },
@@ -286,9 +287,6 @@ export default async function Home() {
           </div>
         </section>
       ) : null}
-
-      {/* GALERÍA */}
-      <SchoolGallery headingId="galeria-titulo" />
 
       {/* PÁGINAS DE INTERÉS */}
       <section className="mt-20 bg-[var(--band)] py-16 sm:mt-24 sm:py-20" aria-labelledby="ayuda-titulo">

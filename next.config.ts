@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "*.fbcdn.net" },
+      { protocol: "https", hostname: "*.facebook.com" },
       { protocol: "https", hostname: "media.resumen.cl" },
       { protocol: "https", hostname: "assets.diarioconcepcion.cl" },
       { protocol: "https", hostname: "dep.gob.cl" },
