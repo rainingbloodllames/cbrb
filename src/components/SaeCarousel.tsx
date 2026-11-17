@@ -50,7 +50,7 @@ export const SaeCarousel = memo(function SaeCarousel({ items }: { items: Gallery
           className="animate-enter-in aspect-[4/5] w-full object-cover"
         />
         <figcaption className="border-t border-slate-200 px-4 py-3">
-          <p className="t-name !text-sm">{current.title} <span className="t-meta ml-2">{current.credit}</span></p>
+          <p className="t-name">{current.title} <span className="t-caption ml-2">{current.credit}</span></p>
           <p className="t-small mt-1">{current.caption}</p>
         </figcaption>
         <div className="flex items-center justify-between gap-3 border-t border-slate-200 px-4 py-3">
@@ -62,7 +62,7 @@ export const SaeCarousel = memo(function SaeCarousel({ items }: { items: Gallery
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
           </div>
-          <p className="t-meta tabular-nums">{index + 1} / {items.length}{paused ? " · Pausado" : ""}</p>
+          <p className="t-meta">{index + 1} / {items.length}{paused ? " · Pausado" : ""}</p>
           <div className="flex gap-1.5" role="tablist" aria-label="Elegir lámina">
             {items.map((g, i) => (
               <button
@@ -87,8 +87,8 @@ export const SaeCarousel = memo(function SaeCarousel({ items }: { items: Gallery
           {items.map((g, i) => (
             <li key={g.src}>
               <button type="button" onClick={() => setIndex(i)} aria-current={i === index ? "true" : undefined} className={`flex w-full items-center gap-3 rounded-lg border px-4 py-3 text-left transition-colors duration-150 ${i === index ? "border-[#0b1e44] bg-white shadow-[0_1px_2px_rgba(15,23,42,0.08)]" : "border-transparent hover:bg-white/70"}`}>
-                <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full font-mono text-xs tabular-nums ${i === index ? "bg-[#0b1e44] text-white" : "bg-white text-slate-500 ring-1 ring-slate-300"}`}>{i + 1}</span>
-                <span className="t-name !text-sm">{g.title}</span>
+                <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full ${i === index ? "t-meta-inv bg-[#0b1e44]" : "t-meta bg-white ring-1 ring-slate-300"}`}>{i + 1}</span>
+                <span className="t-name">{g.title}</span>
                 <span className="t-small hidden sm:block">{g.caption}</span>
               </button>
             </li>

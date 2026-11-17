@@ -56,7 +56,7 @@ export const HeroCarousel = memo(function HeroCarousel() {
             style={{ opacity: i === index ? 1 : 0 }}
           />
         ))}
-        <span className="absolute left-3 top-3 rounded-md bg-slate-900/70 px-2.5 py-1 font-mono text-[11px] text-white">
+        <span className="t-badge absolute left-3 top-3 rounded-md bg-slate-900/70 px-2.5 py-1">
           Cómo postular
         </span>
         {!paused ? (
@@ -65,7 +65,7 @@ export const HeroCarousel = memo(function HeroCarousel() {
       </div>
 
       <div className="border-t border-slate-100 px-4 py-3">
-        <p key={`cap-${index}`} className="animate-enter-in text-sm font-medium text-slate-600">{slide.caption}</p>
+        <p key={`cap-${index}`} className="t-small animate-enter-in">{slide.caption}</p>
         <div className="mt-3 flex items-center justify-between gap-3">
           <div className="flex gap-1.5" role="tablist" aria-label="Elegir lámina">
             {saeCarousel.map((s, i) => (
@@ -81,7 +81,7 @@ export const HeroCarousel = memo(function HeroCarousel() {
             ))}
           </div>
           <div className="flex items-center gap-2">
-            <span className="t-meta tabular-nums">{index + 1} / {saeCarousel.length}</span>
+            <span className="t-meta">{index + 1} / {saeCarousel.length}</span>
             <button type="button" onClick={() => go(-1)} aria-label="Lámina anterior" className="pressable grid h-9 w-9 place-items-center rounded-lg border border-slate-200 text-slate-600 transition-colors duration-150 hover:border-slate-900 hover:bg-slate-900 hover:text-white">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>

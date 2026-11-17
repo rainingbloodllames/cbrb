@@ -26,8 +26,8 @@ export default function NosotrosPage() {
         meta="RBD 4564 · San Martín 1580 · 183 años"
       >
         <nav aria-label="Secciones de Nosotros" className="flex flex-wrap gap-2">
-          <span className="inline-flex h-10 items-center rounded-lg bg-[#0b1e44] px-4 text-sm font-semibold text-white" aria-current="page">Nosotros</span>
-          <Link href="/nosotros/historia" className="inline-flex h-10 items-center rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-900 transition-colors duration-150 hover:border-slate-900">
+          <span className="btn btn-sm btn-dark" aria-current="page">Nosotros</span>
+          <Link href="/nosotros/historia" className="btn btn-sm border border-slate-200 bg-white hover:border-slate-900">
             Historia 1843 a hoy
           </Link>
         </nav>
@@ -46,7 +46,7 @@ export default function NosotrosPage() {
               className="aspect-[4/3] w-full object-cover"
             />
           </div>
-          <figcaption className="pt-3 font-mono text-xs text-slate-500">
+          <figcaption className="t-caption pt-3">
             Foto SAE. Día a día en @colegio_brasil.
           </figcaption>
         </figure>
@@ -57,10 +57,10 @@ export default function NosotrosPage() {
         <RuleList label="Hitos del colegio">
           {HISTORIA.map((h, i) => (
             <Reveal key={h.y} delay={i * 40}>
-              <li className="grid gap-2 border-b border-slate-300 py-5 sm:grid-cols-[140px_200px_1fr] sm:items-baseline sm:gap-6">
-                <p className="font-heading text-2xl font-semibold tabular-nums text-slate-900">{h.y}</p>
-                <p className="font-heading text-lg font-semibold text-slate-900">{h.t}</p>
-                <p className="text-base leading-relaxed text-slate-600">{h.d}</p>
+              <li className="grid gap-2 border-b border-slate-200 py-5 sm:grid-cols-[140px_200px_1fr] sm:items-baseline sm:gap-6">
+                <p className="t-stat">{h.y}</p>
+                <p className="t-h3">{h.t}</p>
+                <p className="t-body">{h.d}</p>
               </li>
             </Reveal>
           ))}
@@ -85,8 +85,8 @@ export default function NosotrosPage() {
                   />
                 </div>
                 <figcaption className="pt-3">
-                  <p className="font-heading text-sm font-semibold text-slate-900">{g.title} <span className="ml-2 font-mono text-xs font-normal text-slate-500">{g.credit}</span></p>
-                  <p className="mt-1 text-sm text-slate-600">{g.caption}</p>
+                  <p className="t-name">{g.title} <span className="t-caption ml-2">{g.credit}</span></p>
+                  <p className="t-small mt-1">{g.caption}</p>
                 </figcaption>
               </figure>
             </Reveal>
@@ -179,10 +179,10 @@ export default function NosotrosPage() {
         <SectionHead titleId="equipo-titulo" title="Equipo directivo" lead="Correos institucionales (SLEP Andalién Sur). Para matrícula usa SAE." />
         <RuleList label="Equipo directivo y correos">
           {[...team, { role: "Secretaría general", name: "Colegio", email: "brasil@andaliensur.cl" }].map((m) => (
-            <li key={m.email} className="grid gap-1 border-b border-slate-300 py-4 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
+            <li key={m.email} className="grid gap-1 border-b border-slate-200 py-4 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
               <span>
-                <span className="block text-sm text-slate-500">{m.role}</span>
-                <span className="block text-base font-semibold text-slate-900">{m.name}</span>
+                <span className="t-role block">{m.role}</span>
+                <span className="t-name block">{m.name}</span>
               </span>
               <a href={`mailto:${m.email}`} className="link-mail">{m.email}</a>
             </li>

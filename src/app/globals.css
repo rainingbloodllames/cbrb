@@ -132,7 +132,8 @@ section[id], main [id] { scroll-margin-top: 96px; }
   height: 4px;
 }
 
-/* — Tipo: única escala (Lexend solo títulos, Jakarta cuerpo) — */
+/* — Tipo: única escala (Lexend solo títulos, Jakarta todo lo demás) — */
+.t-display { font-family: var(--font-lexend); font-size: clamp(2.75rem, 6vw, 4.5rem); font-weight: 600; line-height: 1.02; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
 .t-h1 { font-family: var(--font-lexend); font-size: clamp(2.75rem, 5vw, 4rem); font-weight: 600; line-height: 1.02; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
 .t-h2 { font-family: var(--font-lexend); font-size: clamp(1.9rem, 3vw, 2.75rem); font-weight: 600; line-height: 1.08; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
 .t-h3 { font-family: var(--font-lexend); font-size: 1.25rem; font-weight: 600; line-height: 1.25; color: var(--ink); }
@@ -141,7 +142,58 @@ section[id], main [id] { scroll-margin-top: 96px; }
 .t-small { font-size: 0.875rem; line-height: 1.6; color: var(--muted); }
 .t-name { font-size: 1rem; font-weight: 600; line-height: 1.5; color: var(--ink); }
 .t-role { font-size: 0.875rem; line-height: 1.5; color: var(--faint); }
+.t-label { font-size: 0.875rem; font-weight: 600; line-height: 1.5; color: var(--ink); }
+.t-kicker { font-size: 0.8125rem; font-weight: 600; line-height: 1.5; letter-spacing: 0.01em; color: var(--faint); }
+.t-caption { font-size: 0.875rem; line-height: 1.6; color: var(--faint); }
+.t-stat { font-family: var(--font-lexend); font-size: 1.5rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.t-stat-lg { font-family: var(--font-lexend); font-size: clamp(2rem, 3vw, 2.75rem); font-weight: 600; line-height: 1; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
 .t-meta { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.75rem; line-height: 1.5; color: var(--faint); font-variant-numeric: tabular-nums; }
+.t-meta-strong { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.75rem; line-height: 1.5; color: var(--navy); font-variant-numeric: tabular-nums; }
+.t-badge { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.75rem; line-height: 1.5; color: #ffffff; }
+.t-meta-inv { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.75rem; line-height: 1.5; color: #ffffff; font-variant-numeric: tabular-nums; }
+.t-pill { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.75rem; line-height: 1.5; color: var(--muted); font-variant-numeric: tabular-nums; display: inline-block; border-radius: 9999px; background: #f1f5f9; padding: 0.25rem 0.75rem; }
+.t-pill-ok { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 0.75rem; line-height: 1.5; color: #14532d; font-variant-numeric: tabular-nums; display: inline-block; border-radius: 9999px; background: #dff5e3; padding: 0.25rem 0.75rem; }
+/* Variantes claras: usar solo dentro de superficies navy */
+.on-dark .t-display, .t-display.on-dark { color: #ffffff; }
+.on-dark .t-h1, .t-h1.on-dark { color: #ffffff; }
+.on-dark .t-h2, .t-h2.on-dark { color: #ffffff; }
+.on-dark .t-h3, .t-h3.on-dark { color: #ffffff; }
+.on-dark .t-stat, .t-stat.on-dark { color: #ffffff; }
+.on-dark .t-stat-lg, .t-stat-lg.on-dark { color: #ffffff; }
+.t-stat-accent { font-family: var(--font-lexend); font-size: 1.5rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--br-yellow); font-variant-numeric: tabular-nums; }
+.on-dark .t-name, .t-name.on-dark { color: #ffffff; }
+.on-dark .t-label, .t-label.on-dark { color: #ffffff; }
+.on-dark .t-lead, .t-lead.on-dark { color: var(--color-slate-300, #cbd5e1); }
+.on-dark .t-body, .t-body.on-dark { color: var(--color-slate-300, #cbd5e1); }
+.on-dark .t-small, .t-small.on-dark { color: var(--color-slate-300, #cbd5e1); }
+.on-dark .t-meta, .t-meta.on-dark { color: var(--color-slate-400, #94a3b8); }
+.on-dark .t-kicker, .t-kicker.on-dark { color: var(--color-slate-400, #94a3b8); }
+.on-dark a { transition-property: color; transition-duration: 150ms; }
+.on-dark a:hover { color: #ffffff; }
+.on-dark .t-caption, .t-caption.on-dark { color: var(--color-slate-300, #cbd5e1); }
+.band-navy-texture .t-h2, .hero-mesh .t-h2,
+.band-navy-texture .t-h3, .hero-mesh .t-h3 { color: #ffffff; }
+.band-navy-texture .t-lead, .hero-mesh .t-lead,
+.band-navy-texture .t-body, .hero-mesh .t-body,
+.band-navy-texture .t-small, .hero-mesh .t-small { color: #cbd5e1; }
+.band-navy-texture .t-meta, .hero-mesh .t-meta { color: #94a3b8; }
+
+/* — Botones: una sola escala (Jakarta 600; Lexend nunca en botones) — */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 3rem; padding-inline: 1.5rem; border-radius: var(--r-md); font-size: 1rem; font-weight: 600; line-height: 1.5; transition-property: background-color, color, border-color; transition-duration: 150ms; }
+.btn-sm { height: 2.75rem; padding-inline: 1.25rem; font-size: 0.875rem; }
+.btn-primary { background: var(--br-yellow); color: var(--ink); }
+.btn-primary:hover { background: #ffdd2e; }
+.btn-secondary { background: #ffffff; color: var(--navy); }
+.btn-secondary:hover { background: #f1f5f9; }
+.btn-dark { background: #0f172a; color: #ffffff; }
+.btn-dark:hover { background: #1e293b; }
+.btn-light { background: #ffffff; color: var(--navy); }
+.btn-light:hover { background: #f1f5f9; }
+
+/* — Formularios: un solo field — */
+.field { margin-top: 0.375rem; height: 3rem; width: 100%; border-radius: var(--r-md); border: 1px solid var(--line); background: #ffffff; padding-inline: 1rem; font-size: 1rem; line-height: 1.5; color: var(--ink); }
+.field::placeholder { color: var(--faint); }
+textarea.field { height: auto; min-height: 7.5rem; padding-block: 0.75rem; }
 
 /* — Links: única definición (tamaño hereda del contexto, sin hardcodear) — */
 .link { font-weight: 600; color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; transition-property: color, text-decoration-color; transition-duration: 150ms; }

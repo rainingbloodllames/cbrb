@@ -30,8 +30,8 @@ export const SiteHeader = memo(function SiteHeader() {
               <Image src="/logos/cbrb.png" alt="" width={32} height={44} priority className="h-9 w-auto" />
             </span>
             <span className="min-w-0 leading-none">
-              <span className="block truncate font-heading text-base font-semibold tracking-tight text-slate-900">Colegio Bicentenario</span>
-              <span className="mt-1 block truncate text-xs font-medium text-slate-500">República del Brasil · Concepción</span>
+              <span className="t-name block truncate">Colegio Bicentenario</span>
+              <span className="t-caption mt-1 block truncate">República del Brasil · Concepción</span>
             </span>
           </Link>
 
@@ -43,7 +43,7 @@ export const SiteHeader = memo(function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`flex h-10 items-center rounded-lg px-3 text-sm transition-colors duration-150 ${active ? "bg-slate-100 font-semibold text-slate-900" : "font-medium text-slate-600 hover:text-slate-900"}`}
+                  className={`flex h-10 items-center rounded-lg px-3 transition-colors duration-150 ${active ? "t-label bg-slate-100" : "t-small font-medium hover:text-slate-900"}`}
                 >
                   {item.label}
                 </Link>
@@ -56,7 +56,7 @@ export const SiteHeader = memo(function SiteHeader() {
               href={site.saeUrl}
               target="_blank"
               rel="noreferrer"
-              className="hidden h-11 items-center gap-2 rounded-xl bg-[#ffd60a] px-5 text-sm font-semibold text-slate-900 transition-colors duration-150 hover:bg-[#ffdd2e] sm:inline-flex"
+              className="btn btn-sm btn-primary hidden sm:inline-flex"
             >
               Postula SAE
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -93,7 +93,7 @@ export const SiteHeader = memo(function SiteHeader() {
                       href={item.href}
                       onClick={() => setOpen(false)}
                       aria-current={active ? "page" : undefined}
-                      className={`flex h-11 items-center justify-between rounded-lg px-3 text-sm ${active ? "bg-slate-100 font-semibold text-slate-900" : "font-medium text-slate-700 hover:bg-slate-50"}`}
+                      className={`flex h-11 items-center justify-between rounded-lg px-3 ${active ? "t-label bg-slate-100" : "t-small font-medium hover:bg-slate-50"}`}
                     >
                       {item.label}
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-40" aria-hidden="true"><path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -102,7 +102,7 @@ export const SiteHeader = memo(function SiteHeader() {
                 );
               })}
               <li className="pt-2">
-                <a href={site.saeUrl} target="_blank" rel="noreferrer" className="flex h-12 items-center justify-center gap-2 rounded-xl bg-[#ffd60a] px-4 text-sm font-semibold text-slate-900">
+                <a href={site.saeUrl} target="_blank" rel="noreferrer" className="btn btn-primary w-full">
                   Postula por SAE — Admisión 2027
                 </a>
               </li>

@@ -19,7 +19,7 @@ export const SchoolGallery = memo(function SchoolGallery({ headingId = "galeria-
               Fotos oficiales de la vitrina SAE en MINEDUC. El día a día está en nuestras redes.
             </p>
           </div>
-          <p className="flex gap-5 text-base font-semibold">
+          <p className="t-body flex flex-wrap gap-5">
             <a href={site.instagram} target="_blank" rel="noreferrer" className="link">Instagram</a>
             <a href={site.facebook} target="_blank" rel="noreferrer" className="link">Facebook</a>
           </p>
@@ -41,7 +41,7 @@ export const SchoolGallery = memo(function SchoolGallery({ headingId = "galeria-
                   />
                 </div>
                 <figcaption className="pt-3">
-                  <p className="t-name !text-sm leading-tight">{g.title} <span className="t-meta ml-2">{g.credit}</span></p>
+                  <p className="t-name leading-tight">{g.title} <span className="t-caption ml-2">{g.credit}</span></p>
                   <p className="t-small mt-1">{g.caption}</p>
                 </figcaption>
               </figure>

@@ -28,11 +28,11 @@ export default function HistoriaPage() {
         lead="De la Escuela N.° 2 de Primeras Letras al colegio de San Martín 1580. Cada camada dejó una sala distinta."
       >
         <nav aria-label="Secciones de Nosotros" className="flex flex-wrap gap-2">
-          <Link href="/nosotros" className="inline-flex h-10 items-center rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-900 transition-colors duration-150 hover:border-slate-900">
+          <Link href="/nosotros" className="btn btn-sm border border-slate-300 bg-white hover:border-slate-900">
             Nosotros
           </Link>
-          <span className="inline-flex h-10 items-center rounded-lg bg-[#0b1e44] px-4 text-sm font-semibold text-white" aria-current="page">Historia</span>
-          <a href="https://www.instagram.com/colegio_brasil/" target="_blank" rel="noreferrer" className="inline-flex h-10 items-center rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-900 transition-colors duration-150 hover:border-slate-900">
+          <span className="btn btn-sm btn-dark" aria-current="page">Historia</span>
+          <a href="https://www.instagram.com/colegio_brasil/" target="_blank" rel="noreferrer" className="btn btn-sm border border-slate-300 bg-white hover:border-slate-900">
             Fotos en Instagram
           </a>
         </nav>
@@ -71,7 +71,7 @@ export default function HistoriaPage() {
           {HITOS.map((h, i) => (
             <Reveal key={h.y} delay={i * 40}>
               <li className="grid gap-2 border-b border-slate-200 py-5 last:border-b-0 sm:grid-cols-[140px_1fr] sm:items-baseline sm:gap-6">
-                <p className="font-heading text-2xl font-semibold tabular-nums text-slate-900">{h.y}</p>
+                <p className="t-stat">{h.y}</p>
                 <div>
                   <h3 className="t-name">{h.t}</h3>
                   <p className="t-body mt-1">{h.d}</p>

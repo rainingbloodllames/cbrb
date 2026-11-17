@@ -196,7 +196,7 @@ const LazyThumb = memo(function LazyThumb({
         ) : (
           <span className="block h-24 w-16 animate-pulse rounded-md bg-slate-200" aria-hidden="true" />
         )}
-        <span className="mt-1 block text-center text-[10px] font-bold tabular-nums text-slate-900">
+        <span className="t-meta-strong mt-1 block text-center">
           {pageNumber}
         </span>
       </button>
@@ -737,9 +737,9 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
               onFocus={(e) => e.currentTarget.select()}
               inputMode="numeric"
               aria-label="Número de página"
-              className="h-10 w-12 rounded-full bg-black/40 text-center text-sm font-bold tabular-nums text-white ring-1 ring-white/20"
+              className="t-label h-10 w-12 rounded-full bg-black/40 text-center tabular-nums text-white ring-1 ring-white/20"
             />
-            <span className="text-sm font-semibold tabular-nums text-white/70">/ {numPages || "…"}</span>
+            <span className="t-meta">/ {numPages || "…"}</span>
           </form>
 
           <button type="button" onClick={() => go(step)} disabled={page >= numPages} aria-label="Página siguiente" className="pressable grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/15 text-white ring-1 ring-white/20 transition-colors hover:bg-white/25 disabled:opacity-35">
@@ -750,7 +750,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
 
           <div className="flex shrink-0 items-center rounded-full bg-black/40 p-0.5 ring-1 ring-white/20" role="group" aria-label="Zoom">
             <button type="button" onClick={zoomOut} aria-label="Alejar" className="pressable grid h-9 w-9 place-items-center rounded-full text-white hover:bg-white/20">−</button>
-            <span className="min-w-[48px] text-center text-xs font-bold tabular-nums text-white">{Math.round(scale * 100)}%</span>
+            <span className="t-meta-inv min-w-[48px] text-center">{Math.round(scale * 100)}%</span>
             <button type="button" onClick={zoomIn} aria-label="Acercar" className="pressable grid h-9 w-9 place-items-center rounded-full text-white hover:bg-white/20">+</button>
           </div>
 
@@ -808,7 +808,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
                 }}
                 placeholder="Buscar en el documento…"
                 aria-label="Buscar en el documento"
-                className="min-h-[44px] min-w-0 flex-1 rounded-full bg-white px-4 text-sm font-semibold text-slate-900 placeholder:text-slate-500"
+                className="t-label min-h-[44px] min-w-0 flex-1 rounded-full bg-white px-4 placeholder:text-slate-500"
               />
               <button type="button" onClick={() => goMatch(-1)} disabled={!hits.length || scanning} aria-label="Coincidencia anterior" className="pressable grid h-11 w-11 shrink-0 place-items-center rounded-full text-white hover:bg-white/15 disabled:opacity-35">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden="true"><path d="M6 15l6-6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -816,7 +816,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
               <button type="button" onClick={() => goMatch(1)} disabled={!hits.length || scanning} aria-label="Coincidencia siguiente" className="pressable grid h-11 w-11 shrink-0 place-items-center rounded-full text-white hover:bg-white/15 disabled:opacity-35">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden="true"><path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </button>
-              <span aria-live="polite" className="min-w-[76px] shrink-0 text-center text-xs font-bold tabular-nums text-white/80">
+              <span aria-live="polite" className="t-meta-inv min-w-[76px] shrink-0 text-center">
                 {scanning
                   ? `Buscando ${scanProgress}/${numPages}…`
                   : hits.length
@@ -842,10 +842,10 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
                       aria-current={h.page === page}
                       className="pressable flex min-h-[44px] w-full items-center gap-3 rounded-[10px] px-2 text-left text-white hover:bg-white/10"
                     >
-                      <span className="shrink-0 rounded-full bg-[#ffd60a] px-2 py-0.5 text-[11px] font-bold tabular-nums text-slate-900">p. {h.page}</span>
-                      <span className="min-w-0 flex-1 truncate text-xs text-white/85">{h.snippet}</span>
+                      <span className="t-meta-strong shrink-0 rounded-full bg-[#ffd60a] px-2 py-0.5">p. {h.page}</span>
+                      <span className="t-small min-w-0 flex-1 truncate">{h.snippet}</span>
                       {h.count > 1 ? (
-                        <span className="shrink-0 text-[11px] font-bold tabular-nums text-white/60">×{h.count}</span>
+                        <span className="t-meta shrink-0">×{h.count}</span>
                       ) : null}
                     </button>
                   </li>
@@ -853,7 +853,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
               </ul>
             ) : null}
             {hits.length > 40 ? (
-              <p className="mt-1 px-2 text-[11px] text-white/60">Mostrando las primeras 40 páginas con coincidencias.</p>
+              <p className="t-caption mt-1 px-2">Mostrando las primeras 40 páginas con coincidencias.</p>
             ) : null}
           </div>
         ) : null}
@@ -880,7 +880,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
               }
             }}
           />
-          <span className="min-w-[42px] shrink-0 text-right text-xs font-bold tabular-nums text-white/70">{progress}%</span>
+          <span className="t-meta min-w-[42px] shrink-0 text-right">{progress}%</span>
         </div>
       </div>
 
@@ -909,13 +909,13 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
         loading={
           <div className="space-y-3 py-8" aria-label="Cargando PDF">
             <div className="mx-auto aspect-[4/5] max-w-md animate-pulse rounded-[20px] bg-white/15" />
-            <p className="text-center text-sm font-semibold text-white/80">Abriendo documento…</p>
+            <p className="t-small text-center">Abriendo documento…</p>
           </div>
         }
         error={
           <div className="mx-auto max-w-md rounded-[24px] border border-white/20 bg-[#081430] p-8 text-center text-white">
-            <p className="font-heading font-bold">No pudimos abrir este PDF.</p>
-            <a href={href} download className="pressable mt-4 inline-flex min-h-[44px] items-center rounded-full bg-[#ffd60a] px-5 text-sm font-bold text-slate-900">Descargar PDF</a>
+            <p className="t-h3">No pudimos abrir este PDF.</p>
+            <a href={href} download className="pressable btn btn-primary mt-4 min-h-[44px]">Descargar PDF</a>
           </div>
         }
       >
@@ -1043,7 +1043,7 @@ export const PdfPages = memo(function PdfPages({ href }: { href: string }) {
         ) : null}
       </Document>
 
-      <p className="mt-3 text-center text-xs font-medium text-white/60">
+      <p className="t-caption mt-3 text-center">
         ←/→ cambia de página · Ctrl+F busca · Desliza para pasar · Doble clic ajusta · 0 restablece zoom
       </p>
       <span className="sr-only" aria-live="polite">

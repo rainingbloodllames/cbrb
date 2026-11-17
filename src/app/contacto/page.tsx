@@ -25,35 +25,33 @@ const ContactForm = memo(function ContactForm() {
   if (sent) {
     return (
       <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.08)]" role="status">
-        <p className="border-l-4 border-slate-900 pl-4 text-base font-medium text-slate-900">Mensaje enviado. Te responderemos a {site.email}.</p>
+        <p className="t-name border-l-4 border-slate-900 pl-4">Mensaje enviado. Te responderemos a {site.email}.</p>
       </div>
     );
   }
 
-  const inputCls =
-    "mt-1.5 h-12 w-full rounded-lg border border-slate-300 bg-white px-4 text-base text-slate-900 placeholder:text-slate-500";
   return (
     <form onSubmit={onSubmit} className="form-section space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.08)] sm:p-8">
       <div>
-        <label htmlFor="nombre" className="block text-sm font-semibold text-slate-900">Nombre</label>
-        <input id="nombre" name="nombre" required autoComplete="name" spellCheck={false} className={inputCls} />
+        <label htmlFor="nombre" className="t-label block">Nombre</label>
+        <input id="nombre" name="nombre" required autoComplete="name" spellCheck={false} className="field" />
       </div>
       <div>
-        <label htmlFor="email" className="block text-sm font-semibold text-slate-900">Email</label>
-        <input id="email" name="email" type="email" inputMode="email" required autoComplete="email" spellCheck={false} className={inputCls} />
+        <label htmlFor="email" className="t-label block">Email</label>
+        <input id="email" name="email" type="email" inputMode="email" required autoComplete="email" spellCheck={false} className="field" />
       </div>
       <div>
-        <label htmlFor="mensaje" className="block text-sm font-semibold text-slate-900">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" required rows={5} className={`${inputCls} h-auto min-h-[120px] py-3`} />
+        <label htmlFor="mensaje" className="t-label block">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" required rows={5} className="field" />
       </div>
       <button
         type="submit"
         disabled={sending}
-        className="pressable flex h-12 w-full items-center justify-center rounded-lg bg-slate-900 px-6 font-heading text-base font-semibold text-white transition-colors duration-150 hover:bg-slate-800 disabled:opacity-60 sm:w-auto"
+        className="pressable btn btn-dark w-full sm:w-auto"
       >
         {sending ? "Enviando…" : "Enviar mensaje"}
       </button>
-      <p className="text-xs leading-relaxed text-slate-500">Respuesta en días hábiles. Para matrícula usa SAE, no este formulario.</p>
+      <p className="t-caption">Respuesta en días hábiles. Para matrícula usa SAE, no este formulario.</p>
     </form>
   );
 });
@@ -74,7 +72,7 @@ export default function ContactPage() {
           <div className="space-y-8">
             <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
               <div className="flex items-center justify-between gap-4 px-5 py-4">
-                <h2 className="font-heading text-xl font-semibold text-slate-900">Ubicación</h2>
+                <h2 className="t-h3">Ubicación</h2>
                 <a href={site.mapUrl} target="_blank" rel="noreferrer" className="pressable flex h-11 items-center link">
                   Cómo llegar
                 </a>
@@ -88,10 +86,10 @@ export default function ContactPage() {
               <p className="sr-only">Mapa de San Martín 1580, Concepción</p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-[#f8fafc] p-6">
-              <h2 className="font-heading text-xl font-semibold text-slate-900">Horario secretaría</h2>
-              <p className="mt-2 text-base tabular-nums text-slate-600">Lunes a viernes 8:30–17:30.</p>
-              <p className="mt-3 font-mono text-sm tabular-nums text-slate-600"><a href="mailto:brasil@andaliensur.cl" className="link-mail">brasil@andaliensur.cl</a></p>
-              <p className="mt-1 font-mono text-sm tabular-nums text-slate-600"><a href={site.phoneHref} className="link-mail">{site.phone}</a></p>
+              <h2 className="t-h3">Horario secretaría</h2>
+              <p className="t-body mt-2 tabular-nums">Lunes a viernes 8:30–17:30.</p>
+              <p className="mt-3"><a href="mailto:brasil@andaliensur.cl" className="link-mail">brasil@andaliensur.cl</a></p>
+              <p className="mt-1"><a href={site.phoneHref} className="link-mail">{site.phone}</a></p>
             </div>
           </div>
         </div>
@@ -108,10 +106,10 @@ export default function ContactPage() {
             ["Jefe de UTP", "César Pizarro Hidalgo", "cesar.pizarro@andaliensur.cl"],
             ["Secretaría general", "Colegio", "brasil@andaliensur.cl"],
           ].map(([role, name, email]) => (
-            <li key={email} className="grid gap-1 border-b border-slate-300 py-4 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
+            <li key={email} className="grid gap-1 border-b border-slate-200 py-4 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
               <span>
-                <span className="block text-sm text-slate-500">{role}</span>
-                <span className="block text-base font-semibold text-slate-900">{name}</span>
+                <span className="t-role block">{role}</span>
+                <span className="t-name block">{name}</span>
               </span>
               <a href={`mailto:${email}`} className="link-mail">{email}</a>
             </li>

@@ -32,11 +32,11 @@ export default function AdmisionPage() {
         lead="Colegio público desde 1843 en Concepción. Hoy hay más cupos en parvularia y básica. La postulación es solo por el sistema oficial, en 4 pasos."
       >
         <div className="flex flex-wrap items-center gap-5">
-          <a href={site.saeUrl} target="_blank" rel="noreferrer" className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-[#ffd60a] px-6 font-heading text-base font-semibold text-slate-900 transition-colors duration-150 hover:bg-[#ffdd2e]">
+          <a href={site.saeUrl} target="_blank" rel="noreferrer" className="btn btn-primary">
             Ir a admision.mineduc.cl
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </a>
-          <p className="font-mono text-xs tabular-nums text-slate-500">RBD 4564 · Busca “República del Brasil”</p>
+          <p className="t-meta">RBD 4564 · Busca “República del Brasil”</p>
         </div>
       </PageIntro>
 
@@ -45,10 +45,10 @@ export default function AdmisionPage() {
         <RuleList label="Pasos de postulación SAE">
           {steps.map((s, i) => (
             <Reveal key={s.t} delay={i * 40}>
-              <li className="grid gap-1 border-b border-slate-300 py-5 sm:grid-cols-[80px_220px_1fr] sm:items-baseline sm:gap-6">
-                <span className="font-mono text-sm tabular-nums text-slate-500">Paso {i + 1}</span>
-                <span className="font-heading text-xl font-semibold text-slate-900">{s.t}</span>
-                <span className="text-base leading-relaxed text-slate-600">{s.d}</span>
+              <li className="grid gap-1 border-b border-slate-200 py-5 sm:grid-cols-[80px_220px_1fr] sm:items-baseline sm:gap-6">
+                <span className="t-meta">Paso {i + 1}</span>
+                <span className="t-h3">{s.t}</span>
+                <span className="t-body">{s.d}</span>
               </li>
             </Reveal>
           ))}
@@ -91,7 +91,7 @@ export default function AdmisionPage() {
               className="aspect-[2/3] w-full object-cover"
             />
             <figcaption className="border-t border-slate-200 px-4 py-3">
-              <p className="t-name !text-sm">Matrículas abiertas</p>
+              <p className="t-name">Matrículas abiertas</p>
               <p className="t-small mt-1">Infórmate en SAE. Consultas: <a href="mailto:brasil@andaliensur.cl" className="link-mail">brasil@andaliensur.cl</a></p>
             </figcaption>
           </figure>
@@ -118,7 +118,7 @@ export default function AdmisionPage() {
             <details key={f.q} className={i !== faqs.length - 1 ? "border-b border-slate-200 px-6 py-4" : "px-6 py-4"}>
               <summary className="t-h3 flex min-h-[44px] cursor-pointer items-center justify-between gap-4">
                 {f.q}
-                <span className="text-xl font-normal text-slate-500" aria-hidden="true">+</span>
+                <span className="t-h3" aria-hidden="true">+</span>
               </summary>
               <p className="t-body mt-2 max-w-prose">{f.a}</p>
             </details>

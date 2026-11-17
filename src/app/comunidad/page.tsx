@@ -25,7 +25,7 @@ export default async function ComunidadPage() {
         lead="Noticias con fuente y galería. La vida diaria — Congreso Explora, Admisión 2027 y actos — también está en Instagram @colegio_brasil y Facebook."
         wide
       >
-        <p className="flex flex-wrap gap-5 text-base font-semibold">
+        <p className="t-body flex flex-wrap gap-5">
           <a href={site.instagram} target="_blank" rel="noreferrer" className="link">Instagram @colegio_brasil</a>
           <a href={site.facebook} target="_blank" rel="noreferrer" className="link">Facebook</a>
         </p>
@@ -43,12 +43,12 @@ export default async function ComunidadPage() {
             className="aspect-[1671/941] w-full object-cover"
           />
         </a>
-        <p className="t-meta mt-2">Banner oficial · Síguenos en @colegio_brasil</p>
+        <p className="t-caption mt-2">Banner oficial · Síguenos en @colegio_brasil</p>
       </div>
 
       <Band tone="band" labelledBy="noticias-titulo" wide>
 
-        <h2 id="noticias-titulo" className="mt-2 font-heading text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">Noticias con fuente</h2>
+        <h2 id="noticias-titulo" className="t-h2">Noticias con fuente</h2>
         <div className="mt-8">
           <Reveal>
             <NewsCard item={featured} featured />
@@ -68,8 +68,8 @@ export default async function ComunidadPage() {
       {/* Calendario como ficha con definición */}
       <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
         <section aria-labelledby="calendario-titulo" className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.08)] sm:p-8">
-          <h2 id="calendario-titulo" className="font-heading text-2xl font-semibold text-slate-900">Calendario escolar</h2>
-          <p className="mt-2 max-w-prose text-base leading-relaxed text-slate-600">
+          <h2 id="calendario-titulo" className="t-h3">Calendario escolar</h2>
+          <p className="t-body mt-2 max-w-prose">
             Actos, reuniones y fechas oficiales. En época SAE y matrícula, revisa también{" "}
             <a href={site.saeUrl} target="_blank" rel="noreferrer" className="link-inline">admisión SAE</a>.
           </p>

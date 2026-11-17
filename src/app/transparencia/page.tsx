@@ -16,8 +16,8 @@ export default function TransparenciaPage() {
       />
 
       <div className="mx-auto max-w-4xl px-4 pt-8 sm:px-6">
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
-          <div className="border-b border-slate-200 bg-[#f8fafc] px-6 py-3 font-mono text-xs text-slate-500">
+        <div className="sheet overflow-hidden">
+          <div className="t-caption border-b border-slate-200 bg-[var(--band)] px-6 py-3">
             Documentos PEI, reglamento y planes — RBD 4564 · SLEP Andalién Sur
           </div>
           <div className="px-2 sm:px-4">
@@ -25,7 +25,7 @@ export default function TransparenciaPage() {
           </div>
         </div>
 
-        <p className="mt-8 max-w-prose text-sm leading-relaxed text-slate-600">PEI, reglamento y planes RBD 4564 · SLEP Andalién Sur. Si un archivo no abre, escribe a <a href="mailto:brasil@andaliensur.cl" className="link-inline">brasil@andaliensur.cl</a>.</p>
+        <p className="t-small mt-8 max-w-prose">PEI, reglamento y planes RBD 4564 · SLEP Andalién Sur. Si un archivo no abre, escribe a <a href="mailto:brasil@andaliensur.cl" className="link-inline">brasil@andaliensur.cl</a>.</p>
       </div>
     </div>
   );

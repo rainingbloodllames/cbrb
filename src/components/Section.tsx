@@ -29,10 +29,10 @@ export function PageIntro({
   return (
     <header className={wide ? `${CONTAINER_WIDE} pt-10 sm:pt-14` : `${CONTAINER_NARROW} pt-10 sm:pt-14`}>
       <div className="sheet border-l-4 !border-l-[#0b1e44] p-6 sm:p-10">
-        <p className="t-small font-medium">{kicker}</p>
+        <p className="t-kicker">{kicker}</p>
         <h1 className="t-h1 mt-2">{title}</h1>
         <p className="t-lead mt-4 max-w-prose">{lead}</p>
-        {meta ? <p className="mt-5 inline-flex rounded-full bg-[#eef3f9] px-4 py-2 t-meta !text-[#0b1e44] ring-1 ring-slate-200">{meta}</p> : null}
+        {meta ? <p className="t-meta-strong mt-5 inline-flex rounded-full bg-[#eef3f9] px-4 py-2 ring-1 ring-slate-200">{meta}</p> : null}
         {children ? <div className="mt-6">{children}</div> : null}
       </div>
     </header>
@@ -79,12 +79,12 @@ export function SectionHead({
   light?: boolean;
 }) {
   return (
-    <div className="flex flex-wrap items-end justify-between gap-4">
+    <div className={`flex flex-wrap items-end justify-between gap-4 ${light ? "on-dark" : ""}`}>
       <div className={`min-w-0 max-w-3xl border-l-4 pl-5 ${light ? "border-[#ffd60a]" : "border-[#0b1e44]"}`}>
-        <h2 id={titleId} className={`t-h2 ${light ? "!text-white" : ""}`}>
+        <h2 id={titleId} className="t-h2">
           {title}
         </h2>
-        {lead ? <p className={`t-lead mt-3 max-w-xl ${light ? "!text-slate-300" : ""}`}>{lead}</p> : null}
+        {lead ? <p className="t-lead mt-3 max-w-xl">{lead}</p> : null}
       </div>
       {action}
     </div>

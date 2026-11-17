@@ -4,9 +4,9 @@ import type { NewsItem } from "@/lib/content";
 
 export const NewsCard = memo(function NewsCard({ item, featured = false }: { item: NewsItem; featured?: boolean }) {
   const meta = (
-    <p className="t-meta flex items-center gap-3">
-      <span className="t-name !text-xs">{item.category}</span>
-      <span>{item.date}</span>
+    <p className="flex items-center gap-3">
+      <span className="t-label">{item.category}</span>
+      <span className="t-meta">{item.date}</span>
     </p>
   );
   const body = (
@@ -45,7 +45,7 @@ export const NewsCard = memo(function NewsCard({ item, featured = false }: { ite
               className="media-zoom aspect-[16/9] w-full object-cover"
             />
             {item.imageCredit ? (
-              <figcaption className="t-meta pt-2">{item.imageCredit}</figcaption>
+              <figcaption className="t-caption pt-2">{item.imageCredit}</figcaption>
             ) : null}
           </figure>
         ) : null}
@@ -69,7 +69,7 @@ export const NewsCard = memo(function NewsCard({ item, featured = false }: { ite
             className="media-zoom aspect-[16/9] w-full object-cover"
           />
           {item.imageCredit ? (
-            <figcaption className="t-meta pt-2">{item.imageCredit}</figcaption>
+            <figcaption className="t-caption pt-2">{item.imageCredit}</figcaption>
           ) : null}
         </figure>
       ) : null}
